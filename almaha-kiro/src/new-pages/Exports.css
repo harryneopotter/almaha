@@ -1,0 +1,523 @@
+/* Al Maha Foods Exports Page - Following PAGE_SPECIFICATIONS.md Section 1 */
+
+/* Page Container */
+.exports-page {
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header - Following Styling Guide */
+.exports-page .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 90px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+}
+
+.exports-page .site-header .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 36px; /* 36px from edges per styling guide */
+}
+
+.logo img {
+  height: 69px;
+  width: 189px; /* Exact dimensions from styling guide */
+}
+
+.main-nav {
+  display: flex;
+  gap: 25px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #303133; /* Dark gray from styling guide */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.main-nav a:hover {
+  color: #eecc6b; /* Golden yellow from styling guide */
+}
+
+.main-nav a.active {
+  background-color: #eecc6b; /* Golden yellow from styling guide */
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Hero Banner - 400px height with container ship image */
+.hero-banner {
+  margin-top: 90px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Specified overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Two-Column Layout Pattern - Following STYLING_GUIDE.md */
+
+/* Section Containers */
+.introduction-section,
+.infrastructure-section,
+.brands-section,
+.quality-section,
+.delivering-section,
+.global-presence-section,
+.cta-section {
+  padding: 72px 0; /* Section padding from styling guide */
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 36px; /* 36px from edges */
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 210px 774px; /* Exact measurements from styling guide */
+  column-gap: 72px;
+  max-width: 1056px; /* 210px + 72px + 774px */
+  margin: 0 auto;
+}
+
+/* Left Column - Sidebar */
+.text-column {
+  position: relative;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  margin: 0 0 20px 0;
+}
+
+/* Golden yellow divider for left column */
+.text-column .divider {
+  background-color: #eecc6b;
+}
+
+.heading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0;
+  margin-top: 72px; /* Space between divider and heading */
+  margin-bottom: 24px;
+}
+
+/* Right Column - Main Content */
+.main-column {
+  position: relative;
+}
+
+/* Light gray divider for right column */
+.main-column .divider {
+  background-color: #dddddd;
+}
+
+.description p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0;
+  margin-top: 36px; /* Space between divider and content */
+  margin-bottom: 24px;
+}
+
+/* Section Images */
+.section-image {
+  margin-top: 40px;
+}
+
+.section-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-image img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Quality Section - Red accent line and quote */
+.quality-quote {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.red-accent-line {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #fe0000;
+}
+
+.quality-quote h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0 0 24px 0;
+  padding-left: 20px;
+}
+
+/* Image Pairs - Two images side by side */
+.quality-images,
+.facility-images {
+  margin-top: 40px;
+}
+
+.image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.image-pair img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-pair img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Global Presence Section */
+.global-quote {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.global-quote .red-accent-line {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #fe0000;
+}
+
+.global-quote p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0 0 24px 0;
+  padding-left: 20px;
+}
+
+/* World Map */
+.world-map {
+  margin-top: 40px;
+}
+
+.world-map img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* CTA Section */
+.cta-card {
+  background-color: #ffffff;
+  padding: 70px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  margin-top: 36px;
+}
+
+.cta-card h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0 0 16px 0;
+}
+
+.cta-card p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #303133;
+  line-height: 1.5;
+  margin: 0 0 32px 0;
+}
+
+.primary-button {
+  background-color: rgb(236, 197, 88);
+  border-color: rgb(236, 197, 88);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 4px 18px -4px;
+  color: rgb(0, 0, 0);
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 46.8px;
+  padding: 13px 31px;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid rgb(236, 197, 88);
+}
+
+.primary-button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgb(48, 49, 51);
+  color: rgb(48, 49, 51);
+}
+
+/* Footer - Following Styling Guide */
+.site-footer {
+  background-color: #32373c;
+  color: white;
+  padding: 50px 0 0; /* 50px top, 0 bottom per styling guide */
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 308px 190px 190px 308px; /* Four-column layout from styling guide */
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.footer-col p {
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #fe0000; /* Red hover from styling guide */
+}
+
+.footer-logo {
+  margin-top: 20px;
+}
+
+.footer-logo img {
+  max-width: 120px;
+  height: auto;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Responsive Design - Following Styling Guide */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .heading {
+    margin-top: 40px;
+  }
+  
+  .image-pair {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .introduction-section,
+  .infrastructure-section,
+  .brands-section,
+  .quality-section,
+  .delivering-section,
+  .global-presence-section,
+  .cta-section {
+    padding: 40px 0;
+  }
+  
+  .hero-banner {
+    height: 300px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .heading {
+    font-size: 20px;
+  }
+  
+  .description p {
+    font-size: 18px;
+  }
+  
+  .cta-card {
+    padding: 40px 20px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .main-nav {
+    display: none; /* Hide nav on mobile for now */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .heading {
+    font-size: 18px;
+  }
+  
+  .description p {
+    font-size: 16px;
+  }
+  
+  .red-accent-line {
+    left: -10px;
+    width: 2px;
+  }
+  
+  .quality-quote h3,
+  .global-quote p {
+    padding-left: 10px;
+  }
+}

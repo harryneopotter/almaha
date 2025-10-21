@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://www.almahafoods.com/corporate-social-responsibility/ -->
+<html class="no-touch webkit chrome chrome138 linux js no-hidpi datauri screen-sm screen-xs screen-xxs orientation_landscape" lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.almahafoods.com/xmlrpc.php">
+<title>Corporate Social Responsibility – Al-maha</title>
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="Al-maha » Feed" href="https://www.almahafoods.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Al-maha » Comments Feed" href="https://www.almahafoods.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Al-maha » Corporate Social Responsibility Comments Feed" href="https://www.almahafoods.com/corporate-social-responsibility/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"wpemoji":"https:\/\/www.almahafoods.com\/wp-includes\/js\/wp-emoji.js?ver=6.8.2","twemoji":"https:\/\/www.almahafoods.com\/wp-includes\/js\/twemoji.js?ver=6.8.2"}};
+/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
+
+/**
+ * Emoji Settings as exported in PHP via _print_emoji_detection_script().
+ * @typedef WPEmojiSettings
+ * @type {object}
+ * @property {?object} source
+ * @property {?string} source.concatemoji
+ * @property {?string} source.twemoji
+ * @property {?string} source.wpemoji
+ * @property {?boolean} DOMReady
+ * @property {?Function} readyCallback
+ */
+
+/**
+ * Support tests.
+ * @typedef SupportTests
+ * @type {object}
+ * @property {?boolean} flag
+ * @property {?boolean} emoji
+ */
+
+/**
+ * IIFE to detect emoji support and load Twemoji if needed.
+ *
+ * @param {Window} window
+ * @param {Document} document
+ * @param {WPEmojiSettings} settings
+ */
+( function wpEmojiLoader( window, document, settings ) {
+	if ( typeof Promise === 'undefined' ) {
+		return;
+	}
+
+	var sessionStorageKey = 'wpEmojiSettingsSupports';
+	var tests = [ 'flag', 'emoji' ];
+
+	/**
+	 * Checks whether the browser supports offloading to a Worker.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {boolean}
+	 */
+	function supportsWorkerOffloading() {
+		return (
+			typeof Worker !== 'undefined' &&
+			typeof OffscreenCanvas !== 'undefined' &&
+			typeof URL !== 'undefined' &&
+			URL.createObjectURL &&
+			typeof Blob !== 'undefined'
+		);
+	}
+
+	/**
+	 * @typedef SessionSupportTests
+	 * @type {object}
+	 * @property {number} timestamp
+	 * @property {SupportTests} supportTests
+	 */
+
+	/**
+	 * Get support tests from session.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {?SupportTests} Support tests, or null if not set or older than 1 week.
+	 */
+	function getSessionSupportTests() {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = JSON.parse(
+				sessionStorage.getItem( sessionStorageKey )
+			);
+			if (
+				typeof item === 'object' &&
+				typeof item.timestamp === 'number' &&
+				new Date().valueOf() < item.timestamp + 604800 && // Note: Number is a week in seconds.
+				typeof item.supportTests === 'object'
+			) {
+				return item.supportTests;
+			}
+		} catch ( e ) {}
+		return null;
+	}
+
+	/**
+	 * Persist the supports in session storage.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {SupportTests} supportTests Support tests.
+	 */
+	function setSessionSupportTests( supportTests ) {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = {
+				supportTests: supportTests,
+				timestamp: new Date().valueOf()
+			};
+
+			sessionStorage.setItem(
+				sessionStorageKey,
+				JSON.stringify( item )
+			);
+		} catch ( e ) {}
+	}
+
+	/**
+	 * Checks if two sets of Emoji characters render the same visually.
+	 *
+	 * This is used to determine if the browser is rendering an emoji with multiple data points
+	 * correctly. set1 is the emoji in the correct form, using a zero-width joiner. set2 is the emoji
+	 * in the incorrect form, using a zero-width space. If the two sets render the same, then the browser
+	 * does not support the emoji correctly.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} set1 Set of Emoji to test.
+	 * @param {string} set2 Set of Emoji to test.
+	 *
+	 * @return {boolean} True if the two sets render the same.
+	 */
+	function emojiSetsRenderIdentically( context, set1, set2 ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set1, 0, 0 );
+		var rendered1 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set2, 0, 0 );
+		var rendered2 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		return rendered1.every( function ( rendered2Data, index ) {
+			return rendered2Data === rendered2[ index ];
+		} );
+	}
+
+	/**
+	 * Checks if the center point of a single emoji is empty.
+	 *
+	 * This is used to determine if the browser is rendering an emoji with a single data point
+	 * correctly. The center point of an incorrectly rendered emoji will be empty. A correctly
+	 * rendered emoji will have a non-zero value at the center point.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.8.2
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} emoji Emoji to test.
+	 *
+	 * @return {boolean} True if the center point is empty.
+	 */
+	function emojiRendersEmptyCenterPoint( context, emoji ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( emoji, 0, 0 );
+
+		// Test if the center point (16, 16) is empty (0,0,0,0).
+		var centerPoint = context.getImageData(16, 16, 1, 1);
+		for ( var i = 0; i < centerPoint.data.length; i++ ) {
+			if ( centerPoint.data[ i ] !== 0 ) {
+				// Stop checking the moment it's known not to be empty.
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Determines if the browser properly renders Emoji that Twemoji can supplement.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} type Whether to test for support of "flag" or "emoji".
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+	 *
+	 * @return {boolean} True if the browser can render emoji, false if it cannot.
+	 */
+	function browserSupportsEmoji( context, type, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+		var isIdentical;
+
+		switch ( type ) {
+			case 'flag':
+				/*
+				 * Test for Transgender flag compatibility. Added in Unicode 13.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDFF3\uFE0F\u200D\u26A7\uFE0F', // as a zero-width joiner sequence
+					'\uD83C\uDFF3\uFE0F\u200B\u26A7\uFE0F' // separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for Sark flag compatibility. This is the least supported of the letter locale flags,
+				 * so gives us an easy test for full support.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly ([C] + [Q]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDDE8\uD83C\uDDF6', // as the sequence of two code points
+					'\uD83C\uDDE8\u200B\uD83C\uDDF6' // as the two code points separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for English flag compatibility. England is a country in the United Kingdom, it
+				 * does not have a two letter locale code but rather a five letter sub-division code.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					// as the flag sequence
+					'\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F',
+					// with each code point separated by a zero-width space
+					'\uD83C\uDFF4\u200B\uDB40\uDC67\u200B\uDB40\uDC62\u200B\uDB40\uDC65\u200B\uDB40\uDC6E\u200B\uDB40\uDC67\u200B\uDB40\uDC7F'
+				);
+
+				return ! isIdentical;
+			case 'emoji':
+				/*
+				 * Does Emoji 16.0 cause the browser to go splat?
+				 *
+				 * To test for Emoji 16.0 support, try to render a new emoji: Splatter.
+				 *
+				 * The splatter emoji is a single code point emoji. Testing for browser support
+				 * required testing the center point of the emoji to see if it is empty.
+				 *
+				 * 0xD83E 0xDEDF (\uD83E\uDEDF) == 🫟 Splatter.
+				 *
+				 * When updating this test, please ensure that the emoji is either a single code point
+				 * or switch to using the emojiSetsRenderIdentically function and testing with a zero-width
+				 * joiner vs a zero-width space.
+				 */
+				var notSupported = emojiRendersEmptyCenterPoint( context, '\uD83E\uDEDF' );
+				return ! notSupported;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Checks emoji support tests.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {string[]} tests Tests.
+	 * @param {Function} browserSupportsEmoji Reference to browserSupportsEmoji function, needed due to minification.
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+	 *
+	 * @return {SupportTests} Support tests.
+	 */
+	function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+		var canvas;
+		if (
+			typeof WorkerGlobalScope !== 'undefined' &&
+			self instanceof WorkerGlobalScope
+		) {
+			canvas = new OffscreenCanvas( 300, 150 ); // Dimensions are default for HTMLCanvasElement.
+		} else {
+			canvas = document.createElement( 'canvas' );
+		}
+
+		var context = canvas.getContext( '2d', { willReadFrequently: true } );
+
+		/*
+		 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+		 * it doesn't work when the font is bolder than 500 weight. So, we
+		 * check for bold rendering support to avoid invisible emoji in Chrome.
+		 */
+		context.textBaseline = 'top';
+		context.font = '600 32px Arial';
+
+		var supports = {};
+		tests.forEach( function ( test ) {
+			supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+		} );
+		return supports;
+	}
+
+	/**
+	 * Adds a script to the head of the document.
+	 *
+	 * @ignore
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param {string} src The url where the script is located.
+	 *
+	 * @return {void}
+	 */
+	function addScript( src ) {
+		var script = document.createElement( 'script' );
+		script.src = src;
+		script.defer = true;
+		document.head.appendChild( script );
+	}
+
+	settings.supports = {
+		everything: true,
+		everythingExceptFlag: true
+	};
+
+	// Create a promise for DOMContentLoaded since the worker logic may finish after the event has fired.
+	var domReadyPromise = new Promise( function ( resolve ) {
+		document.addEventListener( 'DOMContentLoaded', resolve, {
+			once: true
+		} );
+	} );
+
+	// Obtain the emoji support from the browser, asynchronously when possible.
+	new Promise( function ( resolve ) {
+		var supportTests = getSessionSupportTests();
+		if ( supportTests ) {
+			resolve( supportTests );
+			return;
+		}
+
+		if ( supportsWorkerOffloading() ) {
+			try {
+				// Note that the functions are being passed as arguments due to minification.
+				var workerScript =
+					'postMessage(' +
+					testEmojiSupports.toString() +
+					'(' +
+					[
+						JSON.stringify( tests ),
+						browserSupportsEmoji.toString(),
+						emojiSetsRenderIdentically.toString(),
+						emojiRendersEmptyCenterPoint.toString()
+					].join( ',' ) +
+					'));';
+				var blob = new Blob( [ workerScript ], {
+					type: 'text/javascript'
+				} );
+				var worker = new Worker( URL.createObjectURL( blob ), { name: 'wpTestEmojiSupports' } );
+				worker.onmessage = function ( event ) {
+					supportTests = event.data;
+					setSessionSupportTests( supportTests );
+					worker.terminate();
+					resolve( supportTests );
+				};
+				return;
+			} catch ( e ) {}
+		}
+
+		supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+		setSessionSupportTests( supportTests );
+		resolve( supportTests );
+	} )
+		// Once the browser emoji support has been obtained from the session, finalize the settings.
+		.then( function ( supportTests ) {
+			/*
+			 * Tests the browser support for flag emojis and other emojis, and adjusts the
+			 * support settings accordingly.
+			 */
+			for ( var test in supportTests ) {
+				settings.supports[ test ] = supportTests[ test ];
+
+				settings.supports.everything =
+					settings.supports.everything && settings.supports[ test ];
+
+				if ( 'flag' !== test ) {
+					settings.supports.everythingExceptFlag =
+						settings.supports.everythingExceptFlag &&
+						settings.supports[ test ];
+				}
+			}
+
+			settings.supports.everythingExceptFlag =
+				settings.supports.everythingExceptFlag &&
+				! settings.supports.flag;
+
+			// Sets DOMReady to false and assigns a ready function to settings.
+			settings.DOMReady = false;
+			settings.readyCallback = function () {
+				settings.DOMReady = true;
+			};
+		} )
+		.then( function () {
+			return domReadyPromise;
+		} )
+		.then( function () {
+			// When the browser can not render everything we need to load a polyfill.
+			if ( ! settings.supports.everything ) {
+				settings.readyCallback();
+
+				var src = settings.source || {};
+
+				if ( src.concatemoji ) {
+					addScript( src.concatemoji );
+				} else if ( src.wpemoji && src.twemoji ) {
+					addScript( src.twemoji );
+					addScript( src.wpemoji );
+				}
+			}
+		} );
+} )( window, document, window._wpemojiSettings );
+
+/* ]]> */
+</script>
+<link rel="stylesheet" id="embed-pdf-viewer-css" href="./Corporate Social Responsibility – Al-maha_files/embed-pdf-viewer.css" type="text/css" media="screen">
+<style id="wp-emoji-styles-inline-css" type="text/css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./Corporate Social Responsibility – Al-maha_files/style.css" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">
+/**
+ * These rules are needed for backwards compatibility.
+ * They should match the button element rules in the base theme.json file.
+ */
+.wp-block-button__link {
+	color: #ffffff;
+	background-color: #32373c;
+	border-radius: 9999px; /* 100% causes an oval, but any explicit but really high value retains the pill shape. */
+
+	/* This needs a low specificity so it won't override the rules from the button element if defined in theme.json. */
+	box-shadow: none;
+	text-decoration: none;
+
+	/* The extra 2px are added to size solids the same as the outline versions.*/
+	padding: calc(0.667em + 2px) calc(1.333em + 2px);
+
+	font-size: 1.125em;
+}
+
+.wp-block-file__button {
+	background: #32373c;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+</style>
+<style id="pdfemb-pdf-embedder-viewer-style-inline-css" type="text/css">
+.wp-block-pdfemb-pdf-embedder-viewer{max-width:none}
+
+</style>
+<style id="global-styles-inline-css" type="text/css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="./Corporate Social Responsibility – Al-maha_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="uncodefont-google-css" href="./Corporate Social Responsibility – Al-maha_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="uncode-style-css" href="./Corporate Social Responsibility – Al-maha_files/style(1).css" type="text/css" media="all">
+<style id="uncode-style-inline-css" type="text/css">
+
+@media (min-width: 960px) { .limit-width { max-width: 1200px; margin: auto;}}
+</style>
+<link rel="stylesheet" id="uncode-icons-css" href="./Corporate Social Responsibility – Al-maha_files/uncode-icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="uncode-custom-style-css" href="./Corporate Social Responsibility – Al-maha_files/style-custom.css" type="text/css" media="all">
+<link rel="stylesheet" id="child-style-css" href="./Corporate Social Responsibility – Al-maha_files/style(2).css" type="text/css" media="all">
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/jquery.js" id="jquery-core-js"></script><style type="text/css" id="operaUserStyle"></style>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/jquery-migrate.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="uncode-init-js-extra">
+/* <![CDATA[ */
+var SiteParameters = {"days":"days","hours":"hours","minutes":"minutes","seconds":"seconds","constant_scroll":"on","scroll_speed":"2","parallax_factor":"0.25","loading":"Loading\u2026","slide_name":"slide","slide_footer":"footer","ajax_url":"https:\/\/www.almahafoods.com\/wp-admin\/admin-ajax.php","nonce_adaptive_images":"07c914b145","enable_debug":"","block_mobile_videos":"","is_frontend_editor":"","mobile_parallax_allowed":"","wireframes_plugin_active":"","sticky_elements":"on","lazyload_type":"","update_wc_fragments":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/init.js" id="uncode-init-js"></script>
+<link rel="https://api.w.org/" href="https://www.almahafoods.com/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://www.almahafoods.com/wp-json/wp/v2/pages/88163"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.almahafoods.com/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.8.2">
+<link rel="canonical" href="https://www.almahafoods.com/corporate-social-responsibility/">
+<link rel="shortlink" href="https://www.almahafoods.com/?p=88163">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.almahafoods.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.almahafoods.com%2Fcorporate-social-responsibility%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.almahafoods.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.almahafoods.com%2Fcorporate-social-responsibility%2F&amp;format=xml">
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-32x32.png" sizes="32x32">
+<link rel="icon" href="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-180x180.png">
+<meta name="msapplication-TileImage" content="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			.designby{
+	display:none;
+}
+
+.apply-now-btn[data-job="Other Job"]{
+	text-indent: -9999px; line-height: 0;
+}
+.apply-now-btn[data-job="Other Job"]::after{
+	content: "Submit Resume"; 
+	text-indent: 0;  display: block; line-height: initial;
+}		</style>
+		<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><style type="text/css" media="print">@page { size: 1386px 740px; margin: 0; }</style></head>
+<body class="wp-singular page-template-default page page-id-88163 wp-custom-logo wp-theme-uncode wp-child-theme-uncode-child style-color-wayh-bg hormenu-position-left hmenu hmenu-position-right header-full-width main-center-align menu-mobile-animated textual-accent-color mobile-parallax-not-allowed ilb-no-bounce unreg qw-body-scroll-disabled wpb-js-composer js-comp-ver-6.6.0 vc_responsive" data-border="0" style="margin-top: 0px; padding-top: 0px;">
+		<div class="body-borders" data-border="0"><div class="top-border body-border-shadow"></div><div class="right-border body-border-shadow"></div><div class="bottom-border body-border-shadow"></div><div class="left-border body-border-shadow"></div><div class="top-border style-light-bg"></div><div class="right-border style-light-bg"></div><div class="bottom-border style-light-bg"></div><div class="left-border style-light-bg"></div></div>	<div class="box-wrapper">
+		<div class="box-container" style="width: 1380px; margin-left: -4.5px;">
+		<script type="text/javascript" id="initBox">UNCODE.initBox();</script>
+		<div class="menu-wrapper menu-hide-only menu-no-arrows no-header" style="height: 90px;">
+													
+													<header id="masthead" class="navbar menu-primary menu-light submenu-light style-light-original menu-animated menu-with-logo">
+														<div class="menu-container menu-hide style-color-xsdn-bg menu-borders menu-shadows" style="width: 1380px;">
+															<div class="row-menu">
+																<div class="row-menu-inner">
+																	<div id="logo-container-mobile" class="col-lg-0 logo-container middle">
+																		<div id="main-logo" class="navbar-header style-light">
+																			<a href="https://www.almahafoods.com/" class="navbar-brand"><div class="logo-customizer"><img decoding="async" src="./Corporate Social Responsibility – Al-maha_files/Logo-2025-e1733738317336.jpg" alt="Al-maha" width="189" height="69"></div></a>
+																		</div>
+																		<div class="mmb-container"><div class="mobile-additional-icons"></div><div class="mobile-menu-button 1 mobile-menu-button-light lines-button x2"><span class="lines"></span></div></div>
+																	</div>
+																	<div class="col-lg-12 main-menu-container middle">
+																		<div class="menu-horizontal menu-dd-shadow-lg">
+																			<div class="menu-horizontal-inner">
+																				<div class="nav navbar-nav navbar-main navbar-nav-last"><ul id="menu-al-maha-menu" class="menu-primary-inner menu-smart sm" data-smartmenus-id="17602104583162668"><li id="menu-item-88953" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-88953 menu-item-link" style="-webkit-transition-delay:0.1s; -moz-transition-delay:0.1s; -ms-transition-delay:0.1s; -o-transition-delay:0.1s; transition-delay:0.1s"><a href="https://www.almahafoods.com/" title="Home">Home<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-88954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-88954 dropdown menu-item-link" style="-webkit-transition-delay:0.15000000000000002s; -moz-transition-delay:0.15000000000000002s; -ms-transition-delay:0.15000000000000002s; -o-transition-delay:0.15000000000000002s; transition-delay:0.15000000000000002s"><a href="https://www.almahafoods.com/corporate-social-responsibility/#" data-toggle="dropdown" class="dropdown-toggle" data-type="title" title="About Us">About Us<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-88955" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88955"><a title="About Al Maha" href="https://www.almahafoods.com/about/">About Al Maha<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88956"><a title="Vision &amp; Mission" href="https://www.almahafoods.com/about#vision-mission">Vision &amp; Mission<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88957"><a title="Values" href="https://www.almahafoods.com/about#values">Values<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88958" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88958"><a title="Team" href="https://www.almahafoods.com/about#team">Team<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-88959" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-88959 dropdown menu-item-link" style="-webkit-transition-delay:0.2s; -moz-transition-delay:0.2s; -ms-transition-delay:0.2s; -o-transition-delay:0.2s; transition-delay:0.2s"><a href="https://www.almahafoods.com/corporate-social-responsibility/#" data-toggle="dropdown" class="dropdown-toggle" data-type="title" title="What We Do">What We Do<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-88976" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88976"><a title="Exports Profile" href="https://www.almahafoods.com/what-we-do/exports/">Exports Profile<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88975" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88975"><a title="Quality Assurance" href="https://www.almahafoods.com/what-we-do/quality-assurance/">Quality Assurance<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88974" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88974"><a title="Domestic Market" href="https://www.almahafoods.com/what-we-do/domestic-market/">Domestic Market<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-88961" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88961 menu-item-link" style="-webkit-transition-delay:0.25s; -moz-transition-delay:0.25s; -ms-transition-delay:0.25s; -o-transition-delay:0.25s; transition-delay:0.25s"><a href="https://www.almahafoods.com/our-brands/" title="Our Brands">Our Brands<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-88962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-88962 dropdown menu-item-link" style="-webkit-transition-delay:0.30000000000000004s; -moz-transition-delay:0.30000000000000004s; -ms-transition-delay:0.30000000000000004s; -o-transition-delay:0.30000000000000004s; transition-delay:0.30000000000000004s"><a href="https://www.almahafoods.com/culture-at-al-maha/" data-toggle="dropdown" class="dropdown-toggle" data-type="title" title="Workplace &amp; Careers">Workplace &amp; Careers<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-88964" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88964"><a href="https://www.almahafoods.com/culture-at-al-maha#life-at-almaha" title="Culture@almaha">Culture@almaha<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88965" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88965"><a title="Apply now" href="https://www.almahafoods.com/culture-at-al-maha#apply-now">Apply now<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-88966" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-88163 current_page_item menu-item-88966 active menu-item-link" style="-webkit-transition-delay:0.35s; -moz-transition-delay:0.35s; -ms-transition-delay:0.35s; -o-transition-delay:0.35s; transition-delay:0.35s"><a href="https://www.almahafoods.com/corporate-social-responsibility/" title="CSR">CSR<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-88967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88967 menu-item-link" style="-webkit-transition-delay:0.4s; -moz-transition-delay:0.4s; -ms-transition-delay:0.4s; -o-transition-delay:0.4s; transition-delay:0.4s"><a href="https://www.almahafoods.com/contact-us/" title="Contact Us">Contact Us<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</header>
+												</div>			<script type="text/javascript" id="fixMenuHeight">UNCODE.fixMenuHeight();</script>
+			<div class="main-wrapper">
+				<div class="main-container">
+					<div class="page-wrapper">
+						<div class="sections-container">
+<script type="text/javascript">UNCODE.initHeader();</script><article id="post-88163" class="page-body style-color-xsdn-bg post-88163 page type-page status-publish hentry">
+						<div class="post-wrapper">
+							<div class="post-body"><div class="post-content un-no-sidebar-layout"><div data-parent="true" class="vc_row title-section-banner style-color-wayh-bg row-container" id="row-126995" data-section="0"><div class="row-background background-element">
+											<div class="background-wrapper">
+												<div class="background-inner" style="background-image: url(https://www.almahafoods.com/wp-content/uploads/2023/02/csr-final-banner.jpg);background-repeat: no-repeat;background-position: center top;background-attachment: scroll;background-size: cover;"></div>
+												<div class="block-bg-overlay style-accent-bg" style="opacity: 0.85;"></div>
+											</div>
+										</div><div class="row double-top-padding double-bottom-padding single-h-padding limit-width row-parent" data-height-ratio="50" data-imgready="true"><div class="wpb_row row-inner" style="height: 170px;"><div class="wpb_column pos-middle pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h1 class="fontsize-338686 fontheight-179065 font-weight-300"><span>Corporate Social Responsibility</span></h1></div><div class="clear"></div></div></div></div></div></div></div><script id="script-row-126995" data-row="script-row-126995" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-126995"));</script></div></div></div><div data-parent="true" class="vc_row gray-bg vc_custom_1676872163572 row-container" style="padding-bottom: 70px ;" id="row-984274" data-section="1"><div class="row triple-top-padding one-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_row row-internal row-container"><div class="row col-double-gutter row-child"><div class="wpb_row row-inner" style="height: 637px;"><div class="wpb_column pos-top pos-center align_left column_child col-lg-3 double-internal-gutter"><div class="uncol style-light sticky-element sticky-sidebar"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-accent-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h2 class="h2 fontheight-357766 fontspace-781688 font-weight-300"><span>CSR Initiatives by Al Maha</span></h2></div><div class="clear"></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_child col-lg-9 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-color-uydo-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><p class="h2 fontheight-357766 fontspace-781688 font-weight-300 text-color-wvjs-color"><span>Al Maha Foods attributes its existence to the society and seeks to do its part for the society through its Corporate Social Responsibility (CSR) Initiative. Education, healthcare and rural development are the hallmarks of progress of mankind. It is in these fields that we carry out our CSR initiatives:</span></p><span><ul><span><li>Creating viable infrastructure for child education.</li></span><span><li>Providing health care facilities to the community.</li></span><span><li>Creating awareness among farmers.</li></span><span><li>Provision of safe drinking water in most backward regions of the country.</li></span><span></span></ul></span><span><p></p></span></div><div class="clear"></div></div><div class="vc_custom_heading_wrap "><div class="heading-text el-text"><p class="h2 fontheight-357766 fontspace-781688 font-weight-300 text-color-wvjs-color"><span>Al Maha Foods executes its CSR projects in collaboration with local NGOs and government bodies. These projects are aimed at:</span></p><span><ul><span><li>Upliftment of local communities.</li></span><span><li>Use of sustainable practices in operations.</li></span><span><li>Favourable impact on the environment.</li></span><span></span></ul></span><span><p></p></span></div><div class="clear"></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-row-984274" data-row="script-row-984274" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-984274"));</script></div></div></div><div data-parent="true" class="vc_row vc_custom_1676872203928 row-container" style="padding-bottom: 70px ;" id="row-182726" data-section="2"><div class="row triple-top-padding one-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_row row-internal row-container"><div class="row col-double-gutter row-child"><div class="wpb_row row-inner" style="height: 455px;"><div class="wpb_column pos-top pos-center align_left column_child col-lg-3 double-internal-gutter"><div class="uncol style-light sticky-element sticky-sidebar"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-accent-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h2 class="h2 fontheight-357766 fontspace-781688 font-weight-300"><span>CSR Activities at Al Maha</span></h2></div><div class="clear"></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_child col-lg-9 csr-video-action single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-color-uydo-color separator-no-padding">
+</div>
+
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html">
+		<div class="wpb_wrapper">
+			<video muted="" controls="" autoplay="">
+  <source src="https://almahafoods.com/wp-content/uploads/2023/05/Untitled.mp4&quot;" type="video/mp4">
+</video>
+		</div>
+	</div>
+</div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-row-182726" data-row="script-row-182726" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-182726"));</script></div></div></div><div data-parent="true" class="vc_row vc_custom_1676872203928 row-container" style="padding-bottom: 70px ;" id="row-123519" data-section="3"><div class="row triple-top-padding one-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_row row-internal row-container"><div class="row col-double-gutter row-child"><div class="wpb_row row-inner" style="height: 2217px;"><div class="wpb_column pos-top pos-center align_left column_child col-lg-3 double-internal-gutter"><div class="uncol style-light sticky-element sticky-sidebar"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-accent-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h2 class="h2 fontheight-357766 fontspace-781688 font-weight-300"><span>Social Responsibility – Our Passion!!</span></h2></div><div class="clear"></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_child col-lg-9 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-color-uydo-color separator-no-padding">
+</div>
+
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html">
+		<div class="wpb_wrapper">
+			<div class="csr_gallery_section">
+    <div class="al_row">
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="1600" height="900" src="./Corporate Social Responsibility – Al-maha_files/WhatsApp-Image-2024-01-01-at-2.58.37-PM.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.58.37-PM.jpeg 1600w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.58.37-PM-300x169.jpeg 300w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.58.37-PM-1024x576.jpeg 1024w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.58.37-PM-768x432.jpeg 768w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.58.37-PM-1536x864.jpeg 1536w" sizes="(max-width: 1600px) 100vw, 1600px">            <h5>Library Project</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="1600" height="900" src="./Corporate Social Responsibility – Al-maha_files/WhatsApp-Image-2024-01-01-at-2.59.32-PM.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.59.32-PM.jpeg 1600w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.59.32-PM-300x169.jpeg 300w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.59.32-PM-1024x576.jpeg 1024w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.59.32-PM-768x432.jpeg 768w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-2.59.32-PM-1536x864.jpeg 1536w" sizes="(max-width: 1600px) 100vw, 1600px">            <h5>Library Project</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="1600" height="900" src="./Corporate Social Responsibility – Al-maha_files/WhatsApp-Image-2024-01-01-at-3.00.02-PM.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-3.00.02-PM.jpeg 1600w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-3.00.02-PM-300x169.jpeg 300w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-3.00.02-PM-1024x576.jpeg 1024w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-3.00.02-PM-768x432.jpeg 768w, https://www.almahafoods.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-01-01-at-3.00.02-PM-1536x864.jpeg 1536w" sizes="(max-width: 1600px) 100vw, 1600px">            <h5>Library Table</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="370" height="200" src="./Corporate Social Responsibility – Al-maha_files/Farmer-Awareness-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/02/Farmer-Awareness-2.jpg 370w, https://www.almahafoods.com/wp-content/uploads/2023/02/Farmer-Awareness-2-300x162.jpg 300w" sizes="(max-width: 370px) 100vw, 370px">            <h5>Farmer awareness</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr-1.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr-1-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Amrit Mahotsav</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr10-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr10-1.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr10-1-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Farmer Awarness</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr8.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr8.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr8-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Farmer Awarness</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr6.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr6.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr6-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Health &amp; Safety</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr9.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr9.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr9-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Farmer Awarness</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr7.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr7.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr7-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Farmer Awarness</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr5.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr5.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr5-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Education &amp; Training</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr4.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr4.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr4-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Cleaning</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr3.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr3.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr3-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Farmer Awareness</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="500" height="270" src="./Corporate Social Responsibility – Al-maha_files/csr-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/csr-2.jpg 500w, https://www.almahafoods.com/wp-content/uploads/2023/05/csr-2-300x162.jpg 300w" sizes="(max-width: 500px) 100vw, 500px">            <h5>Covid 19 Ration Kit</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="370" height="200" src="./Corporate Social Responsibility – Al-maha_files/Safe-Drinking-Water-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/02/Safe-Drinking-Water-1.jpg 370w, https://www.almahafoods.com/wp-content/uploads/2023/02/Safe-Drinking-Water-1-300x162.jpg 300w" sizes="(max-width: 370px) 100vw, 370px">            <h5>Safe Drinking Water</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="370" height="200" src="./Corporate Social Responsibility – Al-maha_files/Health-Sector.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/02/Health-Sector.jpg 370w, https://www.almahafoods.com/wp-content/uploads/2023/02/Health-Sector-300x162.jpg 300w" sizes="(max-width: 370px) 100vw, 370px">            <h5>Health Sector</h5>
+        </div> 
+    </div>
+    <div class="col-lg-6">
+        <div class="gallery-block">
+            <img width="370" height="200" src="./Corporate Social Responsibility – Al-maha_files/Child-Education.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://www.almahafoods.com/wp-content/uploads/2023/02/Child-Education.jpg 370w, https://www.almahafoods.com/wp-content/uploads/2023/02/Child-Education-300x162.jpg 300w" sizes="(max-width: 370px) 100vw, 370px">            <h5>Child Education</h5>
+        </div> 
+    </div>
+    </div>
+</div>
+		</div>
+	</div>
+</div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-row-123519" data-row="script-row-123519" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-123519"));</script></div></div></div><div data-parent="true" class="vc_row gray-bg footer-common-cta row-container" id="row-132974" data-section="4"><div class="row triple-top-padding double-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_row row-internal row-container"><div class="row col-double-gutter row-child"><div class="wpb_row row-inner" style="height: 248px;"><div class="wpb_column pos-top pos-center align_left column_child col-lg-3 double-internal-gutter"><div class="uncol style-light sticky-element sticky-sidebar"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-accent-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h2 class="h2 fontheight-357766 fontspace-781688 font-weight-300"><span>Contact Us</span></h2></div><div class="clear"></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_child col-lg-9 card-box single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell  vc_custom_1673509486247 single-block-padding style-color-xsdn-bg" style="padding-top: 70px ;padding-bottom: 70px ;"><div class="uncont"><div class="vc_custom_heading_wrap "><div class="heading-text el-text"><p></p>
+<h3>We are here to support you.</h3>
+<p>A member of our team will contact you shortly.</p>
+</div><div class="clear"></div></div><span class="btn-container"><a href="https://www.almahafoods.com/contact-us/" class="custom-link btn border-width-0 btn-default btn-round btn-icon-left" title="Contact Us">Get In Touch</a></span></div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-row-132974" data-row="script-row-132974" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-132974"));</script></div></div></div><div data-parent="true" class="vc_row inverted-device-order limit-width row-container desktop-hidden tablet-hidden mobile-hidden" id="row-146314" data-section="5"><div class="row double-top-padding double-bottom-padding single-h-padding row-parent" data-imgready="true"><div class="wpb_row auto-height-device row-inner"><div class="wpb_column pos-top pos-center align_center column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div id="gallery-3" class="isotope-system isotope-processed">
+					<div class="isotope-wrapper px-gutter">
+						<div class="isotope-container isotope-layout style-masonry un-isotope-init" data-type="masonry" data-layout="masonry" data-lg="1000" data-md="600" data-sm="480" style="position: relative; height: 0px; opacity: 1; width: 0px;">
+<div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88171 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0004.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:488,height:1040,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0004-141x300.jpg&#39;" data-lb-index="0" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88171" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0004-uai-488x325.jpg" width="488" height="325" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88172 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0005.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1040,height:488,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0005-300x141.jpg&#39;" data-lb-index="1" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88172" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0005-uai-732x488.jpg" width="732" height="488" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88173 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0006.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:720,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0006-300x169.jpg&#39;" data-lb-index="2" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88173" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0006-uai-1080x720.jpg" width="1080" height="720" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88174 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0008.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:720,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0008-300x169.jpg&#39;" data-lb-index="3" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88174" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0008-uai-1080x720.jpg" width="1080" height="720" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88175 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0013.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1040,height:488,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0013-300x141.jpg&#39;" data-lb-index="4" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88175" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0013-uai-732x488.jpg" width="732" height="488" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88176 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0014.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:720,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0014-300x169.jpg&#39;" data-lb-index="5" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88176" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0014-uai-1080x720.jpg" width="1080" height="720" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88177 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0015.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:720,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0015-300x169.jpg&#39;" data-lb-index="6" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88177" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0015-uai-1080x720.jpg" width="1080" height="720" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88178 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0016.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:868,height:1156,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0016-225x300.jpg&#39;" data-lb-index="7" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88178" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0016-uai-868x578.jpg" width="868" height="578" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88179 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0017.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1040,height:488,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0017-300x141.jpg&#39;" data-lb-index="8" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88179" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0017-uai-732x488.jpg" width="732" height="488" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88180 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0018.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1156,height:868,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0018-300x225.jpg&#39;" data-lb-index="9" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88180" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0018-uai-1156x770.jpg" width="1156" height="770" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88181 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0019.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:960,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0019-300x225.jpg&#39;" data-lb-index="10" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88181" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0019-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88182 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0022.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:960,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0022-300x225.jpg&#39;" data-lb-index="11" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88182" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0022-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88183 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0023.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:853,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0023-300x200.jpg&#39;" data-lb-index="12" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88183" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0023.jpg" width="1280" height="853" alt="" srcset="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0023.jpg 1280w, https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0023-300x200.jpg 300w, https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0023-1024x682.jpg 1024w, https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0023-768x512.jpg 768w" sizes="(max-width: 1280px) 100vw, 1280px"></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88184 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0024.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:853,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0024-300x200.jpg&#39;" data-lb-index="13" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88184" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0024.jpg" width="1280" height="853" alt="" srcset="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0024.jpg 1280w, https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0024-300x200.jpg 300w, https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0024-1024x682.jpg 1024w, https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0024-768x512.jpg 768w" sizes="(max-width: 1280px) 100vw, 1280px"></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88185 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0025.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:960,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0025-300x225.jpg&#39;" data-lb-index="14" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88185" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0025-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88186 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0026.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:960,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0026-300x225.jpg&#39;" data-lb-index="15" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88186" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0026-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88187 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0027.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:960,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0027-300x225.jpg&#39;" data-lb-index="16" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88187" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0027-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88188 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0028.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:960,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0028-300x225.jpg&#39;" data-lb-index="17" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88188" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0028-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88189 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0029.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:720,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0029-300x169.jpg&#39;" data-lb-index="18" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88189" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0029-uai-1080x720.jpg" width="1080" height="720" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88190 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0030.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:720,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0030-300x169.jpg&#39;" data-lb-index="19" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88190" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0030-uai-1080x720.jpg" width="1080" height="720" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88191 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0031.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0031-300x169.jpg&#39;" data-lb-index="20" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88191" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0031-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88192 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0033.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0033-300x169.jpg&#39;" data-lb-index="21" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88192" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0033-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88193 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0034.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0034-300x169.jpg&#39;" data-lb-index="22" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88193" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0034-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88194 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.6%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0035.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:867,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0035-300x203.jpg&#39;" data-lb-index="23" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88194" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0035-uai-1280x853.jpg" width="1280" height="853" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88195 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0036.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0036-300x169.jpg&#39;" data-lb-index="24" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88195" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0036-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88196 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0037.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0037-300x169.jpg&#39;" data-lb-index="25" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88196" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0037-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88197 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0038.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0038-300x169.jpg&#39;" data-lb-index="26" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88197" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0038-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88198 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0039.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0039-300x169.jpg&#39;" data-lb-index="27" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88198" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0039-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88199 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0040.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0040-300x169.jpg&#39;" data-lb-index="28" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88199" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0040-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-no-double-tap tmb-iso-w3 tmb-iso-h4 tmb-light tmb-overlay-text-anim tmb-reveal-bottom tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-center tmb-image-anim tmb-id-88200 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 0px; position: absolute; left: 0px;">
+						<div class="t-inside animate_when_almost_visible bottom-t-top start_animation" data-delay="200"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 66.7%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0041.jpg" class="pushed" data-caption="" data-lbox="ilightbox_gallery-3" data-options="width:1280,height:719,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2021/04/IMG-20210407-WA0041-300x169.jpg&#39;" data-lb-index="29" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><i class="fa fa-search3 t-overlay-icon"></i></div></div></div></div></div><img decoding="async" class="wp-image-88200" src="./Corporate Social Responsibility – Al-maha_files/IMG-20210407-WA0041-uai-1078x719.jpg" width="1078" height="719" alt=""></a></div>
+				</div>
+			</div></div>
+					</div>						</div>
+					</div>
+</div>
+</div></div></div></div></div><script id="script-row-146314" data-row="script-row-146314" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-146314"));</script></div></div></div>
+</div></div>
+						</div>
+					</article>
+								</div><!-- sections container -->
+							</div><!-- page wrapper -->
+												<footer id="colophon" class="site-footer">
+							<div data-parent="true" class="vc_row mobile-no-inner-gap tablet-no-inner-gap style-color-xsdn-bg vc_custom_1618829102349 row-container" style="padding-bottom: 0px ;" id="row-341900" data-section="6"><div class="row col-double-gutter triple-top-padding triple-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner cols-md-responsive cols-sm-responsive"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-4 col-md-50 col-sm-100 single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="uncode-single-media  text-left"><div class="single-wrapper" style="max-width: 65%;"><div class="tmb tmb-light  tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg">
+						<div class="t-inside"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="uncode-single-media-wrapper">
+									<img decoding="async" class="wp-image-88718" src="./Corporate Social Responsibility – Al-maha_files/image_2023_05_24T11_18_08_668Z.png" width="309" height="249" alt="" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/image_2023_05_24T11_18_08_668Z.png 309w, https://www.almahafoods.com/wp-content/uploads/2023/05/image_2023_05_24T11_18_08_668Z-300x242.png 300w" sizes="(max-width: 309px) 100vw, 309px"></div>
+				</div>
+			</div></div>
+					</div></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_parent col-lg-2 footer_adj_column2 col-md-50 col-sm-100 col-sm-clear single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_wp_custommenu wpb_content_element"><div class="widget widget_nav_menu"><h2 class="widgettitle">Navigation</h2><div class="menu-footer-navigation-container"><ul id="menu-footer-navigation" class="menu"><li id="menu-item-88629" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88629"><a href="https://www.almahafoods.com/about/">About Us</a></li>
+<li id="menu-item-89306" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89306"><a target="_blank" href="https://www.almahafoods.com/wp-content/uploads/2024/11/Privacy-Policy-Al-maha.pdf">Privacy Policy</a></li>
+<li id="menu-item-89308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89308"><a href="https://www.almahafoods.com/what-we-do/domestic-market/">Products</a></li>
+<li id="menu-item-88466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88466"><a href="https://www.almahafoods.com/our-brands/">Our Brands</a></li>
+<li id="menu-item-88454" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88454"><a href="https://www.almahafoods.com/what-we-do/quality-assurance/">Quality Assurance</a></li>
+</ul></div></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_parent col-lg-2 footer_adj_column col-md-75 col-md-clear col-sm-100 col-sm-clear single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_wp_custommenu wpb_content_element footer_asj_column"><div class="widget widget_nav_menu"><h2 class="widgettitle">Useful Links</h2><div class="menu-footer-useful-links-container"><ul id="menu-footer-useful-links" class="menu"><li id="menu-item-88674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88674"><a href="https://www.almahafoods.com/what-we-do/exports/">Exports</a></li>
+<li id="menu-item-88673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88673"><a href="https://www.almahafoods.com/culture-at-al-maha/">Work With Us</a></li>
+<li id="menu-item-88675" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-88163 current_page_item menu-item-88675"><a href="https://www.almahafoods.com/corporate-social-responsibility/" aria-current="page">Corporate Social Responsibility</a></li>
+<li id="menu-item-88462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88462"><a href="https://www.almahafoods.com/contact-us/">Contact Us</a></li>
+</ul></div></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_parent col-lg-4 col-md-50 col-md-clear col-sm-100 col-sm-clear single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_wp_text wpb_content_element"><div class="widget widget_text"><h2 class="widgettitle">Contact Us</h2>			<div class="textwidget"><p></p>
+<ul class="foooter_cnt_info">
+<li><i class="fa fa-map-marker"></i><a href="https://www.almahafoods.com/corporate-social-responsibility/#">1122, DLF Tower-A, Jasola, New Delhi- 110025, India.</a></li>
+<li><i class="fa fa-phone"></i><a href="https://www.almahafoods.com/corporate-social-responsibility/#">+ 91 11 4333 1111</a></li>
+<li><i class="fa fa-fax"></i><a href="https://www.almahafoods.com/corporate-social-responsibility/#">+ 91 11 4333 1122</a></li>
+<li><i class="fa fa-envelope"></i><a href="https://www.almahafoods.com/corporate-social-responsibility/#">almahafoods@almahafoods.com</a></li>
+</ul>
+<p>
+</p></div>
+		</div></div><div class="uncode-vc-social"><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-social-facebook"></i></a></div><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://twitter.com/" target="_blank"><i class="fa fa-social-twitter"></i></a></div><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://www.linkedin.com/company/79564335/admin/" target="_blank"><i class="fa fa-social-linkedin"></i></a></div><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://www.youtube.com/channel/UC6KF_KNSiBrpDAsFiEJHj0g" target="_blank"><i class="fa fa-youtube-play"></i></a></div></div></div></div></div></div></div><script id="script-row-341900" data-row="script-row-341900" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-341900"));</script></div></div></div>
+<div class="row-container style-color-xsdn-bg footer-last">
+		  					<div class="row row-parent style-light limit-width no-top-padding no-h-padding no-bottom-padding">
+									<div class="uncell col-lg-6 pos-middle text-left"><p class="designby">Designed &amp; Developed By <a href="https://www.cyberworx.in/" target="_blank">Cyberworx</a> </p><p></p></div><div class="site-info uncell col-lg-6 pos-middle text-right"><p>© 2003-2024 Al Maha Foods. All rights reserved</p>
+</div><!-- site info -->
+								</div>
+							</div>						</footer>
+																		</div><!-- main container -->
+				</div><!-- main wrapper -->
+							
+			</div><!-- box container -->
+		</div><!-- box wrapper -->
+		<div class="style-light footer-scroll-top"><a href="https://www.almahafoods.com/corporate-social-responsibility/#" class="scroll-top"><i class="fa fa-angle-up fa-stack btn-default btn-hover-nobg"></i></a></div>
+		
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/uncode-child\/*","\/wp-content\/themes\/uncode\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/html" id="wpb-modifications"></script><style id="core-block-supports-inline-css" type="text/css">
+/**
+ * Core styles: block-supports
+ */
+
+</style>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/hooks.js" id="wp-hooks-js"></script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/i18n.js" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/index.js" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-before">
+/* <![CDATA[ */
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/www.almahafoods.com\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/index(1).js" id="contact-form-7-js"></script>
+<script type="text/javascript" id="mediaelement-core-js-before">
+/* <![CDATA[ */
+var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/mediaelement-and-player.js" id="mediaelement-core-js"></script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/mediaelement-migrate.js" id="mediaelement-migrate-js"></script>
+<script type="text/javascript" id="mediaelement-js-extra">
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive","audioShortcodeLibrary":"mediaelement","videoShortcodeLibrary":"mediaelement"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/wp-mediaelement.js" id="wp-mediaelement-js"></script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/plugins.js" id="uncode-plugins-js"></script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/app.js" id="uncode-app-js"></script>
+<script type="text/javascript" src="./Corporate Social Responsibility – Al-maha_files/comment-reply.js" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+<script>
+$ = jQuery;
+$(".domestic-presence-slider .owl-item").each(function(){
+    $(this).find(".t-entry-visual-overlay").unwrap();
+   var linktext = $(this).find("p.t-entry-meta span").text();
+   $(this).find(".t-entry").append('<a href="'+linktext+'">Read More</a>')
+});
+
+$("li.view_all_button").click(function(){
+   $(this).prevAll().css("display","block");
+   $(this).hide();
+});
+
+$(".vision_mission_slider .owl-item").each(function(){
+   var image_name = $(this).find("img").attr("alt");
+   $(this).find("img").after('<span class="vision_mission_heading">'+image_name+'</span>')
+});
+
+$(".apply-now-btn").click(function(){
+    let job_name = $(this).attr("data-job")
+    $("#opening-job-name").val(job_name)
+    $(".popup-bg").addClass("show")
+    $(".popup-form").addClass("show")
+})
+$("body").delegate(".popup-bg, .close-btn", "click",function(){
+    $(".popup-bg").removeClass("show")
+    $(".popup-form").removeClass("show")
+})
+setTimeout(function(){
+    document.getElementById("video-88163-1_html5").play()
+},5000)
+</script>
+<div class="popup-bg"></div>
+<div class="popup-form">
+    <button type="button" class="close-btn"><i class="fa fa-times"></i></button>
+    <h3>Apply Now</h3>
+    
+<div class="wpcf7 js" id="wpcf7-f88676-o1" lang="en-US" dir="ltr" data-wpcf7-id="88676">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="https://www.almahafoods.com/corporate-social-responsibility/#wpcf7-f88676-o1" method="post" class="wpcf7-form init" aria-label="Contact form" enctype="multipart/form-data" novalidate="novalidate" data-status="init">
+<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="88676"><input type="hidden" name="_wpcf7_version" value="6.1.2"><input type="hidden" name="_wpcf7_locale" value="en_US"><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f88676-o1"><input type="hidden" name="_wpcf7_container_post" value="0"><input type="hidden" name="_wpcf7_posted_data_hash" value="">
+</fieldset>
+<div class="vc_d-none">
+	<p><span class="wpcf7-form-control-wrap" data-name="job"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text" id="opening-job-name" aria-invalid="false" value="" type="text" name="job"></span>
+	</p>
+</div>
+<div class="al_row">
+ <!-- First Row: Name & Email (50% Width Each) -->
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="full_name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Full Name" value="" type="text" name="full_name"></span>
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email" value="" type="email" name="email"></span>
+		</p>
+	</div>
+
+ <!-- Second Row: Phone & City (50% Width Each) -->
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="phone"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="Phone" value="" type="tel" name="phone"></span>
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="city"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="City" value="" type="text" name="city"></span>
+		</p>
+	</div>
+
+ <!-- Third Row: Experience & Qualification -->
+	<div class="col-lg-4">
+		<p><span class="wpcf7-form-control-wrap" data-name="total_experience"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Total Experience" value="" type="text" name="total_experience"></span>
+		</p>
+	</div>
+	<div class="col-lg-4">
+		<p><span class="wpcf7-form-control-wrap" data-name="highest_qualification"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Highest Qualification" value="" type="text" name="highest_qualification"></span>
+		</p>
+	</div>
+	<div class="col-lg-4">
+		<p><span class="wpcf7-form-control-wrap" data-name="applied_for"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Applied For" value="" type="text" name="applied_for"></span>
+		</p>
+	</div>
+
+ <!-- File Uploads: Resume & Photo -->
+	<div class="col-lg-6">
+		<p><label>Upload Resume (Max: 2MB)</label><br>
+<span class="wpcf7-form-control-wrap" data-name="resume"><input size="40" class="wpcf7-form-control wpcf7-file wpcf7-validates-as-required" accept=".pdf,.doc,.txt,.docx" aria-required="true" aria-invalid="false" type="file" name="resume"></span>
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<p><label>Upload Photograph (Max: 2MB)</label><br>
+<span class="wpcf7-form-control-wrap" data-name="photo"><input size="40" class="wpcf7-form-control wpcf7-file wpcf7-validates-as-required" accept=".jpg,.jpeg,.png,.webp" aria-required="true" aria-invalid="false" type="file" name="photo"></span>
+		</p>
+	</div>
+
+ <!-- Message Field -->
+	<div class="col-lg-12">
+		<p><span class="wpcf7-form-control-wrap" data-name="message"><textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Message" name="message"></textarea></span>
+		</p>
+	</div>
+
+ <!-- Submit Button -->
+	<div class="col-lg-12">
+		<p><input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Apply"><span class="wpcf7-spinner"></span>
+		</p>
+	</div>
+</div><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+</div>
+
+
+</body></html>

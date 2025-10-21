@@ -1,0 +1,85 @@
+/* Certification Card Styles */
+.certificationSection {
+  position: relative;
+  padding: 10px 0 80px;
+  z-index: 10;
+  margin-top: -100px; /* Overlaps with Welcome section */
+  margin-bottom: -120px; /* Overlaps down into Vision section */
+}
+
+.container {
+  padding: 0 36px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 60px 54px 54px 54px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  text-align: left;
+  margin: 0;
+  max-width: 1100px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .certificationSection {
+    margin-top: -80px;
+  }
+
+  .card {
+    padding: 50px 60px;
+  }
+
+  .text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .certificationSection {
+    margin-top: -60px;
+  }
+
+  .card {
+    padding: 40px 30px;
+    border-radius: 6px;
+  }
+
+  .text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 375px) {
+  .certificationSection {
+    margin-top: -50px;
+  }
+
+  .card {
+    padding: 30px 20px;
+  }
+
+  .text {
+    font-size: 0.875rem;
+  }
+}
+

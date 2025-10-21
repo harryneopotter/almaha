@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.almahafoods.com/what-we-do/quality-assurance/ -->
+<html class="no-touch webkit chrome chrome141 win win10 js retina_1x hidpi datauri screen-sm screen-xs screen-xxs orientation_landscape" lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.almahafoods.com/xmlrpc.php">
+<title>Quality Assurance – Al-maha</title>
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="Al-maha » Feed" href="https://www.almahafoods.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Al-maha » Comments Feed" href="https://www.almahafoods.com/comments/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"wpemoji":"https:\/\/www.almahafoods.com\/wp-includes\/js\/wp-emoji.js?ver=6.8.2","twemoji":"https:\/\/www.almahafoods.com\/wp-includes\/js\/twemoji.js?ver=6.8.2"}};
+/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
+
+/**
+ * Emoji Settings as exported in PHP via _print_emoji_detection_script().
+ * @typedef WPEmojiSettings
+ * @type {object}
+ * @property {?object} source
+ * @property {?string} source.concatemoji
+ * @property {?string} source.twemoji
+ * @property {?string} source.wpemoji
+ * @property {?boolean} DOMReady
+ * @property {?Function} readyCallback
+ */
+
+/**
+ * Support tests.
+ * @typedef SupportTests
+ * @type {object}
+ * @property {?boolean} flag
+ * @property {?boolean} emoji
+ */
+
+/**
+ * IIFE to detect emoji support and load Twemoji if needed.
+ *
+ * @param {Window} window
+ * @param {Document} document
+ * @param {WPEmojiSettings} settings
+ */
+( function wpEmojiLoader( window, document, settings ) {
+	if ( typeof Promise === 'undefined' ) {
+		return;
+	}
+
+	var sessionStorageKey = 'wpEmojiSettingsSupports';
+	var tests = [ 'flag', 'emoji' ];
+
+	/**
+	 * Checks whether the browser supports offloading to a Worker.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {boolean}
+	 */
+	function supportsWorkerOffloading() {
+		return (
+			typeof Worker !== 'undefined' &&
+			typeof OffscreenCanvas !== 'undefined' &&
+			typeof URL !== 'undefined' &&
+			URL.createObjectURL &&
+			typeof Blob !== 'undefined'
+		);
+	}
+
+	/**
+	 * @typedef SessionSupportTests
+	 * @type {object}
+	 * @property {number} timestamp
+	 * @property {SupportTests} supportTests
+	 */
+
+	/**
+	 * Get support tests from session.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {?SupportTests} Support tests, or null if not set or older than 1 week.
+	 */
+	function getSessionSupportTests() {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = JSON.parse(
+				sessionStorage.getItem( sessionStorageKey )
+			);
+			if (
+				typeof item === 'object' &&
+				typeof item.timestamp === 'number' &&
+				new Date().valueOf() < item.timestamp + 604800 && // Note: Number is a week in seconds.
+				typeof item.supportTests === 'object'
+			) {
+				return item.supportTests;
+			}
+		} catch ( e ) {}
+		return null;
+	}
+
+	/**
+	 * Persist the supports in session storage.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {SupportTests} supportTests Support tests.
+	 */
+	function setSessionSupportTests( supportTests ) {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = {
+				supportTests: supportTests,
+				timestamp: new Date().valueOf()
+			};
+
+			sessionStorage.setItem(
+				sessionStorageKey,
+				JSON.stringify( item )
+			);
+		} catch ( e ) {}
+	}
+
+	/**
+	 * Checks if two sets of Emoji characters render the same visually.
+	 *
+	 * This is used to determine if the browser is rendering an emoji with multiple data points
+	 * correctly. set1 is the emoji in the correct form, using a zero-width joiner. set2 is the emoji
+	 * in the incorrect form, using a zero-width space. If the two sets render the same, then the browser
+	 * does not support the emoji correctly.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} set1 Set of Emoji to test.
+	 * @param {string} set2 Set of Emoji to test.
+	 *
+	 * @return {boolean} True if the two sets render the same.
+	 */
+	function emojiSetsRenderIdentically( context, set1, set2 ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set1, 0, 0 );
+		var rendered1 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set2, 0, 0 );
+		var rendered2 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		return rendered1.every( function ( rendered2Data, index ) {
+			return rendered2Data === rendered2[ index ];
+		} );
+	}
+
+	/**
+	 * Checks if the center point of a single emoji is empty.
+	 *
+	 * This is used to determine if the browser is rendering an emoji with a single data point
+	 * correctly. The center point of an incorrectly rendered emoji will be empty. A correctly
+	 * rendered emoji will have a non-zero value at the center point.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.8.2
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} emoji Emoji to test.
+	 *
+	 * @return {boolean} True if the center point is empty.
+	 */
+	function emojiRendersEmptyCenterPoint( context, emoji ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( emoji, 0, 0 );
+
+		// Test if the center point (16, 16) is empty (0,0,0,0).
+		var centerPoint = context.getImageData(16, 16, 1, 1);
+		for ( var i = 0; i < centerPoint.data.length; i++ ) {
+			if ( centerPoint.data[ i ] !== 0 ) {
+				// Stop checking the moment it's known not to be empty.
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Determines if the browser properly renders Emoji that Twemoji can supplement.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} type Whether to test for support of "flag" or "emoji".
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+	 *
+	 * @return {boolean} True if the browser can render emoji, false if it cannot.
+	 */
+	function browserSupportsEmoji( context, type, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+		var isIdentical;
+
+		switch ( type ) {
+			case 'flag':
+				/*
+				 * Test for Transgender flag compatibility. Added in Unicode 13.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDFF3\uFE0F\u200D\u26A7\uFE0F', // as a zero-width joiner sequence
+					'\uD83C\uDFF3\uFE0F\u200B\u26A7\uFE0F' // separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for Sark flag compatibility. This is the least supported of the letter locale flags,
+				 * so gives us an easy test for full support.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly ([C] + [Q]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDDE8\uD83C\uDDF6', // as the sequence of two code points
+					'\uD83C\uDDE8\u200B\uD83C\uDDF6' // as the two code points separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for English flag compatibility. England is a country in the United Kingdom, it
+				 * does not have a two letter locale code but rather a five letter sub-division code.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					// as the flag sequence
+					'\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F',
+					// with each code point separated by a zero-width space
+					'\uD83C\uDFF4\u200B\uDB40\uDC67\u200B\uDB40\uDC62\u200B\uDB40\uDC65\u200B\uDB40\uDC6E\u200B\uDB40\uDC67\u200B\uDB40\uDC7F'
+				);
+
+				return ! isIdentical;
+			case 'emoji':
+				/*
+				 * Does Emoji 16.0 cause the browser to go splat?
+				 *
+				 * To test for Emoji 16.0 support, try to render a new emoji: Splatter.
+				 *
+				 * The splatter emoji is a single code point emoji. Testing for browser support
+				 * required testing the center point of the emoji to see if it is empty.
+				 *
+				 * 0xD83E 0xDEDF (\uD83E\uDEDF) == 🫟 Splatter.
+				 *
+				 * When updating this test, please ensure that the emoji is either a single code point
+				 * or switch to using the emojiSetsRenderIdentically function and testing with a zero-width
+				 * joiner vs a zero-width space.
+				 */
+				var notSupported = emojiRendersEmptyCenterPoint( context, '\uD83E\uDEDF' );
+				return ! notSupported;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Checks emoji support tests.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {string[]} tests Tests.
+	 * @param {Function} browserSupportsEmoji Reference to browserSupportsEmoji function, needed due to minification.
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+	 *
+	 * @return {SupportTests} Support tests.
+	 */
+	function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+		var canvas;
+		if (
+			typeof WorkerGlobalScope !== 'undefined' &&
+			self instanceof WorkerGlobalScope
+		) {
+			canvas = new OffscreenCanvas( 300, 150 ); // Dimensions are default for HTMLCanvasElement.
+		} else {
+			canvas = document.createElement( 'canvas' );
+		}
+
+		var context = canvas.getContext( '2d', { willReadFrequently: true } );
+
+		/*
+		 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+		 * it doesn't work when the font is bolder than 500 weight. So, we
+		 * check for bold rendering support to avoid invisible emoji in Chrome.
+		 */
+		context.textBaseline = 'top';
+		context.font = '600 32px Arial';
+
+		var supports = {};
+		tests.forEach( function ( test ) {
+			supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+		} );
+		return supports;
+	}
+
+	/**
+	 * Adds a script to the head of the document.
+	 *
+	 * @ignore
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param {string} src The url where the script is located.
+	 *
+	 * @return {void}
+	 */
+	function addScript( src ) {
+		var script = document.createElement( 'script' );
+		script.src = src;
+		script.defer = true;
+		document.head.appendChild( script );
+	}
+
+	settings.supports = {
+		everything: true,
+		everythingExceptFlag: true
+	};
+
+	// Create a promise for DOMContentLoaded since the worker logic may finish after the event has fired.
+	var domReadyPromise = new Promise( function ( resolve ) {
+		document.addEventListener( 'DOMContentLoaded', resolve, {
+			once: true
+		} );
+	} );
+
+	// Obtain the emoji support from the browser, asynchronously when possible.
+	new Promise( function ( resolve ) {
+		var supportTests = getSessionSupportTests();
+		if ( supportTests ) {
+			resolve( supportTests );
+			return;
+		}
+
+		if ( supportsWorkerOffloading() ) {
+			try {
+				// Note that the functions are being passed as arguments due to minification.
+				var workerScript =
+					'postMessage(' +
+					testEmojiSupports.toString() +
+					'(' +
+					[
+						JSON.stringify( tests ),
+						browserSupportsEmoji.toString(),
+						emojiSetsRenderIdentically.toString(),
+						emojiRendersEmptyCenterPoint.toString()
+					].join( ',' ) +
+					'));';
+				var blob = new Blob( [ workerScript ], {
+					type: 'text/javascript'
+				} );
+				var worker = new Worker( URL.createObjectURL( blob ), { name: 'wpTestEmojiSupports' } );
+				worker.onmessage = function ( event ) {
+					supportTests = event.data;
+					setSessionSupportTests( supportTests );
+					worker.terminate();
+					resolve( supportTests );
+				};
+				return;
+			} catch ( e ) {}
+		}
+
+		supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+		setSessionSupportTests( supportTests );
+		resolve( supportTests );
+	} )
+		// Once the browser emoji support has been obtained from the session, finalize the settings.
+		.then( function ( supportTests ) {
+			/*
+			 * Tests the browser support for flag emojis and other emojis, and adjusts the
+			 * support settings accordingly.
+			 */
+			for ( var test in supportTests ) {
+				settings.supports[ test ] = supportTests[ test ];
+
+				settings.supports.everything =
+					settings.supports.everything && settings.supports[ test ];
+
+				if ( 'flag' !== test ) {
+					settings.supports.everythingExceptFlag =
+						settings.supports.everythingExceptFlag &&
+						settings.supports[ test ];
+				}
+			}
+
+			settings.supports.everythingExceptFlag =
+				settings.supports.everythingExceptFlag &&
+				! settings.supports.flag;
+
+			// Sets DOMReady to false and assigns a ready function to settings.
+			settings.DOMReady = false;
+			settings.readyCallback = function () {
+				settings.DOMReady = true;
+			};
+		} )
+		.then( function () {
+			return domReadyPromise;
+		} )
+		.then( function () {
+			// When the browser can not render everything we need to load a polyfill.
+			if ( ! settings.supports.everything ) {
+				settings.readyCallback();
+
+				var src = settings.source || {};
+
+				if ( src.concatemoji ) {
+					addScript( src.concatemoji );
+				} else if ( src.wpemoji && src.twemoji ) {
+					addScript( src.twemoji );
+					addScript( src.wpemoji );
+				}
+			}
+		} );
+} )( window, document, window._wpemojiSettings );
+
+/* ]]> */
+</script>
+<link rel="stylesheet" id="embed-pdf-viewer-css" href="./Quality Assurance – Al-maha_files/embed-pdf-viewer.css" type="text/css" media="screen">
+<style id="wp-emoji-styles-inline-css" type="text/css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./Quality Assurance – Al-maha_files/style.css" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">
+/**
+ * These rules are needed for backwards compatibility.
+ * They should match the button element rules in the base theme.json file.
+ */
+.wp-block-button__link {
+	color: #ffffff;
+	background-color: #32373c;
+	border-radius: 9999px; /* 100% causes an oval, but any explicit but really high value retains the pill shape. */
+
+	/* This needs a low specificity so it won't override the rules from the button element if defined in theme.json. */
+	box-shadow: none;
+	text-decoration: none;
+
+	/* The extra 2px are added to size solids the same as the outline versions.*/
+	padding: calc(0.667em + 2px) calc(1.333em + 2px);
+
+	font-size: 1.125em;
+}
+
+.wp-block-file__button {
+	background: #32373c;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+</style>
+<style id="pdfemb-pdf-embedder-viewer-style-inline-css" type="text/css">
+.wp-block-pdfemb-pdf-embedder-viewer{max-width:none}
+
+</style>
+<style id="global-styles-inline-css" type="text/css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="./Quality Assurance – Al-maha_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="uncodefont-google-css" href="./Quality Assurance – Al-maha_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="uncode-style-css" href="./Quality Assurance – Al-maha_files/style(1).css" type="text/css" media="all">
+<style id="uncode-style-inline-css" type="text/css">
+
+@media (min-width: 960px) { .limit-width { max-width: 1200px; margin: auto;}}
+</style>
+<link rel="stylesheet" id="uncode-icons-css" href="./Quality Assurance – Al-maha_files/uncode-icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="uncode-custom-style-css" href="./Quality Assurance – Al-maha_files/style-custom.css" type="text/css" media="all">
+<link rel="stylesheet" id="child-style-css" href="./Quality Assurance – Al-maha_files/style(2).css" type="text/css" media="all">
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/jquery.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/jquery-migrate.js.download" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="uncode-init-js-extra">
+/* <![CDATA[ */
+var SiteParameters = {"days":"days","hours":"hours","minutes":"minutes","seconds":"seconds","constant_scroll":"on","scroll_speed":"2","parallax_factor":"0.25","loading":"Loading\u2026","slide_name":"slide","slide_footer":"footer","ajax_url":"https:\/\/www.almahafoods.com\/wp-admin\/admin-ajax.php","nonce_adaptive_images":"d38b7c0d04","enable_debug":"","block_mobile_videos":"","is_frontend_editor":"","mobile_parallax_allowed":"","wireframes_plugin_active":"","sticky_elements":"on","lazyload_type":"","update_wc_fragments":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/init.js.download" id="uncode-init-js"></script>
+<link rel="https://api.w.org/" href="https://www.almahafoods.com/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://www.almahafoods.com/wp-json/wp/v2/pages/88304"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.almahafoods.com/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.8.2">
+<link rel="canonical" href="https://www.almahafoods.com/what-we-do/quality-assurance/">
+<link rel="shortlink" href="https://www.almahafoods.com/?p=88304">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.almahafoods.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.almahafoods.com%2Fwhat-we-do%2Fquality-assurance%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.almahafoods.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.almahafoods.com%2Fwhat-we-do%2Fquality-assurance%2F&amp;format=xml">
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-32x32.png" sizes="32x32">
+<link rel="icon" href="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-180x180.png">
+<meta name="msapplication-TileImage" content="https://www.almahafoods.com/wp-content/uploads/2021/04/cropped-logo-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			.designby{
+	display:none;
+}
+
+.apply-now-btn[data-job="Other Job"]{
+	text-indent: -9999px; line-height: 0;
+}
+.apply-now-btn[data-job="Other Job"]::after{
+	content: "Submit Resume"; 
+	text-indent: 0;  display: block; line-height: initial;
+}		</style>
+		<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><script src="./Quality Assurance – Al-maha_files/twemoji.js.download" defer=""></script><script src="./Quality Assurance – Al-maha_files/wp-emoji.js.download" defer=""></script><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBGEe.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBGEe.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBGEe.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBGEe.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBGEe.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBGEe.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBGEe.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBGEe.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBGEe.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBGEe.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBGEe.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBGEe.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBGEe.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBGEe.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBGEe.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBGEe.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBGEe.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBGEe.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v49/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style type="text/css" media="print">@page { size: 1144px 604px; margin: 0; }</style></head>
+<body class="wp-singular page-template-default page page-id-88304 page-child parent-pageid-88302 wp-custom-logo wp-theme-uncode wp-child-theme-uncode-child style-color-wayh-bg hormenu-position-left hmenu hmenu-position-right header-full-width main-center-align menu-mobile-animated textual-accent-color mobile-parallax-not-allowed ilb-no-bounce unreg qw-body-scroll-disabled wpb-js-composer js-comp-ver-6.6.0 vc_responsive hide-scrollup" data-border="0" style="margin-top: 0px; padding-top: 0px;"><span id="warning-container"><i data-reactroot=""></i></span>
+		<div class="body-borders" data-border="0"><div class="top-border body-border-shadow"></div><div class="right-border body-border-shadow"></div><div class="bottom-border body-border-shadow"></div><div class="left-border body-border-shadow"></div><div class="top-border style-light-bg"></div><div class="right-border style-light-bg"></div><div class="bottom-border style-light-bg"></div><div class="left-border style-light-bg"></div></div>	<div class="box-wrapper">
+		<div class="box-container" style="width: 1140px; margin-left: -5.5px;">
+		<script type="text/javascript" id="initBox">UNCODE.initBox();</script>
+		<div class="menu-wrapper menu-hide-only menu-no-arrows no-header" style="height: 90px;">
+													
+													<header id="masthead" class="navbar menu-primary menu-light submenu-light menu-add-padding style-light-original menu-absolute menu-animated menu-with-logo">
+														<div class="menu-container menu-hide style-color-xsdn-bg menu-borders menu-shadows" style="width: 1140px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+															<div class="row-menu">
+																<div class="row-menu-inner">
+																	<div id="logo-container-mobile" class="col-lg-0 logo-container middle">
+																		<div id="main-logo" class="navbar-header style-light">
+																			<a href="https://www.almahafoods.com/" class="navbar-brand"><div class="logo-customizer"><img decoding="async" src="./Quality Assurance – Al-maha_files/Logo-2025-e1733738317336.jpg" alt="Al-maha" width="189" height="69"></div></a>
+																		</div>
+																		<div class="mmb-container"><div class="mobile-additional-icons"></div><div class="mobile-menu-button 1 mobile-menu-button-light lines-button x2"><span class="lines"></span></div></div>
+																	</div>
+																	<div class="col-lg-12 main-menu-container middle">
+																		<div class="menu-horizontal menu-dd-shadow-lg">
+																			<div class="menu-horizontal-inner">
+																				<div class="nav navbar-nav navbar-main navbar-nav-last"><ul id="menu-al-maha-menu" class="menu-primary-inner menu-smart sm" data-smartmenus-id="17606295516001602"><li id="menu-item-88953" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-88953 menu-item-link" style="-webkit-transition-delay:0.1s; -moz-transition-delay:0.1s; -ms-transition-delay:0.1s; -o-transition-delay:0.1s; transition-delay:0.1s"><a href="https://www.almahafoods.com/" title="Home">Home<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-88954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-88954 dropdown menu-item-link" style="-webkit-transition-delay:0.15000000000000002s; -moz-transition-delay:0.15000000000000002s; -ms-transition-delay:0.15000000000000002s; -o-transition-delay:0.15000000000000002s; transition-delay:0.15000000000000002s"><a href="https://www.almahafoods.com/what-we-do/quality-assurance/#" data-toggle="dropdown" class="dropdown-toggle" data-type="title" title="About Us">About Us<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-88955" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88955"><a title="About Al Maha" href="https://www.almahafoods.com/about/">About Al Maha<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88956"><a title="Vision &amp; Mission" href="https://www.almahafoods.com/about#vision-mission">Vision &amp; Mission<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88957"><a title="Values" href="https://www.almahafoods.com/about#values">Values<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88958" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88958"><a title="Team" href="https://www.almahafoods.com/about#team">Team<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-88959" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-88959 dropdown menu-item-link" style="-webkit-transition-delay:0.2s; -moz-transition-delay:0.2s; -ms-transition-delay:0.2s; -o-transition-delay:0.2s; transition-delay:0.2s"><a title="What We Do" href="https://www.almahafoods.com/what-we-do/quality-assurance/#" data-toggle="dropdown" class="dropdown-toggle" data-type="title">What We Do<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-88976" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88976"><a title="Exports Profile" href="https://www.almahafoods.com/what-we-do/exports/">Exports Profile<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88975" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-88304 current_page_item menu-item-88975 active"><a title="Quality Assurance" href="https://www.almahafoods.com/what-we-do/quality-assurance/">Quality Assurance<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88974" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88974"><a title="Domestic Market" href="https://www.almahafoods.com/what-we-do/domestic-market/">Domestic Market<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-88961" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88961 menu-item-link" style="-webkit-transition-delay:0.25s; -moz-transition-delay:0.25s; -ms-transition-delay:0.25s; -o-transition-delay:0.25s; transition-delay:0.25s"><a title="Our Brands" href="https://www.almahafoods.com/our-brands/">Our Brands<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-88962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-88962 dropdown menu-item-link" style="-webkit-transition-delay:0.30000000000000004s; -moz-transition-delay:0.30000000000000004s; -ms-transition-delay:0.30000000000000004s; -o-transition-delay:0.30000000000000004s; transition-delay:0.30000000000000004s"><a title="Workplace &amp; Careers" href="https://www.almahafoods.com/culture-at-al-maha/" data-toggle="dropdown" class="dropdown-toggle" data-type="title">Workplace &amp; Careers<i class="fa fa-angle-down fa-dropdown"></i></a>
+<ul role="menu" class="drop-menu">
+	<li id="menu-item-88964" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88964"><a title="Culture@almaha" href="https://www.almahafoods.com/culture-at-al-maha#life-at-almaha">Culture@almaha<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+	<li id="menu-item-88965" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88965"><a title="Apply now" href="https://www.almahafoods.com/culture-at-al-maha#apply-now">Apply now<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul>
+</li>
+<li id="menu-item-88966" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88966 menu-item-link" style="-webkit-transition-delay:0.35s; -moz-transition-delay:0.35s; -ms-transition-delay:0.35s; -o-transition-delay:0.35s; transition-delay:0.35s"><a title="CSR" href="https://www.almahafoods.com/corporate-social-responsibility/">CSR<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+<li id="menu-item-88967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88967 menu-item-link" style="-webkit-transition-delay:0.4s; -moz-transition-delay:0.4s; -ms-transition-delay:0.4s; -o-transition-delay:0.4s; transition-delay:0.4s"><a title="Contact Us" href="https://www.almahafoods.com/contact-us/">Contact Us<i class="fa fa-angle-right fa-dropdown"></i></a></li>
+</ul></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</header>
+												</div>			<script type="text/javascript" id="fixMenuHeight">UNCODE.fixMenuHeight();</script>
+			<div class="main-wrapper">
+				<div class="main-container">
+					<div class="page-wrapper">
+						<div class="sections-container">
+<script type="text/javascript">UNCODE.initHeader();</script><article id="post-88304" class="page-body style-color-xsdn-bg post-88304 page type-page status-publish hentry">
+						<div class="post-wrapper">
+							<div class="post-body"><div class="post-content un-no-sidebar-layout"><div data-parent="true" class="vc_row title-section-banner style-color-wayh-bg row-container" id="row-167295" data-section="0"><div class="row-background background-element">
+											<div class="background-wrapper">
+												<div class="background-inner" style="background-image: url(https://www.almahafoods.com/wp-content/uploads/2022/11/quality-assurance-banner.jpg);background-repeat: no-repeat;background-position: center top;background-attachment: scroll;background-size: cover;"></div>
+												<div class="block-bg-overlay style-accent-bg" style="opacity: 0.85;"></div>
+											</div>
+										</div><div class="row double-top-padding double-bottom-padding single-h-padding limit-width row-parent" data-height-ratio="50" data-imgready="true"><div class="wpb_row row-inner" style="height: 102px;"><div class="wpb_column pos-middle pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h1 class="fontsize-338686 fontheight-179065 font-weight-300"><span>Quality Assurance</span></h1></div><div class="clear"></div></div></div></div></div></div></div><script id="script-row-167295" data-row="script-row-167295" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-167295"));</script></div></div></div><div data-parent="true" class="vc_row row-container" id="row-151456" data-section="1"><div class="row triple-top-padding double-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_row row-internal row-container"><div class="row col-double-gutter row-child"><div class="wpb_row row-inner" style="height: 1647px;"><div class="wpb_column pos-top pos-center align_left column_child col-lg-3 double-internal-gutter"><div class="uncol style-light sticky-element sticky-sidebar" style=""><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-accent-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h2 class="h2 fontheight-357766 fontspace-781688 font-weight-300"><span><span style="font-weight: 400;">Quality Assurance Services: Our Strength</span></span></h2></div><div class="clear"></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_child col-lg-9 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-color-uydo-color separator-no-padding">
+</div>
+<div class="uncode_text_column vc_custom_1692258694036 text-lead" style="margin-top: 75px ;"><h3>India’s First and Largest Quality Assurance Organization for Basmati Rice</h3>
+<p>We are at the forefront in this competitive Basmati Rice Quality Assurance owing to our Vision, Mission, and Values. We are dedicated and devoted, leaving no stone unturned to ensure our customer’s complete satisfaction.</p>
+<p>Al Maha Foods provides Quality Assurance and Inspection Services to selected quality conscious Basmati rice buyers Worldwide. We outstand in Basmati rice industry with our customer centric approach where we provide handholding in understanding the crop expectations, future contingencies, market dynamics and Market Intelligence.</p>
+<p>We follow the highest levels of standards and practices in our Lab operations. Al Maha Foods well equipped Laboratory operations are ISO 9001:2015 certified and NABL accredited in accordance with ISO/IEC 17025:2017, the highest level of accreditation granted in India for Lab operations.</p>
+<p>Our team takes care of product starting from paddy, throughout milling and to the port of shipment to ensure customer value optimization. We have a detailed and time-bound process to ensure the quality of Basmati Rice. It begins with testing groundwater quality and goes through crop survey, pre-procurement inspection, rice mill audit, milling process and onsite detailed inspection at vendor site during packing and dispatch of goods.</p>
+<p>This is a highly demanding and most challenging service in Basmati rice trade. Our company has always adopted business principles based on honesty and integrity to offer the best solutions and services. The team ensures that the end product meets the buyer’s specification and its safe loading on the vessel with specified packaging. This enables our clients to have an upper hand in the competitive rice trade due to the purest quality product packed in their brands under our stringent quality control.</p>
+<p>Our strong association with scientific fraternity and rice growers leads to trade innovation, preparedness, farmer welfare and education. We at Al Maha Foods are committed to provide products and solutions that are the best available in terms of quality, service and value.</p>
+</div><div class="vc_progress_bar wpb_content_element"><div class="vc_progress_label">Customer Satisfaction<small class="vc_label"></small></div><div class="vc_single_bar style-color-gyho-bg style-override"><span class="vc_bar style-accent-bg" data-percentage-value="100" data-value="100" style="width: 100%;"></span></div><div class="vc_progress_label">Quality<small class="vc_label"></small></div><div class="vc_single_bar style-color-gyho-bg style-override"><span class="vc_bar style-accent-bg" data-percentage-value="99" data-value="99" style="width: 99%;"></span></div><div class="vc_progress_label">Marketing<small class="vc_label"></small></div><div class="vc_single_bar style-color-gyho-bg style-override"><span class="vc_bar style-accent-bg" data-percentage-value="70" data-value="70" style="width: 70%;"></span></div></div><div id="gallery-193641" class="isotope-system isotope-processed">
+					<div class="isotope-wrapper single-gutter">
+						<div class="isotope-container isotope-layout style-masonry un-isotope-init" data-type="masonry" data-layout="fitRows" data-lg="100" data-md="600" data-sm="480" style="position: relative; height: 272px; opacity: 1;">
+<div class="tmb tmb-iso-w4 tmb-iso-h4 img-round tmb-light tmb-overlay-text-anim tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-left tmb-image-anim tmb-bordered tmb-id-88455 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 273px; position: absolute; left: 0px; top: 0px;">
+						<div class="t-inside" style="opacity: 1;"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 100%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2023/01/QA-Page.jpeg" class="pushed" data-active="1" data-lbox="ilightbox_gallery-193641" data-options="width:768,height:1024,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2023/01/QA-Page-225x300.jpeg&#39;" data-lb-index="0" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><div class="t-entry-cf-"></div></div></div></div></div></div><img fetchpriority="high" decoding="async" class="wp-image-88455" src="./Quality Assurance – Al-maha_files/QA-Page-uai-768x768.jpeg" width="768" height="768" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-iso-w4 tmb-iso-h4 img-round tmb-light tmb-overlay-text-anim tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-left tmb-image-anim tmb-bordered tmb-id-88458 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 273px; position: absolute; left: 273px; top: 0px;">
+						<div class="t-inside" style="opacity: 1;"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 100%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2023/01/QA-Page-2.jpeg" class="pushed" data-active="1" data-lbox="ilightbox_gallery-193641" data-options="width:960,height:1280,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2023/01/QA-Page-2-225x300.jpeg&#39;" data-lb-index="1" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><div class="t-entry-cf-"></div></div></div></div></div></div><img decoding="async" class="wp-image-88458" src="./Quality Assurance – Al-maha_files/QA-Page-2-uai-960x960.jpeg" width="960" height="960" alt=""></a></div>
+				</div>
+			</div></div>
+					</div><div class="tmb tmb-iso-w4 tmb-iso-h4 img-round tmb-light tmb-overlay-text-anim tmb-overlay-anim tmb-overlay-middle tmb-overlay-text-left tmb-image-anim tmb-bordered tmb-id-88459 tmb-img-ratio tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg tmb-lightbox tmb-iso" style="width: 273px; position: absolute; left: 546px; top: 0px;">
+						<div class="t-inside" style="opacity: 1;"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="t-entry-visual-cont"><div class="dummy" style="padding-top: 100%;"></div><a tabindex="-1" href="https://www.almahafoods.com/wp-content/uploads/2023/01/QA-Page-scaled.jpg" class="pushed" data-active="1" data-lbox="ilightbox_gallery-193641" data-options="width:1920,height:2560,thumbnail: &#39;https://www.almahafoods.com/wp-content/uploads/2023/01/QA-Page-225x300.jpg&#39;" data-lb-index="2" data-lbox-init="true"><div class="t-entry-visual-overlay"><div class="t-entry-visual-overlay-in style-dark-bg" style="opacity: 0.5;"></div></div>
+									<div class="t-overlay-wrap">
+										<div class="t-overlay-inner">
+											<div class="t-overlay-content">
+												<div class="t-overlay-text single-block-padding"><div class="t-entry"><div class="t-entry-cf-"></div></div></div></div></div></div><img decoding="async" class="wp-image-88459" src="./Quality Assurance – Al-maha_files/QA-Page-scaled-uai-1920x1920.jpg" width="1920" height="1920" alt=""></a></div>
+				</div>
+			</div></div>
+					</div>						</div>
+					</div>
+</div>
+<div class="empty-space empty-single"><span class="empty-space-inner"></span></div>
+<span class="btn-container btn-inline"><a href="https://www.almahafoods.com/wp-content/uploads/2023/05/QA-Brochure-for-Quality-assurance-page.pdf" class="custom-link btn border-width-0 btn-default btn-round btn-icon-left" title="Download Brochure" target="_blank">Download QA Brochure</a></span></div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-row-151456" data-row="script-row-151456" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-151456"));</script></div></div></div><div data-parent="true" class="vc_row gray-bg footer-common-cta row-container" id="row-116456" data-section="2"><div class="row limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-12 single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_row row-internal row-container"><div class="row col-double-gutter row-child"><div class="wpb_row row-inner" style="height: 230px;"><div class="wpb_column pos-top pos-center align_left column_child col-lg-3 double-internal-gutter"><div class="uncol style-light sticky-element sticky-sidebar" style=""><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="divider-wrapper ">
+    <hr class="border-accent-color separator-no-padding">
+</div>
+<div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h2 class="h2 fontheight-357766 fontspace-781688 font-weight-300"><span>Contact Us</span></h2></div><div class="clear"></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_child col-lg-9 card-box single-internal-gutter"><div class="uncol style-light"><div class="uncoltable"><div class="uncell  vc_custom_1673509486247 single-block-padding style-color-xsdn-bg" style="padding-top: 70px ;padding-bottom: 70px ;"><div class="uncont"><div class="vc_custom_heading_wrap "><div class="heading-text el-text"><h3>We are here to support you.</h3>
+<p>A member of our team will contact you shortly.</p>
+</div><div class="clear"></div></div><span class="btn-container"><a href="https://www.almahafoods.com/contact-us/" class="custom-link btn border-width-0 btn-default btn-round btn-icon-left" title="Contact Us">Get In Touch</a></span></div></div></div></div></div></div></div></div></div></div></div></div></div><script id="script-row-116456" data-row="script-row-116456" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-116456"));</script></div></div></div></div></div>
+						</div>
+					</article>
+								</div><!-- sections container -->
+							</div><!-- page wrapper -->
+												<footer id="colophon" class="site-footer">
+							<div data-parent="true" class="vc_row mobile-no-inner-gap tablet-no-inner-gap style-color-xsdn-bg vc_custom_1618829102349 row-container" style="padding-bottom: 0px ;" id="row-141691" data-section="3"><div class="row col-double-gutter triple-top-padding triple-bottom-padding single-h-padding limit-width row-parent" data-imgready="true"><div class="wpb_row row-inner cols-md-responsive cols-sm-responsive"><div class="wpb_column pos-top pos-center align_left column_parent col-lg-4 col-md-50 col-sm-100 single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="uncode-single-media  text-left"><div class="single-wrapper" style="max-width: 65%;"><div class="tmb tmb-light  tmb-media-first tmb-media-last tmb-content-overlay tmb-no-bg">
+						<div class="t-inside"><div class="t-entry-visual"><div class="t-entry-visual-tc"><div class="uncode-single-media-wrapper">
+									<img decoding="async" class="wp-image-88718" src="./Quality Assurance – Al-maha_files/image_2023_05_24T11_18_08_668Z.png" width="309" height="249" alt="" srcset="https://www.almahafoods.com/wp-content/uploads/2023/05/image_2023_05_24T11_18_08_668Z.png 309w, https://www.almahafoods.com/wp-content/uploads/2023/05/image_2023_05_24T11_18_08_668Z-300x242.png 300w" sizes="(max-width: 309px) 100vw, 309px"></div>
+				</div>
+			</div></div>
+					</div></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_parent col-lg-2 footer_adj_column2 col-md-50 col-sm-100 col-sm-clear single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_wp_custommenu wpb_content_element"><div class="widget widget_nav_menu"><h2 class="widgettitle">Navigation</h2><div class="menu-footer-navigation-container"><ul id="menu-footer-navigation" class="menu"><li id="menu-item-88629" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88629"><a href="https://www.almahafoods.com/about/">About Us</a></li>
+<li id="menu-item-89306" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89306"><a target="_blank" href="https://www.almahafoods.com/wp-content/uploads/2024/11/Privacy-Policy-Al-maha.pdf">Privacy Policy</a></li>
+<li id="menu-item-89308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89308"><a href="https://www.almahafoods.com/what-we-do/domestic-market/">Products</a></li>
+<li id="menu-item-88466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88466"><a href="https://www.almahafoods.com/our-brands/">Our Brands</a></li>
+<li id="menu-item-88454" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-88304 current_page_item menu-item-88454"><a href="https://www.almahafoods.com/what-we-do/quality-assurance/" aria-current="page">Quality Assurance</a></li>
+</ul></div></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_parent col-lg-2 footer_adj_column col-md-75 col-md-clear col-sm-100 col-sm-clear single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_wp_custommenu wpb_content_element footer_asj_column"><div class="widget widget_nav_menu"><h2 class="widgettitle">Useful Links</h2><div class="menu-footer-useful-links-container"><ul id="menu-footer-useful-links" class="menu"><li id="menu-item-88674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88674"><a href="https://www.almahafoods.com/what-we-do/exports/">Exports</a></li>
+<li id="menu-item-88673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88673"><a href="https://www.almahafoods.com/culture-at-al-maha/">Work With Us</a></li>
+<li id="menu-item-88675" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88675"><a href="https://www.almahafoods.com/corporate-social-responsibility/">Corporate Social Responsibility</a></li>
+<li id="menu-item-88462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88462"><a href="https://www.almahafoods.com/contact-us/">Contact Us</a></li>
+</ul></div></div></div></div></div></div></div></div><div class="wpb_column pos-top pos-center align_left column_parent col-lg-4 col-md-50 col-md-clear col-sm-100 col-sm-clear single-internal-gutter"><div class="uncol style-dark"><div class="uncoltable"><div class="uncell no-block-padding"><div class="uncont"><div class="vc_wp_text wpb_content_element"><div class="widget widget_text"><h2 class="widgettitle">Contact Us</h2>			<div class="textwidget"><p></p>
+<ul class="foooter_cnt_info">
+<li><i class="fa fa-map-marker"></i><a href="https://www.almahafoods.com/what-we-do/quality-assurance/#">1122, DLF Tower-A, Jasola, New Delhi- 110025, India.</a></li>
+<li><i class="fa fa-phone"></i><a href="https://www.almahafoods.com/what-we-do/quality-assurance/#">+ 91 11 4333 1111</a></li>
+<li><i class="fa fa-fax"></i><a href="https://www.almahafoods.com/what-we-do/quality-assurance/#">+ 91 11 4333 1122</a></li>
+<li><i class="fa fa-envelope"></i><a href="https://www.almahafoods.com/what-we-do/quality-assurance/#">almahafoods@almahafoods.com</a></li>
+</ul>
+<p>
+</p></div>
+		</div></div><div class="uncode-vc-social"><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-social-facebook"></i></a></div><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://twitter.com/" target="_blank"><i class="fa fa-social-twitter"></i></a></div><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://www.linkedin.com/company/79564335/admin/" target="_blank"><i class="fa fa-social-linkedin"></i></a></div><div class="social-icon icon-box icon-box-top icon-inline"><a href="https://www.youtube.com/channel/UC6KF_KNSiBrpDAsFiEJHj0g" target="_blank"><i class="fa fa-youtube-play"></i></a></div></div></div></div></div></div></div><script id="script-row-141691" data-row="script-row-141691" type="text/javascript" class="vc_controls">UNCODE.initRow(document.getElementById("row-141691"));</script></div></div></div>
+<div class="row-container style-color-xsdn-bg footer-last">
+		  					<div class="row row-parent style-light limit-width no-top-padding no-h-padding no-bottom-padding">
+									<div class="uncell col-lg-6 pos-middle text-left"><p class="designby">Designed &amp; Developed By <a href="https://www.cyberworx.in/" target="_blank">Cyberworx</a> </p><p></p></div><div class="site-info uncell col-lg-6 pos-middle text-right"><p>© 2003-2024 Al Maha Foods. All rights reserved</p>
+</div><!-- site info -->
+								</div>
+							</div>						</footer>
+																		</div><!-- main container -->
+				</div><!-- main wrapper -->
+							
+			</div><!-- box container -->
+		</div><!-- box wrapper -->
+		<div class="style-light footer-scroll-top" style="display: none;"><a href="https://www.almahafoods.com/what-we-do/quality-assurance/#" class="scroll-top"><i class="fa fa-angle-up fa-stack btn-default btn-hover-nobg"></i></a></div>
+		
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/uncode-child\/*","\/wp-content\/themes\/uncode\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/html" id="wpb-modifications"></script><style id="core-block-supports-inline-css" type="text/css">
+/**
+ * Core styles: block-supports
+ */
+
+</style>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/hooks.js.download" id="wp-hooks-js"></script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/i18n.js.download" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/index.js.download" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-before">
+/* <![CDATA[ */
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/www.almahafoods.com\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/index(1).js.download" id="contact-form-7-js"></script>
+<script type="text/javascript" id="mediaelement-core-js-before">
+/* <![CDATA[ */
+var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/mediaelement-and-player.js.download" id="mediaelement-core-js"></script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/mediaelement-migrate.js.download" id="mediaelement-migrate-js"></script>
+<script type="text/javascript" id="mediaelement-js-extra">
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive","audioShortcodeLibrary":"mediaelement","videoShortcodeLibrary":"mediaelement"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/wp-mediaelement.js.download" id="wp-mediaelement-js"></script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/plugins.js.download" id="uncode-plugins-js"></script>
+<script type="text/javascript" src="./Quality Assurance – Al-maha_files/app.js.download" id="uncode-app-js"></script>
+<script>
+$ = jQuery;
+$(".domestic-presence-slider .owl-item").each(function(){
+    $(this).find(".t-entry-visual-overlay").unwrap();
+   var linktext = $(this).find("p.t-entry-meta span").text();
+   $(this).find(".t-entry").append('<a href="'+linktext+'">Read More</a>')
+});
+
+$("li.view_all_button").click(function(){
+   $(this).prevAll().css("display","block");
+   $(this).hide();
+});
+
+$(".vision_mission_slider .owl-item").each(function(){
+   var image_name = $(this).find("img").attr("alt");
+   $(this).find("img").after('<span class="vision_mission_heading">'+image_name+'</span>')
+});
+
+$(".apply-now-btn").click(function(){
+    let job_name = $(this).attr("data-job")
+    $("#opening-job-name").val(job_name)
+    $(".popup-bg").addClass("show")
+    $(".popup-form").addClass("show")
+})
+$("body").delegate(".popup-bg, .close-btn", "click",function(){
+    $(".popup-bg").removeClass("show")
+    $(".popup-form").removeClass("show")
+})
+setTimeout(function(){
+    document.getElementById("video-88163-1_html5").play()
+},5000)
+</script>
+<div class="popup-bg"></div>
+<div class="popup-form">
+    <button type="button" class="close-btn"><i class="fa fa-times"></i></button>
+    <h3>Apply Now</h3>
+    
+<div class="wpcf7 js" id="wpcf7-f88676-o1" lang="en-US" dir="ltr" data-wpcf7-id="88676">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="https://www.almahafoods.com/what-we-do/quality-assurance/#wpcf7-f88676-o1" method="post" class="wpcf7-form init" aria-label="Contact form" enctype="multipart/form-data" novalidate="novalidate" data-status="init">
+<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="88676"><input type="hidden" name="_wpcf7_version" value="6.1.2"><input type="hidden" name="_wpcf7_locale" value="en_US"><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f88676-o1"><input type="hidden" name="_wpcf7_container_post" value="0"><input type="hidden" name="_wpcf7_posted_data_hash" value="">
+</fieldset>
+<div class="vc_d-none">
+	<p><span class="wpcf7-form-control-wrap" data-name="job"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text" id="opening-job-name" aria-invalid="false" value="" type="text" name="job"></span>
+	</p>
+</div>
+<div class="al_row">
+ <!-- First Row: Name & Email (50% Width Each) -->
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="full_name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Full Name" value="" type="text" name="full_name"></span>
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email" value="" type="email" name="email"></span>
+		</p>
+	</div>
+
+ <!-- Second Row: Phone & City (50% Width Each) -->
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="phone"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="Phone" value="" type="tel" name="phone"></span>
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<p><span class="wpcf7-form-control-wrap" data-name="city"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="City" value="" type="text" name="city"></span>
+		</p>
+	</div>
+
+ <!-- Third Row: Experience & Qualification -->
+	<div class="col-lg-4">
+		<p><span class="wpcf7-form-control-wrap" data-name="total_experience"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Total Experience" value="" type="text" name="total_experience"></span>
+		</p>
+	</div>
+	<div class="col-lg-4">
+		<p><span class="wpcf7-form-control-wrap" data-name="highest_qualification"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Highest Qualification" value="" type="text" name="highest_qualification"></span>
+		</p>
+	</div>
+	<div class="col-lg-4">
+		<p><span class="wpcf7-form-control-wrap" data-name="applied_for"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Applied For" value="" type="text" name="applied_for"></span>
+		</p>
+	</div>
+
+ <!-- File Uploads: Resume & Photo -->
+	<div class="col-lg-6">
+		<p><label>Upload Resume (Max: 2MB)</label><br>
+<span class="wpcf7-form-control-wrap" data-name="resume"><input size="40" class="wpcf7-form-control wpcf7-file wpcf7-validates-as-required" accept=".pdf,.doc,.txt,.docx" aria-required="true" aria-invalid="false" type="file" name="resume"></span>
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<p><label>Upload Photograph (Max: 2MB)</label><br>
+<span class="wpcf7-form-control-wrap" data-name="photo"><input size="40" class="wpcf7-form-control wpcf7-file wpcf7-validates-as-required" accept=".jpg,.jpeg,.png,.webp" aria-required="true" aria-invalid="false" type="file" name="photo"></span>
+		</p>
+	</div>
+
+ <!-- Message Field -->
+	<div class="col-lg-12">
+		<p><span class="wpcf7-form-control-wrap" data-name="message"><textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Message" name="message"></textarea></span>
+		</p>
+	</div>
+
+ <!-- Submit Button -->
+	<div class="col-lg-12">
+		<p><input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Apply"><span class="wpcf7-spinner"></span>
+		</p>
+	</div>
+</div><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+</div>
+
+
+<div id="speechify-global-notifications"><template shadowrootmode="open"><div id="speechify-global-notifications-root" style="position: fixed; top: 0px; left: 0px; height: 100vh; z-index: 2147483644; width: 0vw;"></div></template></div><div id="speechify-settings-modal" style="position: absolute; bottom: 0px; right: 0px;"><template shadowrootmode="open"><div id="speechify-settings-modal-root" style="position: fixed; z-index: 2147483646; top: 0px; left: 0px; height: fit-content; font-size: initial;"></div></template></div><div id="speechify-screenshot-mode" style="position: fixed; top: 0px; right: 0px; width: 100%; min-height: 100%; z-index: 2147483640; display: none !important;"><template shadowrootmode="open"><div id="speechify-screenshot-mode-root" style="width: 100%; height: 100%; position: relative;"></div></template></div><div id="speechify-hover-player-shadow-root"><template shadowrootmode="open"><div id="speechify-hover-player-container"></div></template></div><div id="speechify-shortcuts-prompt"><template shadowrootmode="open"><div id="speechify-shortcuts-prompt-root"></div></template></div></body></html>

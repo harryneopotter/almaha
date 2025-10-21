@@ -1,0 +1,275 @@
+/* ========================================
+   Global Styles - Al Maha Foods
+   ======================================== */
+
+/* CSS Variables for Theme Colors */
+:root {
+  /* Primary Colors */
+  --color-black: #000000;
+  --color-dark-1: #101213;
+  --color-dark-2: #141618;
+  --color-dark-3: #1b1d1f;
+  --color-dark-4: #303133;
+  --color-white: #ffffff;
+  --color-light-gray: #f7f7f7;
+  --color-gray: #eaeaea;
+  --color-red: #fe0000;
+  --color-primary: #f5c518;
+  
+  /* Text Colors */
+  --color-text-dark: #6d6d6d;
+  --color-text-light: #ffffff;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 72px;
+  --spacing-xxl: 96px;
+  
+  /* Typography */
+  --font-family: 'Open Sans', 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.7s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.25);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-round: 50%;
+  
+  /* Container Widths */
+  --container-max-width: 1400px;
+  --container-padding: 20px;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  color: var(--color-text-dark);
+  background-color: var(--color-white);
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Section Separator Utility */
+.section-separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-primary);
+  border: none;
+  margin: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.style-light { color: var(--color-text-dark); }
+.style-dark { color: var(--color-text-light); }
+
+/* Spacing Utilities */
+.no-padding { padding: 0 !important; }
+.no-margin { margin: 0 !important; }
+
+.single-top-padding { padding-top: var(--spacing-md) !important; }
+.double-top-padding { padding-top: var(--spacing-lg) !important; }
+.triple-top-padding { padding-top: var(--spacing-xl) !important; }
+
+.single-bottom-padding { padding-bottom: var(--spacing-md) !important; }
+.double-bottom-padding { padding-bottom: var(--spacing-lg) !important; }
+.triple-bottom-padding { padding-bottom: var(--spacing-xl) !important; }
+
+.single-h-padding { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+.double-h-padding { padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
+
+/* Background Colors */
+.bg-white { background-color: var(--color-white); }
+.bg-light-gray { background-color: var(--color-light-gray); }
+.bg-dark { background-color: var(--color-dark-2); }
+.bg-red { background-color: var(--color-red); }
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn var(--transition-slow) ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1920px) {
+  :root {
+    --container-max-width: 1200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-max-width: 960px;
+    --spacing-xl: 60px;
+    --spacing-xxl: 80px;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-max-width: 100%;
+    --container-padding: 15px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 36px;
+  }
+  
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-4);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-2);
+}
+

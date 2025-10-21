@@ -1,0 +1,239 @@
+/* Content Section Component Styles */
+.contentSection {
+  width: 100%;
+}
+
+/* Background Variants */
+.white {
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+}
+
+.gray {
+  background-color: var(--color-gray-50);
+  color: var(--color-text-primary);
+}
+
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+/* Padding Variants */
+.none {
+  padding: 0;
+}
+
+.small {
+  padding: 2rem 0;
+}
+
+.medium {
+  padding: 4rem 0;
+}
+
+.large {
+  padding: 6rem 0;
+}
+
+/* Container */
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Max Width Variants */
+.small .container {
+  max-width: 768px;
+}
+
+.medium .container {
+  max-width: 1024px;
+}
+
+.large .container {
+  max-width: 1200px;
+}
+
+.full .container {
+  max-width: 100%;
+}
+
+/* Header */
+.header {
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: inherit;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Text Alignment */
+.left .header,
+.left .content {
+  text-align: left;
+}
+
+.center .header,
+.center .content {
+  text-align: center;
+}
+
+.right .header,
+.right .content {
+  text-align: right;
+}
+
+/* Content */
+.content {
+  line-height: 1.6;
+}
+
+.content > * {
+  margin-bottom: 1.5rem;
+}
+
+.content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Typography within content */
+.content h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.content h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: inherit;
+}
+
+.content h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: inherit;
+}
+
+.content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.content ul,
+.content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.content blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  font-size: 1.125rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Adjust padding for mobile */
+  .small {
+    padding: 1.5rem 0;
+  }
+
+  .medium {
+    padding: 3rem 0;
+  }
+
+  .large {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .content h3 {
+    font-size: 1.5rem;
+  }
+
+  .content h4 {
+    font-size: 1.25rem;
+  }
+
+  .content h5 {
+    font-size: 1.125rem;
+  }
+}

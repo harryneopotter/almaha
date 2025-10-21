@@ -1,0 +1,21 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: 90px; /* Account for fixed header - this should be the default */
+}
+
+.main.hasSlider {
+  padding-top: 0 !important; /* Only remove padding for pages with slider - force override */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main {
+    padding-top: 70px;
+  }
+}

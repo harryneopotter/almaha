@@ -1,0 +1,470 @@
+/* CSR Page Styles */
+.csrPage {
+  /* Page container */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.heroSection {
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Overview Section */
+.overviewSection {
+  padding: 80px 0;
+  background: white;
+}
+
+.overviewContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.overviewText h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.overviewText p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #28a745;
+  line-height: 1;
+}
+
+.statLabel {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.overviewImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headers */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Initiatives Section */
+.initiativesSection {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.filterButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  padding: 10px 20px;
+  border: 2px solid #28a745;
+  background: transparent;
+  color: #28a745;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filterButton:hover,
+.filterButton.active {
+  background: #28a745;
+  color: white;
+}
+
+.initiativesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.initiativeCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.initiativeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cardImage {
+  height: 200px;
+  overflow: hidden;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.initiativeCard:hover .cardImage img {
+  transform: scale(1.05);
+}
+
+.cardContent {
+  padding: 2rem;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #28a745;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.cardDetails {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Gallery Section */
+.gallerySection {
+  padding: 80px 0;
+  background: white;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.galleryItem {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover {
+  transform: scale(1.02);
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Impact Section */
+.impactSection {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.impactContent h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.impactContent > p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.impactAreas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.impactArea {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.impactArea:hover {
+  transform: translateY(-5px);
+}
+
+.impactIcon {
+  font-size: 3rem;
+  color: #28a745;
+  margin-bottom: 1.5rem;
+}
+
+.impactArea h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.impactArea p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Call to Action Section */
+.ctaSection {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.ctaContent p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaButton,
+.ctaButtonSecondary {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
+
+.ctaButton {
+  background: white;
+  color: #28a745;
+}
+
+.ctaButton:hover {
+  background: transparent;
+  color: white;
+}
+
+.ctaButtonSecondary {
+  background: transparent;
+  color: white;
+}
+
+.ctaButtonSecondary:hover {
+  background: white;
+  color: #28a745;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .overviewContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .overviewImage {
+    order: -1;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .filterButtons {
+    gap: 0.5rem;
+  }
+
+  .filterButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .initiativesGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .impactAreas {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctaButton,
+  .ctaButtonSecondary {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .heroSection {
+    padding: 100px 0 60px;
+  }
+
+  .overviewSection,
+  .initiativesSection,
+  .gallerySection,
+  .impactSection,
+  .ctaSection {
+    padding: 60px 0;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .overviewText h2,
+  .sectionTitle,
+  .impactContent h2,
+  .ctaContent h2 {
+    font-size: 1.5rem;
+  }
+
+  .cardContent {
+    padding: 1.5rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filterButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filterButton {
+    width: 200px;
+  }
+}

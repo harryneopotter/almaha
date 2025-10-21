@@ -1,0 +1,248 @@
+/* Blog Page Styles */
+.blogPage {
+  margin-top: -90px;
+  padding-top: 90px;
+}
+
+/* Hero Banner */
+.heroBanner {
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.heroContent {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.heroContent h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+/* Main Section */
+.mainSection {
+  padding: 72px 0;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+/* Filter Section */
+.filterSection {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.filterButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 2px solid #eecc6b;
+  color: #eecc6b;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+
+.filterBtn:hover {
+  background: #eecc6b;
+  color: #ffffff;
+}
+
+.filterBtn.active {
+  background: #eecc6b;
+  color: #ffffff;
+}
+
+/* Articles Grid */
+.articlesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.articleCard {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.articleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.articleMeta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.articleDate {
+  color: #666666;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.articleCategory {
+  background: #eecc6b;
+  color: #000000;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.articleTitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #303133;
+  margin: 0 0 15px 0;
+  line-height: 1.3;
+}
+
+.articleTitle a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.articleTitle a:hover {
+  color: #eecc6b;
+}
+
+.articleExcerpt {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.readMoreLink {
+  color: #eecc6b;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.readMoreLink:hover {
+  color: #303133;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .articlesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .mainSection {
+    padding: 50px 0;
+  }
+
+  .heroContent h1 {
+    font-size: 42px;
+  }
+
+  .filterButtons {
+    gap: 15px;
+  }
+
+  .filterBtn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .articlesGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .articleCard {
+    padding: 25px;
+  }
+
+  .articleTitle {
+    font-size: 20px;
+  }
+
+  .articleExcerpt {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filterButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .articleMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

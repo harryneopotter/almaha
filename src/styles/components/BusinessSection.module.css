@@ -1,0 +1,165 @@
+/* Business Section Styles */
+.businessSection {
+  padding: 72px 0;
+  background-color: var(--color-light-gray);
+}
+
+.container {
+  padding: 0 36px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 210px 774px;
+  column-gap: 72px;
+  align-items: start;
+  max-width: 1056px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
+}
+
+.content.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text Column */
+.textColumn {
+  position: relative;
+  top: 0;
+  height: fit-content;
+}
+
+.heading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0;
+  margin-top: 72px;
+  margin-bottom: 24px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #eecc6b;
+  border: none;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+/* Right column divider (light gray) */
+.businessColumn .divider {
+  background-color: #dddddd;
+}
+
+/* Business Column */
+.businessColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.businessItem {
+  padding-bottom: 25px;
+}
+
+.businessTitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.businessTitle a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.businessTitle a:hover {
+  color: var(--color-red);
+}
+
+.businessDate {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(48, 49, 51);
+  line-height: 21px;
+  height: 21px;
+  margin: 0;
+  text-align: left;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .businessSection {
+    padding: 60px 0;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .textColumn {
+    position: static;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .businessTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .businessSection {
+    padding: 48px 0;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .businessTitle {
+    font-size: 1.25rem;
+  }
+
+  .businessDate {
+    font-size: 0.875rem;
+  }
+
+  .divider {
+    width: 50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .businessSection {
+    padding: 40px 0;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .businessTitle {
+    font-size: 1.125rem;
+  }
+}
+

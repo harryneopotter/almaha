@@ -1,0 +1,27 @@
+/* Home Page Styles */
+.homePage {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Ensure proper spacing for fixed header */
+.homePage > * {
+  position: relative;
+}
+
+/* Add smooth transitions for page load */
+.homePage > *:first-child {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

@@ -1,0 +1,635 @@
+/* Al Maha Foods Homepage - Following Styling Guide Specifications */
+
+/* Aggressive reset to override WordPress CSS */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+}
+
+#root {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: relative !important;
+}
+
+/* Home Page Container */
+.home-page {
+  min-height: 100vh !important;
+  font-family: 'Roboto', sans-serif !important;
+  background-color: #ffffff !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+}
+
+/* Override any WordPress positioning */
+.home-page section,
+.home-page header,
+.home-page footer {
+  position: relative !important;
+  transform: none !important;
+}
+
+.home-page .site-header {
+  position: fixed !important;
+  transform: none !important;
+}
+
+/* Header - Following Styling Guide */
+.home-page .site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 90px !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  z-index: 9999 !important;
+}
+
+.home-page .site-header .header-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 36px !important; /* 36px from edges per styling guide */
+}
+
+.logo img {
+  height: 69px;
+  width: 189px; /* Exact dimensions from styling guide */
+}
+
+.main-nav {
+  display: flex;
+  gap: 25px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #303133; /* Dark gray from styling guide */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.main-nav a:hover {
+  color: #eecc6b; /* Golden yellow from styling guide */
+}
+
+.main-nav a.active {
+  background-color: #eecc6b; /* Golden yellow from styling guide */
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Hero Slider - Fixed height to prevent overflow */
+.home-page .hero-slider {
+  margin-top: 90px !important;
+  padding-top: 0 !important;
+  height: 500px !important;
+  max-height: 60vh !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  top: 0 !important;
+  transform: none !important;
+}
+
+.slider-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 828px;
+  padding: 0 36px; /* Following styling guide edge padding */
+  margin-left: 36px;
+  padding-top: 90px;
+}
+
+.slide-content h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.slide-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: 300;
+}
+
+/* Navigation Controls */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  padding: 20px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 3;
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-prev {
+  left: 20px;
+}
+
+.nav-next {
+  right: 20px;
+}
+
+/* Two-Column Layout Pattern - Following Styling Guide Exactly */
+
+/* Welcome Section */
+.welcome-section {
+  padding: 72px 0; /* Section padding from styling guide */
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 36px; /* 36px from edges */
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 210px 774px; /* Exact measurements from styling guide */
+  column-gap: 72px;
+  max-width: 1056px; /* 210px + 72px + 774px */
+  margin: 0 auto;
+}
+
+/* Left Column - Sidebar */
+.text-column {
+  position: relative;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  margin: 0 0 20px 0;
+}
+
+/* Golden yellow divider for left column */
+.text-column .divider {
+  background-color: #eecc6b;
+}
+
+.heading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0;
+  margin-top: 72px; /* Space between divider and heading */
+  margin-bottom: 24px;
+}
+
+/* Logo Stack in Welcome Section */
+.logo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.logo-item {
+  text-align: left;
+}
+
+.logo-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-item img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Right Column - Main Content */
+.main-column {
+  position: relative;
+}
+
+/* Light gray divider for right column */
+.main-column .divider {
+  background-color: #dddddd;
+}
+
+.description p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  margin: 0;
+  margin-top: 36px; /* Space between divider and content */
+  margin-bottom: 24px;
+}
+
+/* Image Gallery */
+.image-gallery {
+  margin-top: 40px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* Vision Section - Full Width Overlay Layout */
+.vision-section {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.vision-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.vision-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vision-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.vision-text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.vision-content {
+  max-width: 600px;
+  color: white;
+  padding-left: 36px;
+}
+
+.vision-content h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  font-style: italic;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.vision-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.vision-content h6 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* International Presence Section - Following Two-Column Pattern */
+.international-section {
+  padding: 72px 0;
+}
+
+/* World Map Placeholder */
+.world-map {
+  margin-top: 40px;
+}
+
+.map-placeholder {
+  background-color: #f8f9fa;
+  border: 2px dashed #dddddd;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #666;
+}
+
+/* Certification Section - Enhanced */
+.certification-section {
+  background: linear-gradient(135deg, #c92228 0%, #b01e24 100%);
+  padding: 100px 0;
+  color: white;
+  text-align: center;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1);
+}
+
+.cert-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.cert-container p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.48px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer - Following Styling Guide */
+.site-footer {
+  background-color: #32373c;
+  color: white;
+  padding: 50px 0 0; /* 50px top, 0 bottom per styling guide */
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 308px 190px 190px 308px; /* Four-column layout from styling guide */
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.footer-col p {
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #fe0000; /* Red hover from styling guide */
+}
+
+.footer-logo {
+  margin-top: 20px;
+}
+
+.footer-logo img {
+  max-width: 120px;
+  height: auto;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Responsive Design - Following Styling Guide */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .heading {
+    margin-top: 40px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .welcome-section,
+  .international-section {
+    padding: 40px 0;
+  }
+  
+  .home-page .hero-slider {
+    height: 400px !important;
+    max-height: 50vh !important;
+    margin-top: 90px !important;
+  }
+
+  .slide-content {
+    padding: 0 20px;
+    margin-left: 20px;
+    padding-top: 60px;
+  }
+
+  .slide-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .slide-content p {
+    font-size: 1rem;
+  }
+
+  .vision-section {
+    height: 400px;
+  }
+
+  .vision-content {
+    padding-left: 20px;
+  }
+
+  .vision-content h3 {
+    font-size: 2rem;
+  }
+
+  .vision-content p {
+    font-size: 1.2rem;
+  }
+
+  .cert-container p {
+    font-size: 1.4rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .main-nav {
+    display: none; /* Hide nav on mobile for now */
+  }
+
+  .nav-arrow {
+    font-size: 2rem;
+    padding: 15px 10px;
+  }
+
+  .nav-prev {
+    left: 10px;
+  }
+
+  .nav-next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .heading {
+    font-size: 20px;
+  }
+  
+  .description p {
+    font-size: 18px;
+  }
+}

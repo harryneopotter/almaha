@@ -1,0 +1,29 @@
+/* Layout Styles */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  /* Reserve space equal to header height (89px) */
+  padding-top: 89px;
+  margin-top: 0;
+}
+
+.content-wrapper {
+  width: 100%; /* Allow full-width sections like hero slider edge-to-edge */
+  margin: 0; /* Remove auto margins that centered the wrapper */
+  padding: 0; /* No horizontal padding so children control their own */
+}
+
+/* Removed side-padding media query so individual sections handle their own internal spacing */
+
+@media (max-width: 768px) {
+  .main-content {
+    /* Slightly smaller header on mobile */
+    padding-top: 72px;
+  }
+}
+

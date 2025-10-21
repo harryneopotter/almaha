@@ -1,0 +1,56 @@
+.articlePage {
+  margin-top: -90px;
+  padding-top: 90px;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #303133;
+  margin: 0 0 10px 0;
+}
+
+.mainSection {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.meta {
+  margin-bottom: 20px;
+}
+
+.date {
+  color: #666666;
+  font-family: 'Roboto', sans-serif;
+}
+
+.category,
+.author,
+.separator {
+  margin-left: 8px;
+  margin-right: 8px;
+  color: #666666;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.body p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: #303133;
+  margin: 0 0 18px 0;
+}
+
+@media (max-width: 768px) {
+  .mainSection { padding: 40px 0; }
+}
+
+
