@@ -85,7 +85,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Vuepress build output
 .vuepress/dist
@@ -150,6 +149,10 @@ playwright-report/
 playwright/.cache/
 
 # Note: live-caps directory is intentionally included for screenshots
+
+# Project-specific directories to ignore
+almaha-kiro/
+live-caps/
 
 # Vite
 .vite/
