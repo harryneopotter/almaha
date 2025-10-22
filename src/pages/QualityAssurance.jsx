@@ -14,7 +14,7 @@ function QualityAssurance() {
         <div 
           className={styles.heroBackground}
           style={{
-            backgroundImage: 'url("/assets/images/quality/quality-banner.jpg")',
+            backgroundImage: 'url("/assets/images/quality-assurance/quality-assurance-banner.jpg")',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center top',
             backgroundAttachment: 'scroll',
@@ -75,13 +75,13 @@ function QualityAssurance() {
                 {/* Gallery */}
                 <div className={styles.gallery}>
                   <div className={styles.galleryItem}>
-                    <img src="/assets/images/quality/QA-Page.jpeg" alt="Quality Assurance" />
+                    <img src="/assets/images/quality-assurance/QA-Page.jpeg" alt="Quality Assurance" />
                   </div>
                   <div className={styles.galleryItem}>
-                    <img src="/assets/images/quality/QA-Page-2.jpeg" alt="Quality Assurance 2" />
+                    <img src="/assets/images/quality-assurance/QA-Page-2.jpeg" alt="Quality Assurance 2" />
                   </div>
                   <div className={styles.galleryItem}>
-                    <img src="/assets/images/quality/QA-Page-scaled.jpg" alt="Quality Assurance Scaled" />
+                    <img src="/assets/images/quality-assurance/QA-Page-scaled.jpg" alt="Quality Assurance Scaled" />
                   </div>
                 </div>
 
