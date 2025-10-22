@@ -222,7 +222,7 @@ function About() {
       {/* Team Section */}
       <section id="team" className={styles.teamSection}>
         <div className={styles.container}>
-          <div className={styles.contentWrapper}>
+          <div className_={styles.contentWrapper}>
             {/* Left Column - Sidebar */}
             <div className={styles.leftColumn}>
               <div className={styles.leftDivider}></div>
