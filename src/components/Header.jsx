@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/components/Header.module.css';
 
@@ -24,6 +24,66 @@ const Header = () => {
     setOpenDropdown(openDropdown === menuName ? null : menuName);
   };
 
+  const handleMouseEnter = (menuName) => {
+    setOpenDropdown(menuName);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenDropdown(null);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      const target = e.target;
+      // if click is outside any .dropMenu or menuLink, close dropdown
+      if (!target.closest || (!target.closest(`.${styles.dropMenu}`) && !target.closest(`.${styles.menuLink}`))) {
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+    return () => document.removeEventListener('click', handleDocumentClick);
+  }, []);
+
+  // Close mobile menu / dropdowns when clicking outside the nav
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutside = (e) => {
+      const target = e.target;
+      if (!navRef.current) return;
+      if (!navRef.current.contains(target)) {
+        if (openDropdown) setOpenDropdown(null);
+        if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setOpenDropdown(null);
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('click', handleOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [openDropdown, isMobileMenuOpen]);
+
+  // Close mobile menu when a nav link is clicked (use event delegation on the nav)
+  const handleNavClick = (e) => {
+    if (!isMobileMenuOpen) return;
+    const anchor = e.target.closest('a');
+    if (anchor && navRef.current && navRef.current.contains(anchor)) {
+      setIsMobileMenuOpen(false);
+      setOpenDropdown(null);
+    }
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -46,7 +106,7 @@ const Header = () => {
             <div className={styles.logoContainer}>
               <Link to="/" className={styles.navbarBrand}>
                 <img 
-                  src="/assets/images/home/logo.jpg" 
+                  src="/assets/images/home/logo.png" 
                   alt="Al Maha Foods" 
                   width="183" 
                   height="61"
@@ -56,7 +116,7 @@ const Header = () => {
             </div>
 
             {/* Main Navigation */}
-            <nav className={`${styles.mainMenuContainer} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+            <nav ref={navRef} onClick={handleNavClick} className={`${styles.mainMenuContainer} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
               <ul className={styles.navbarMain}>
                 <li className={styles.menuItem}>
                   <Link to="/" className={styles.menuLink}>
@@ -64,7 +124,7 @@ const Header = () => {
                   </Link>
                 </li>
                 
-                <li className={`${styles.menuItem} ${styles.hasDropdown}`}>
+                <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('about')} onMouseLeave={handleMouseLeave}>
                   <button 
                     className={styles.menuLink}
                     onClick={() => toggleDropdown('about')}
@@ -79,7 +139,7 @@ const Header = () => {
                   </ul>
                 </li>
 
-                <li className={`${styles.menuItem} ${styles.hasDropdown}`}>
+                <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('what-we-do')} onMouseLeave={handleMouseLeave}>
                   <button 
                     className={styles.menuLink}
                     onClick={() => toggleDropdown('what-we-do')}
@@ -100,17 +160,9 @@ const Header = () => {
                 </li>
 
                 {/* Blog removed */}
-                <li className={styles.menuItem}>
-                  <Link to="/blog" className={styles.menuLink}>
-                    Blog
-                  </Link>
-                </li>
 
-                <li className={`${styles.menuItem} ${styles.hasDropdown}`}>
-                  <button 
-                    className={styles.menuLink}
-                    onClick={() => toggleDropdown('careers')}
-                  >
+                <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('careers')} onMouseLeave={handleMouseLeave}>
+                  <button className={styles.menuLink} onClick={() => toggleDropdown('careers')}>
                     Workplace & Careers <i className="fa fa-angle-down"></i>
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'careers' ? styles.open : ''}`}>

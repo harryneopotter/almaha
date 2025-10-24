@@ -42,7 +42,7 @@ const WelcomeSection = () => {
                 className={styles.logo}
               />
               <img
-                src="/assets/images/home/GPW_1.jpg"
+                src="/assets/images/gptw-1-badge-standing.png"
                 alt="Great Place to Work Logo"
                 className={styles.logo}
               />
