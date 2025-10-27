@@ -36,6 +36,11 @@
   z-index: 1;
 }
 
+/* Modifier: remove overlay entirely (used on home page where images-only desired) */
+.noOverlay .slideOverlay {
+  display: none;
+}
+
 .slideContent {
   position: relative;
   z-index: 2;
@@ -75,6 +80,29 @@
   max-width: 800px;
   -webkit-font-smoothing: antialiased;
   animation: slideIn 0.8s ease-out;
+}
+
+/* Modifier: center the overlay text container horizontally (home page) */
+.centerText .textOverlay {
+  /* center and remove the small right-offset */
+  margin: 40px auto 0 auto;
+  right: auto;
+  left: auto;
+  text-align: center;
+  transform: none; /* don't conflict with slideIn translate */
+  max-width: 900px;
+  animation: slideInCenter 0.9s ease-out;
+}
+
+@keyframes slideInCenter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes slideIn {

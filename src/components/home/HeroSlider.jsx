@@ -37,11 +37,11 @@ const slides = [
   }
 ];
 
-const HeroSlider = () => {
+const HeroSlider = ({ centerText = false, removeOverlay = false }) => {
   const swiperRef = useRef(null);
 
   return (
-    <div className={`${styles.heroSlider} heroSlider`}>
+  <div className={`${styles.heroSlider} ${centerText ? styles.centerText : ''} ${removeOverlay ? styles.noOverlay : ''} heroSlider`}>
       <Swiper
         ref={swiperRef}
         modules={[Navigation, Autoplay, EffectFade]}

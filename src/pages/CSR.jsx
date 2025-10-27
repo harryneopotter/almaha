@@ -35,14 +35,14 @@ function CSR() {
             {/* Left Column - Sidebar */}
             <div className={styles.leftColumn}>
               <div className={styles.leftDivider}></div>
-              <h2 className={styles.heading}>CSR Initiatives</h2>
+              {/* Heading moved from right column to left column per design */}
+              <h2 className={styles.heading}>CSR Initiatives by Al Maha</h2>
             </div>
 
             {/* Right Column - Main Content */}
             <div className={styles.rightColumn}>
               <div className={styles.rightDivider}></div>
               <div className={styles.description}>
-                <h2>CSR Initiatives by Al Maha</h2>
                 <p>Al Maha Foods attributes its existence to the society and seeks to do its part for the society through its Corporate Social Responsibility (CSR) Initiative. Education, healthcare and rural development are the hallmarks of progress of mankind. It is in these fields that we carry out our CSR initiatives:</p>
                 <ul>
                   <li>Creating viable infrastructure for child education.</li>
@@ -64,32 +64,19 @@ function CSR() {
             {/* Left Column - Sidebar */}
             <div className={styles.leftColumn}>
               <div className={styles.leftDivider}></div>
-              <h2 className={styles.heading}>CSR Activities</h2>
+              <h2 className={styles.heading}>CSR Activities at Al Maha</h2>
             </div>
 
-            {/* Right Column - Main Content */}
+            {/* Right Column - Main Content (video only as requested) */}
             <div className={styles.rightColumn}>
               <div className={styles.rightDivider}></div>
               <div className={styles.description}>
-                <h2>CSR Activities at Al Maha</h2>
-                <p>Our CSR activities are designed to address critical social challenges and contribute to the overall development of communities. We focus on creating sustainable solutions that have a lasting impact on the lives of people.</p>
-                <div className={styles.activitiesGrid}>
-                  <div className={styles.activityItem}>
-                    <h3>Education Support</h3>
-                    <p>Building schools, providing educational materials, and supporting underprivileged children's education.</p>
-                  </div>
-                  <div className={styles.activityItem}>
-                    <h3>Healthcare Initiatives</h3>
-                    <p>Setting up medical camps, providing healthcare facilities, and supporting community health programs.</p>
-                  </div>
-                  <div className={styles.activityItem}>
-                    <h3>Farmer Awareness</h3>
-                    <p>Conducting training programs and awareness campaigns to help farmers adopt better agricultural practices.</p>
-                  </div>
-                  <div className={styles.activityItem}>
-                    <h3>Water Conservation</h3>
-                    <p>Implementing water conservation projects and providing safe drinking water in rural areas.</p>
-                  </div>
+                {/* Keep only the video for CSR Activities per request */}
+                <div className={styles.activitiesMedia}>
+                  <video controls muted playsInline>
+                    <source src={"https://almahafoods.com/wp-content/uploads/2023/05/Untitled.mp4"} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             </div>
@@ -104,14 +91,13 @@ function CSR() {
             {/* Left Column - Sidebar */}
             <div className={styles.leftColumn}>
               <div className={styles.leftDivider}></div>
-              <h2 className={styles.heading}>Social Responsibility</h2>
+              <h2 className={styles.heading}>Social Responsibility – Our Passion!!</h2>
             </div>
 
             {/* Right Column - Main Content */}
             <div className={styles.rightColumn}>
               <div className={styles.rightDivider}></div>
               <div className={styles.description}>
-                <h2>Social Responsibility – Our Passion!!</h2>
                 <div className={styles.csrGallery}>
                   <div className={styles.galleryRow}>
                     <div className={styles.galleryBlock}>

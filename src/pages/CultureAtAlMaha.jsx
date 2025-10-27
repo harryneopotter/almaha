@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import CTASection from '../components/home/CTASection';
 import styles from './CultureAtAlMaha.module.css';
+import HeroSlider from '../components/HeroSlider';
 
 function CultureAtAlMaha() {
   useEffect(() => {
@@ -11,25 +12,20 @@ function CultureAtAlMaha() {
     <div className={styles.culturePage}>
       {/* Hero Banner */}
       <section className={styles.heroBanner}>
-        <div 
-          className={styles.heroBackground}
-          style={{
-            backgroundImage: 'url("/assets/images/careers/careers-banner.jpg")',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center top',
-            backgroundAttachment: 'scroll',
-            backgroundSize: 'cover'
-          }}
-        >
-          <div className={styles.heroOverlay}></div>
-          <div className={styles.heroContent}>
-            <h1>Culture at Al Maha</h1>
-          </div>
-        </div>
+        <HeroSlider
+          images={[
+            '/assets/images/careers/career-banner.jpg',
+            '/assets/images/careers/228A0840-1-1.jpg'
+          ]}
+          interval={3000}
+          height={styles.heroBanner?.height || '450px'}
+          showOverlay={false}
+        />
+        {/* intentionally no overlay text on the slider; images only */}
       </section>
 
-      {/* Work With Us Section */}
-      <section className={styles.workWithUsSection}>
+  {/* Work With Us Section */}
+  <section id="apply-now" className={styles.workWithUsSection}>
         <div className={styles.container}>
           <div className={styles.contentWrapper}>
             {/* Left Column - Sidebar */}
@@ -100,6 +96,10 @@ function CultureAtAlMaha() {
                   <h3>Dependability</h3>
                 </div>
                 <div className={styles.valueItem}>
+                  <img src="/assets/images/careers/Group-11.png" alt="Responsibility" />
+                  <h3>Responsibility</h3>
+                </div>
+                <div className={styles.valueItem}>
                   <img src="/assets/images/careers/Group.jpg" alt="Accountability" />
                   <h3>Accountability</h3>
                 </div>
@@ -129,19 +129,19 @@ function CultureAtAlMaha() {
               <div className={styles.workCultureValues}>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-2-2.png" alt="Be Productive" />
-                  <p>Be<br/>Productive</p>
+                  <h3>Be Productive</h3>
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-11.png" alt="Be result Oriented" />
-                  <p>Be result<br/>Oriented</p>
+                  <h3>Be result Oriented</h3>
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-10-1.png" alt="Be disciplined" />
-                  <p>Be<br/>disciplined</p>
+                  <h3>Be disciplined</h3>
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-9-1.png" alt="Be professional" />
-                  <p>Be<br/>professional</p>
+                  <h3>Be professional</h3>
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-8-1.png" alt="Set goals and achieve them" />
@@ -153,11 +153,11 @@ function CultureAtAlMaha() {
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-6-1.png" alt="Do it now approach" />
-                  <p>Do it now<br/>approach</p>
+                  <h3>Do it now approach</h3>
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-4-1.png" alt="Always aim perfection" />
-                  <h3>Always aim perfection amid° your things with "Zero Error</h3>
+                  <h3>Always aim for perfection with zero errors</h3>
                 </div>
                 <div className={styles.workValueItem}>
                   <img src="/assets/images/careers/Group-5-1.png" alt="Execute new assignments with happiness" />
@@ -195,8 +195,8 @@ function CultureAtAlMaha() {
         </div>
       </section>
 
-      {/* Life at Al Maha Section */}
-      <section className={styles.lifeAtAlMahaSection}>
+  {/* Life at Al Maha Section */}
+  <section id="life-at-almaha" className={styles.lifeAtAlMahaSection}>
         <div className={styles.container}>
           <div className={styles.contentWrapper}>
             {/* Left Column - Sidebar */}

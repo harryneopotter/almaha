@@ -1,8 +1,4 @@
 /* Culture at Al Maha Page Styles */
-.culturePage {
-  margin-top: -90px;
-  padding-top: 90px;
-}
 
 /* Hero Banner */
 .heroBanner {
@@ -55,17 +51,27 @@
 }
 
 .container {
-  max-width: 1400px;
+  /* Center content with a max width of 1140px on wide viewports */
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0 20px;
 }
 
 .contentWrapper {
   display: grid;
-  grid-template-columns: 210px 774px;
+  /* Default wide viewport layout: left sidebar and flexible right column centered inside container */
+  grid-template-columns: 300px 1fr;
   column-gap: 72px;
-  max-width: 1056px;
+  max-width: 1140px;
   margin: 0 auto;
+}
+
+/* When viewport is narrower (<1200px), make the first column 210px as requested */
+@media (max-width: 1199px) {
+  .contentWrapper {
+    grid-template-columns: 210px 1fr;
+    max-width: 100%;
+  }
 }
 
 /* Left Column - Sidebar */
@@ -76,9 +82,9 @@
 .leftDivider {
   width: 100%;
   height: 1px;
-  background-color: #eecc6b;
+  background-color: #ecc558; /* canonical gold */
   border: none;
-  margin: 0 0 20px 0;
+  margin: 0 0 72px 0; /* larger spacing on left separators */
 }
 
 .heading {
@@ -86,11 +92,11 @@
   font-size: 24px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
-  margin: 0;
-  margin-top: 72px;
-  margin-bottom: 24px;
+  line-height: 36px;
+  letter-spacing: -0.48px;
+  margin: 0 0 24px 0;
+  display: inline-block;
+  width: 210px;
 }
 
 /* Right Column - Main Content */
@@ -98,23 +104,30 @@
   position: relative;
 }
 
+/* Right column headings: size 20px, weight 600, left-aligned */
+.rightColumn h2,
+.rightColumn h3 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  color: rgb(0,0,0);
+  margin: 0 0 15px 0;
+}
+
 .rightDivider {
   width: 100%;
   height: 1px;
-  background-color: #dddddd;
+  /* default: no visible separator; only specific sections show the gray divider */
+  background-color: transparent;
   border: none;
-  margin: 0 0 20px 0;
+  margin: 0;
 }
 
-.description p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 24px;
-  font-weight: 300;
-  color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
-  margin: 0;
-  margin-top: 36px;
+/* Show gray separator only for Work With Us and Life@almaha sections */
+.workWithUsSection .rightDivider,
+.lifeAtAlMahaSection .rightDivider {
+  background-color: #dddddd;
+  margin: 0 0 72px 0; /* 72px gap below the separator */
 }
 
 /* Work With Us Section */
@@ -133,11 +146,32 @@
 
 .description p {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 24px;
-  margin: 0;
+  line-height: 26.25px;
+  margin: 0 0 20px 0;
+}
+
+/* Work With Us: specific text styles for right column as requested */
+.workWithUsSection .rightColumn .description p {
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  height: 210px;
+  line-height: 35px;
+  margin-block-end: 15px;
+  margin-block-start: 0px;
+  margin-bottom: 15px;
+  margin-inline-end: 0px;
+  margin-inline-start: 0px;
+  text-align: left;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .sidebarImage {
@@ -160,7 +194,7 @@
 .cultureValues {
   margin-top: 36px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 30px;
 }
 
@@ -201,7 +235,7 @@
 .workCultureValues {
   margin-top: 36px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 30px;
 }
 
@@ -250,9 +284,16 @@
 .scoreCard h2, .guinnessCertificate h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 600;
   color: rgb(48, 49, 51);
-  margin: 0 0 20px 0;
+  height: 28.7969px;
+  letter-spacing: normal;
+  line-height: 28.8px;
+  margin-block-start: 27px;
+  margin-block-end: 0px;
+  margin-top: 27px;
+  margin-bottom: 0px;
+  text-align: left;
 }
 
 .scoreCard img, .guinnessCertificate img {

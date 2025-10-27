@@ -186,3 +186,6 @@ junit.xml
 # Misc
 *.tgz
 *.tar.gz
+
+# Ignore builds_zip directory (build zips)
+builds_zip/

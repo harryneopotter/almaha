@@ -1,8 +1,5 @@
 /* About Page Styles */
-.aboutPage {
-  margin-top: -90px;
-  padding-top: 90px;
-}
+
 
 /* Hero Banner */
 .heroBanner {
@@ -41,7 +38,8 @@
 
 .heroContent h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 56px;
+  font-size: 75px;
+  line-height: 75px;
   font-weight: 300;
   color: #ffffff;
   margin: 0;
@@ -55,17 +53,23 @@
 }
 
 .container {
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0;
 }
 
 .contentWrapper {
   display: grid;
   grid-template-columns: 210px 774px;
   column-gap: 72px;
-  max-width: 1056px;
+  max-width: 1060px;
   margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .contentWrapper {
+    grid-template-columns: 228px 828px;
+    max-width: 1128px;
+  }
 }
 
 /* Left Column - Sidebar */
@@ -86,11 +90,12 @@
   font-size: 24px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
+  line-height: 36px;
+  letter-spacing: -0.48px;
   margin: 0;
-  margin-top: 72px;
-  margin-bottom: 24px;
+  /* Match live: no extra spacing around section headings */
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Right Column - Main Content */
@@ -111,10 +116,10 @@
   font-size: 20px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 24px;
+  line-height: 35px;
   letter-spacing: normal;
   margin: 0;
-  margin-top: 36px;
+  margin-bottom: 15px;
 }
 
 .leadText {
@@ -144,8 +149,9 @@
 .buttonContainer {
   margin-top: 40px;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: row; /* side-by-side on desktop */
+  gap: 20px; /* ~20px gap between buttons */
+  align-items: center;
 }
 
 .downloadBtn {
@@ -162,7 +168,7 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-bottom-style: solid;
-  border-bottom-width: 0.8px;
+  border-bottom-width: 1px;
   border-image-outset: 0;
   border-image-repeat: stretch;
   border-image-slice: 100%;
@@ -170,15 +176,15 @@
   border-image-width: 1;
   border-left-color: rgb(236, 197, 88);
   border-left-style: solid;
-  border-left-width: 0.8px;
+  border-left-width: 1px;
   border-right-color: rgb(236, 197, 88);
   border-right-style: solid;
-  border-right-width: 0.8px;
+  border-right-width: 1px;
   border-top-color: rgb(236, 197, 88);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-top-style: solid;
-  border-top-width: 0.8px;
+  border-top-width: 1px;
   box-sizing: border-box;
   color: rgb(0, 0, 0);
   cursor: pointer;
@@ -235,7 +241,7 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-bottom-style: solid;
-  border-bottom-width: 0.8px;
+  border-bottom-width: 1px;
   border-image-outset: 0;
   border-image-repeat: stretch;
   border-image-slice: 100%;
@@ -243,15 +249,15 @@
   border-image-width: 1;
   border-left-color: rgb(48, 49, 51);
   border-left-style: solid;
-  border-left-width: 0.8px;
+  border-left-width: 1px;
   border-right-color: rgb(48, 49, 51);
   border-right-style: solid;
-  border-right-width: 0.8px;
+  border-right-width: 1px;
   border-top-color: rgb(48, 49, 51);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-top-style: solid;
-  border-top-width: 0.8px;
+  border-top-width: 1px;
   box-sizing: border-box;
   color: rgb(48, 49, 51);
   cursor: pointer;
@@ -326,7 +332,7 @@
 
 .visionStats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr); /* three stats on desktop */
   gap: 30px;
   margin-top: 30px;
 }
@@ -358,10 +364,43 @@
   background-color: #ffffff;
 }
 
+/* Mission media (image + text) */
+.missionContent {
+  margin-top: 20px;
+}
+
+.missionImageWrapper {
+  max-width: 742px; /* per live */
+  width: 100%;
+  margin: 0 0 20px 0;
+  border-radius: 16px;
+  overflow: hidden; /* rounded corners */
+}
+
+.missionImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Values Section */
 .valuesSection {
   padding: 72px 0;
   background-color: #f8f9fa;
+}
+
+/* Core Values media-only block */
+.coreValuesMedia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.coreValuesMedia img {
+  width: 770px; /* as per live inline style */
+  max-width: 100%;
+  height: auto;
 }
 
 .valuesContent {
@@ -418,6 +457,17 @@
   border-radius: 8px;
 }
 
+/* Gold/gap scheme: when a section uses the gold left divider, apply
+   72px gap below the left (gold) divider and 36px below the right (gray) divider.
+   This class is applied to sections via `styles.goldSeparator` in the page JSX. */
+.goldSeparator .leftDivider {
+  margin: 0 0 72px 0;
+}
+
+.goldSeparator .rightDivider {
+  margin: 0 0 36px 0;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .contentWrapper {
@@ -453,7 +503,8 @@
   }
 
   .heroContent h1 {
-    font-size: 42px;
+    font-size: 25px;
+    line-height: 25px;
   }
 
   .description p,
@@ -476,4 +527,20 @@
   .logoImages {
     gap: 15px;
   }
+
+  .coreValuesMedia img {
+    width: 100%;
+  }
+}
+
+/* Scoped override: ensure description text is not clipped by external/generated rules
+   Some live-site exported CSS/inline rules impose fixed heights (e.g. 70px).
+   This override is intentionally conservative and scoped to the About page only.
+*/
+.description,
+.description p {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
 }

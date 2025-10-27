@@ -50,6 +50,10 @@ function Exports() {
     };
   }, []);
 
+  // refs for amCharts map instance and container
+  const robustChartRef = useRef(null);
+  const robustMapInstance = useRef(null);
+
   return (
     <div className={styles.exportsPage}>
       {/* Hero Banner */}
@@ -78,10 +82,10 @@ function Exports() {
             {/* Left Column - Sidebar */}
             <StickySidebar offset={120} className={styles.leftColumn}>
               <div className={styles.leftDivider}></div>
-              <p className={styles.sidebarIntro}>
+              <h2 className={styles.heading}>
                 Al&nbsp;Maha&nbsp;Foods today stands for state-of-the-art International quality product
                 deliverance.
-              </p>
+              </h2>
             </StickySidebar>
 
             {/* Right Column - Main Content */}

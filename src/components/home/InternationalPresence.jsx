@@ -39,26 +39,32 @@ const InternationalPresence = () => {
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
 
-    // Configure series
+    // Configure series (default appearance for all polygons)
     const polygonTemplate = polygonSeries.mapPolygons.template;
-    polygonTemplate.strokeWidth = 0.8;
-    polygonTemplate.stroke = am4core.color('#ffffff');
-    polygonTemplate.fill = am4core.color('#ddd0d0');
-    polygonTemplate.tooltipText = '{name}';
-
-    // Hover state
-    const hoverState = polygonTemplate.states.create('hover');
-    hoverState.properties.fill = am4core.color('#fe0000');
+  polygonTemplate.strokeWidth = 0.8;
+  polygonTemplate.stroke = am4core.color('#ffffff');
+  polygonTemplate.fill = am4core.color('#ddd0d0');
+  // Do not set a template tooltip or hover state here - we'll enable tooltip and hover
+  // only on the countries that are listed in `activeCountries` below.
 
     // Active/Highlighted countries
     const activeCountries = ['CA', 'US', 'SA', 'YE', 'IQ', 'IN', 'FR'];
-    
+
+    // When the series is ready, highlight only the active countries and
+    // enable tooltip/hover behavior on those polygons specifically.
     polygonSeries.events.on('ready', () => {
       activeCountries.forEach((countryId) => {
         const polygon = polygonSeries.getPolygonById(countryId);
         if (polygon) {
+          // Highlight the active country
           polygon.fill = am4core.color('#fe0000');
-          polygon.states.create('hover').properties.fill = am4core.color('#fe0000');
+
+          // Create a hover state only for this polygon so other countries don't react
+          const pHover = polygon.states.create('hover');
+          pHover.properties.fill = am4core.color('#fe0000');
+
+          // Enable tooltip for active polygons only
+          polygon.tooltipText = '{name}';
         }
       });
     });

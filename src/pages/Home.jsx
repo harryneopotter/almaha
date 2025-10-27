@@ -13,15 +13,18 @@ import styles from '../styles/Home.module.css';
 const Home = () => {
   return (
     <div className={styles.homePage}>
-      <HeroSlider />
-      <WelcomeSection />
-      <CertificationCard />
-      <VisionBlock />
-      <InternationalPresence />
-      <DomesticPresence />
-      <NewsSection />
-      <BusinessSection />
-      <FeaturedArticle />
+  <HeroSlider removeOverlay={true} />
+      {/* Center all core content sections like inner pages */}
+      <div className={styles.contentWrapper}>
+        <WelcomeSection />
+        <CertificationCard />
+        <VisionBlock />
+        <InternationalPresence />
+        <DomesticPresence />
+        <NewsSection />
+        <BusinessSection />
+        <FeaturedArticle />
+      </div>
       <CTASection />
     </div>
   );

@@ -1,0 +1,86 @@
+{
+  "host": "http://localhost:4173",
+  "timestamp": "2025-10-25T03:04:47.735Z",
+  "results": [
+    {
+      "page": "CSR",
+      "url": "http://localhost:4173/corporate-social-responsibility",
+      "heading": {
+        "tag": "H1",
+        "text": "Corporate Social Responsibility",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "75px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "75px"
+      },
+      "paragraph": {
+        "tag": "P",
+        "text": "Al Maha Foods attributes its existence to the society and seeks to do its part for the society through its Corporate Social Responsibility (CSR) Initiative. Edu",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "24px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "36px"
+      }
+    },
+    {
+      "page": "Exports",
+      "url": "http://localhost:4173/what-we-do/exports",
+      "heading": {
+        "tag": "H1",
+        "text": "Exports Profile",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "75px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "75px"
+      },
+      "paragraph": {
+        "tag": "P",
+        "text": "Al Maha Foods today stands for state-of-the-art International quality product deliverance.",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "35px"
+      }
+    },
+    {
+      "page": "Quality Assurance",
+      "url": "http://localhost:4173/what-we-do/quality-assurance",
+      "heading": {
+        "tag": "H1",
+        "text": "Quality Assurance",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "75px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "75px"
+      },
+      "paragraph": {
+        "tag": "P",
+        "text": "We are at the forefront in this competitive Basmati Rice Quality Assurance owing to our Vision, Mission, and Values. We are dedicated and devoted, leaving no st",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "35px"
+      }
+    },
+    {
+      "page": "Culture at Al Maha",
+      "url": "http://localhost:4173/culture-at-al-maha",
+      "heading": null,
+      "paragraph": {
+        "tag": "P",
+        "text": "Al Maha Foods fosters a positive and collaborative office culture that values teamwork, respect, and open communication. The company encourages employee growth ",
+        "fontFamily": "Roboto, sans-serif",
+        "fontSize": "15px",
+        "fontWeight": "300",
+        "textAlign": "start",
+        "lineHeight": "26.25px"
+      }
+    }
+  ]
+}

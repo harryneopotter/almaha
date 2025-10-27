@@ -7,6 +7,7 @@ import OurBrands from './pages/OurBrands';
 import Blog from './pages/Blog';
 import Career from './pages/Career';
 import CSR from './pages/CSR';
+import CultureAtAlMaha from './pages/CultureAtAlMaha';
 import Contact from './pages/Contact';
 import NewsArticle from './pages/NewsArticle';
 import BusinessArticle from './pages/BusinessArticle';
@@ -32,8 +33,10 @@ function App() {
           <Route path="our-brands" element={<OurBrands />} />
           {/* Blog - Standalone page */}
           <Route path="blog" element={<Blog />} />
-          {/* Workplace & Careers - Single page with sections */}
-          <Route path="career" element={<Career />} />
+          {/* Workplace & Careers - redirect to canonical culture path */}
+          <Route path="career" element={<Navigate to="/culture-at-al-maha" replace />} />
+          {/* Culture at Al Maha - standalone route to match live path */}
+          <Route path="culture-at-al-maha" element={<CultureAtAlMaha />} />
           {/* CSR */}
           <Route path="corporate-social-responsibility" element={<CSR />} />
           {/* Contact Us */}

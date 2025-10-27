@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styles from './Career.module.css';
-import ctaStyles from '../styles/components/CTASection.module.css';
 import CultureAtAlMahaSection from './sections/CultureAtAlMahaSection';
+import CTASection from '../components/home/CTASection';
 
 const Career = () => {
     const location = useLocation();
@@ -43,31 +43,15 @@ const Career = () => {
                 <CultureAtAlMahaSection />
             </section>
 
-            {/* Apply Now CTA Section (reusing home CTA styles) */}
-            <section id="apply-now" className={ctaStyles.ctaSection}>
-                <div className={ctaStyles.container}>
-                    <div className={ctaStyles.wrapper}>
-                        <aside className={ctaStyles.sidebar}>
-                            <div className={ctaStyles.divider}></div>
-                            <h3 className={ctaStyles.sidebarHeading}>Apply Now</h3>
-                        </aside>
-
-                        <div className={ctaStyles.content}>
-                            <div className={ctaStyles.textContent}>
-                                <h2 className={ctaStyles.heading}>Ready to join Al Maha?</h2>
-                                <p className={ctaStyles.description}>
-                                    Submit your resume and we will get back to you.
-                                </p>
-                            </div>
-                            <div className={ctaStyles.buttonWrapper}>
-                                <Link to="/contact-us" className={ctaStyles.primaryButton}>
-                                    Submit Resume
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* Apply Now CTA Section (reusing shared CTA component) */}
+            <CTASection
+                sidebarTitle="Apply Now"
+                title="Ready to join Al Maha?"
+                subtitle="Submit your resume and we will get back to you."
+                buttonText="Submit Resume"
+                to="/contact-us"
+                className=""
+            />
         </div>
     );
 };

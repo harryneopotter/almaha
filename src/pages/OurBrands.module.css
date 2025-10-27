@@ -1,15 +1,11 @@
 /* Our Brands Page Styles */
-.brandsPage {
-  margin-top: -90px;
-  padding-top: 90px;
-}
 
 /* Hero Banner */
 .heroBanner {
   position: relative;
-  height: 450px;
+  height: 630px;
   overflow: hidden;
-  background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
+  background: #141618;
 }
 
 .heroBackground {
@@ -28,20 +24,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.35), transparent);
 }
 
 .heroContent {
   position: absolute;
   top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
 .heroContent h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 56px;
+  font-size: 75px;
+  line-height: 75px;
   font-weight: 300;
   color: #ffffff;
   margin: 0;
@@ -55,17 +52,25 @@
 }
 
 .container {
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0;
+  width: 100%;
 }
 
 .contentWrapper {
   display: grid;
   grid-template-columns: 210px 774px;
   column-gap: 72px;
-  max-width: 1056px;
+  max-width: 1060px;
+  width: 100%;
   margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .contentWrapper {
+    grid-template-columns: 228px 828px;
+    max-width: 1128px;
+  }
 }
 
 /* Left Column - Sidebar */
@@ -78,7 +83,7 @@
   height: 1px;
   background-color: #eecc6b;
   border: none;
-  margin: 0 0 20px 0;
+  margin: 0 0 72px 0;
 }
 
 .heading {
@@ -86,11 +91,11 @@
   font-size: 24px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
+  line-height: 36px;
+  letter-spacing: -0.48px;
   margin: 0;
-  margin-top: 72px;
-  margin-bottom: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Right Column - Main Content */
@@ -103,7 +108,7 @@
   height: 1px;
   background-color: #dddddd;
   border: none;
-  margin: 0 0 20px 0;
+  margin: 0 0 36px 0;
 }
 
 .description p {
@@ -132,24 +137,27 @@
 
 .productBlock {
   display: flex;
-  align-items: flex-start;
-  gap: 0;
-  background: #ffffff;
+  align-items: center;
+  gap: 40px; /* visual space between image and content */
+  background: #F7F7F7;
+  border: 1px solid #eaeaea;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 40px;
+  box-shadow: none;
+  transition: all 0.5s ease;
   overflow: hidden;
+  flex-wrap: nowrap; /* keep image and text on the same row on desktop */
 }
 
 .productBlock:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: none;
+  box-shadow: none;
 }
 
 .imgBox {
   background-attachment: scroll;
   background-clip: border-box;
-  background-color: rgb(238, 204, 107);
+  background-color: #eecc6b;
   background-image: none;
   background-origin: padding-box;
   background-position-x: 0%;
@@ -173,15 +181,13 @@
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
+  padding: 0;
   scroll-behavior: auto;
   text-align: center;
   text-size-adjust: 100%;
   unicode-bidi: isolate;
-  width: 280.55px;
+  width: 308px;
+  flex: 0 0 308px; /* fixed image column to avoid wrapping */
 }
 
 .imgBox img {
@@ -200,17 +206,33 @@
   height: 238px;
   overflow-x: hidden;
   overflow-y: hidden;
-  padding-left: 50px;
+  padding-left: 0;
   scroll-behavior: auto;
   text-align: left;
   text-size-adjust: 100%;
   unicode-bidi: isolate;
-  width: 420.837px;
+  width: auto;
+  flex: 1 1 0; /* take remaining space on row */
+  min-width: 0; /* allow text to shrink so it stays on the same row */
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .productBlock {
+    flex-wrap: wrap; /* stack on small screens */
+    gap: 20px;
+  }
+
+  .imgBox,
+  .content {
+    flex: 1 1 100%;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .content h3 {
@@ -235,7 +257,7 @@
   font-size: 15px;
   font-weight: 400;
   color: rgb(0, 0, 0);
-  line-height: 22px;
+  line-height: 24px;
   margin: 0 0 15px 0;
 }
 
@@ -292,9 +314,7 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
+  .container { padding: 0; }
   
   .mainSection,
   .brandsSection {
@@ -302,7 +322,8 @@
   }
 
   .heroContent h1 {
-    font-size: 42px;
+    font-size: 25px;
+    line-height: 25px;
   }
 
   .description p {

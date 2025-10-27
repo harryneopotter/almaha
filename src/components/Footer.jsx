@@ -76,19 +76,19 @@ const Footer = () => {
                 <h2 className={styles.widgetTitle}>Contact Us</h2>
                 <ul className={styles.contactInfo}>
                   <li>
-                    <i className="fa fa-map-marker"></i>
+                    <i className="fas fa-map-marker-alt" aria-hidden="true"></i>
                     <span>1122, DLF Tower-A, Jasola, New Delhi- 110025, India.</span>
                   </li>
                   <li>
-                    <i className="fa fa-phone"></i>
+                    <i className="fas fa-phone" aria-hidden="true"></i>
                     <a href="tel:+911143331111">+ 91 11 4333 1111</a>
                   </li>
                   <li>
-                    <i className="fa fa-fax"></i>
+                    <i className="fas fa-fax" aria-hidden="true"></i>
                     <span>+ 91 11 4333 1122</span>
                   </li>
                   <li>
-                    <i className="fa fa-envelope"></i>
+                    <i className="fas fa-envelope" aria-hidden="true"></i>
                     <a href="mailto:almahafoods@almahafoods.com">almahafoods@almahafoods.com</a>
                   </li>
                 </ul>
@@ -101,7 +101,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     aria-label="Facebook"
                   >
-                    <i className="fa fa-facebook"></i>
+                    <i className="fab fa-facebook-f" aria-hidden="true"></i>
                   </a>
                   <a
                     href="https://twitter.com/"
@@ -109,7 +109,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     aria-label="Twitter"
                   >
-                    <i className="fa fa-twitter"></i>
+                    <i className="fab fa-twitter" aria-hidden="true"></i>
                   </a>
                   <a
                     href="https://www.linkedin.com/company/79564335/admin/"
@@ -117,7 +117,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
-                    <i className="fa fa-linkedin"></i>
+                    <i className="fab fa-linkedin-in" aria-hidden="true"></i>
                   </a>
                   <a
                     href="https://www.youtube.com/channel/UC6KF_KNSiBrpDAsFiEJHj0g"
@@ -125,7 +125,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     aria-label="YouTube"
                   >
-                    <i className="fa fa-youtube-play"></i>
+                    <i className="fab fa-youtube" aria-hidden="true"></i>
                   </a>
                 </div>
 
@@ -144,7 +144,7 @@ const Footer = () => {
       {/* Footer Bottom removed — copyright now lives in the contact column */}
 
       {/* Scroll to Top Button */}
-      <ScrollToTop />
+  <ScrollToTop />
     </footer>
   );
 };

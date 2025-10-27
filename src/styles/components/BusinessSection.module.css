@@ -1,11 +1,19 @@
 /* Business Section Styles */
 .businessSection {
+  /* full-bleed band (use calc offsets to align to viewport even when nested)
+     margin-left/right: calc(50% - 50vw) pulls the element so it starts at the
+     viewport left edge regardless of parent width. */
   padding: 72px 0;
   background-color: var(--color-light-gray);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .container {
-  padding: 0 36px;
+  padding: 0;
+  max-width: 1056px;
+  margin: 0 auto;
 }
 
 .content {

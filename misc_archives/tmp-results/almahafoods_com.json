@@ -1,0 +1,86 @@
+{
+  "host": "https://www.almahafoods.com",
+  "timestamp": "2025-10-24T20:10:33.713Z",
+  "results": [
+    {
+      "page": "CSR",
+      "url": "https://www.almahafoods.com/corporate-social-responsibility",
+      "heading": {
+        "tag": "H1",
+        "text": "Corporate Social Responsibility",
+        "fontFamily": "Roboto",
+        "fontSize": "75px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "75px"
+      },
+      "paragraph": {
+        "tag": "P",
+        "text": "Al Maha Foods attributes its existence to the society and seeks to do its part for the society through its Corporate Social Responsibility (CSR) Initiative. Edu",
+        "fontFamily": "Roboto",
+        "fontSize": "24px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "36px"
+      }
+    },
+    {
+      "page": "Exports",
+      "url": "https://www.almahafoods.com/what-we-do/exports",
+      "heading": {
+        "tag": "H1",
+        "text": "Exports Profile",
+        "fontFamily": "Roboto",
+        "fontSize": "75px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "75px"
+      },
+      "paragraph": {
+        "tag": "P",
+        "text": "Al Maha Foods embarked on its journey with a clear vision: to offer premium Basmati Rice to Quality conscious Global consumers of Basmati Rice. Our Ideology com",
+        "fontFamily": "Roboto",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "35px"
+      }
+    },
+    {
+      "page": "Quality Assurance",
+      "url": "https://www.almahafoods.com/what-we-do/quality-assurance",
+      "heading": {
+        "tag": "H1",
+        "text": "Quality Assurance",
+        "fontFamily": "Roboto",
+        "fontSize": "75px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "75px"
+      },
+      "paragraph": {
+        "tag": "P",
+        "text": "We are at the forefront in this competitive Basmati Rice Quality Assurance owing to our Vision, Mission, and Values. We are dedicated and devoted, leaving no st",
+        "fontFamily": "Roboto",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "35px"
+      }
+    },
+    {
+      "page": "Culture at Al Maha",
+      "url": "https://www.almahafoods.com/culture-at-al-maha",
+      "heading": null,
+      "paragraph": {
+        "tag": "P",
+        "text": "",
+        "fontFamily": "Roboto",
+        "fontSize": "15px",
+        "fontWeight": "300",
+        "textAlign": "left",
+        "lineHeight": "26.25px"
+      }
+    }
+  ]
+}

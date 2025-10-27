@@ -1,8 +1,5 @@
 /* Exports Page Styles */
-.exportsPage {
-  margin-top: -90px;
-  padding-top: 90px;
-}
+
 
 /* Hero Banner */
 .heroBanner {
@@ -41,7 +38,8 @@
 
 .heroContent h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 56px;
+  font-size: 75px;
+  line-height: 75px;
   font-weight: 300;
   color: #ffffff;
   margin: 0;
@@ -55,17 +53,23 @@
 }
 
 .container {
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0;
 }
 
 .contentWrapper {
   display: grid;
   grid-template-columns: 210px 774px;
   column-gap: 72px;
-  max-width: 1056px;
+  max-width: 1060px;
   margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .contentWrapper {
+    grid-template-columns: 228px 828px;
+    max-width: 1128px;
+  }
 }
 
 /* Left Column - Sidebar */
@@ -78,7 +82,7 @@
   height: 1px;
   background-color: #eecc6b;
   border: none;
-  margin: 0 0 20px 0;
+  margin: 0 0 72px 0;
 }
 
 .heading {
@@ -86,24 +90,24 @@
   font-size: 24px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
+  line-height: 36px;
+  letter-spacing: -0.48px;
   margin: 0;
-  margin-top: 72px;
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Intro copy placed in left sidebar */
 .sidebarIntro {
   font-family: 'Roboto', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
+  line-height: 35px;
+  letter-spacing: -0.48px;
   margin: 0;
-  margin-top: 72px;
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Ensure right column first paragraph has same top spacing */
@@ -115,11 +119,11 @@
 
 .description p {
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 35px;
-  letter-spacing: normal;
+  line-height: 38px;
+  letter-spacing: -0.48px;
   margin: 0;
   margin-bottom: 20px;
 }
@@ -141,8 +145,8 @@
   font-size: 24px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
+  line-height: 36px;
+  letter-spacing: -0.48px;
   margin: 0;
   margin-top: 36px;
   margin-bottom: 20px;
@@ -150,10 +154,19 @@
 
 .description p {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 24px;
+  line-height: 35px;
+  margin: 0 0 20px 0;
+}
+
+.description p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: rgb(48, 49, 51);
+  line-height: 35px;
   letter-spacing: normal;
   margin: 0;
   margin-bottom: 20px;
@@ -161,9 +174,11 @@
 
 .description h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 300;
   color: rgb(48, 49, 51);
+  line-height: 36px;
+  letter-spacing: -0.48px;
   margin: 0;
   margin-top: 30px;
   margin-bottom: 15px;
@@ -314,7 +329,8 @@
   }
 
   .heroContent h1 {
-    font-size: 42px;
+    font-size: 40px;
+    line-height: 40px;
   }
 
   .description p {
@@ -410,5 +426,12 @@
   .imap {
     height: 300px;
     min-height: 250px;
+  }
+}
+
+@media (max-width: 375px) {
+  .heroContent h1 {
+    font-size: 25px;
+    line-height: 25px;
   }
 }

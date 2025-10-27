@@ -1,7 +1,13 @@
 /* Vision Block Styles */
 .visionBlock {
   position: relative;
-  width: 100%;
+  /* make the section span the full viewport so background elements can be full-bleed */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   min-height: 550px;
   overflow: hidden;
   display: flex;
@@ -12,8 +18,9 @@
 .videoBackground {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: 100vw; /* span viewport width */
+  margin-left: -50vw; /* pull to left edge */
   height: 100%;
   overflow: hidden;
   z-index: 0;
@@ -44,7 +51,10 @@
 .container {
   position: relative;
   z-index: 2;
-  padding: 120px 20px;
+  /* center inner content and remove horizontal padding so content is flush with central column */
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 120px 0;
   width: 100%;
 }
 

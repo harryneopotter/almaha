@@ -1,12 +1,12 @@
 /* Footer Styles */
 .footer {
-  background-color: #ffffff;
+  background-color: transparent;
   color: var(--color-text-dark);
 }
 
 .footerMain {
-  background-color: #ffffff;
-  padding: 50px 0 0 0;
+  background-color: transparent;
+  padding: 40px 0 0 0;
   border-top: 1px solid var(--color-light-gray);
 }
 
@@ -113,21 +113,20 @@
 }
 
 .footerMenu li::before {
-  content: "\f101";
-  font-family: 'FontAwesome';
-  font-size: 20px;
-  font-weight: 400;
+  /* Restore the original chevron-style bullet using Font Awesome 5 */
+  content: "\f105"; /* fa-angle-right */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; /* use solid style */
+  font-style: normal;
+  font-size: 18px;
   color: rgb(48, 49, 51);
   position: absolute;
   left: 0;
-  top: -4px;
-  width: 11.0625px;
-  height: 35px;
-  line-height: 35px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
   text-align: left;
-  text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
 }
 
@@ -212,10 +211,7 @@
   color: rgb(48, 49, 51);
   cursor: pointer;
   display: inline;
-  font-family: 'FontAwesome';
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
   height: auto;
   line-height: 20px;
   text-align: center;
@@ -229,9 +225,26 @@
   color: var(--color-red);
 }
 
+/* Copyright placed inside the 4th column under social icons */
+.columnCopyright {
+  margin-top: 22px;
+  /* Keep copyright on a single line on wide viewports */
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .columnCopyright {
+    margin-top: 18px;
+    text-align: center;
+    white-space: normal;
+    font-size: 14px;
+  }
+}
+
 /* Footer Bottom */
 .footerBottom {
-  background-color: #ffffff;
+  background-color: transparent;
   border-top: 1px solid var(--color-light-gray);
   padding: 30px 0;
 }

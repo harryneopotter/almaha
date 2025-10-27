@@ -76,6 +76,10 @@ const CultureAtAlMahaSection = () => {
                   <h3>Dependability</h3>
                 </div>
                 <div className={styles.valueItem}>
+                  <img src="/assets/images/careers/Group-11.png" alt="Responsibility" />
+                  <h3>Responsibility</h3>
+                </div>
+                <div className={styles.valueItem}>
                   <img src="/assets/images/careers/Group.jpg" alt="Accountability" />
                   <h3>Accountability</h3>
                 </div>

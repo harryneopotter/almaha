@@ -1,0 +1,16 @@
+# Vite/React SPA routing for Apache on cPanel
+# Ensures client-side routes resolve to index.html
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # If deploying to a subdomain root, base is '/'
+  RewriteBase /
+
+  # Serve existing files directly
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule . - [L]
+
+  # Fallback all other requests to index.html
+  RewriteRule . /index.html [L]
+</IfModule>

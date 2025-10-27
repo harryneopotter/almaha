@@ -106,7 +106,7 @@ const Header = () => {
             <div className={styles.logoContainer}>
               <Link to="/" className={styles.navbarBrand}>
                 <img 
-                  src="/assets/images/home/logo.png" 
+                  src="/assets/images/al-maha-logo.png" 
                   alt="Al Maha Foods" 
                   width="183" 
                   height="61"

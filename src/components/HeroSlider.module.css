@@ -1,0 +1,42 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 600ms ease-in-out;
+  will-change: opacity;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.45), rgba(0,0,0,0));
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #fff;
+}

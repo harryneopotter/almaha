@@ -51,7 +51,7 @@ function OurBrands() {
           style={{
             backgroundImage: 'url("/assets/images/brands/brands-banner.jpg")',
             backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center top',
+            backgroundPosition: 'center center',
             backgroundAttachment: 'scroll',
             backgroundSize: 'cover'
           }}
@@ -110,7 +110,7 @@ function OurBrands() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section (use homepage default text) */}
       <CTASection />
     </div>
   );

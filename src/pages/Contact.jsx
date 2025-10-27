@@ -61,7 +61,7 @@ function Contact() {
                   <div className={styles.contactItem}>
                     <div className={styles.iconWrapper}>
                       <div className={styles.iconCircle}>
-                        📍
+                        <i className="fas fa-map-marker-alt" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div className={styles.contactText}>
@@ -72,7 +72,7 @@ function Contact() {
                   <div className={styles.contactItem}>
                     <div className={styles.iconWrapper}>
                       <div className={styles.iconCircle}>
-                        📞
+                        <i className="fas fa-phone" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div className={styles.contactText}>
@@ -83,7 +83,7 @@ function Contact() {
                   <div className={styles.contactItem}>
                     <div className={styles.iconWrapper}>
                       <div className={styles.iconCircle}>
-                        📠
+                        <i className="fas fa-fax" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div className={styles.contactText}>
@@ -94,7 +94,7 @@ function Contact() {
                   <div className={styles.contactItem}>
                     <div className={styles.iconWrapper}>
                       <div className={styles.iconCircle}>
-                        ✉️
+                        <i className="fas fa-envelope" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div className={styles.contactText}>
@@ -105,7 +105,7 @@ function Contact() {
                   <div className={styles.contactItem}>
                     <div className={styles.iconWrapper}>
                       <div className={styles.iconCircle}>
-                        🌐
+                        <i className="fas fa-globe" aria-hidden="true"></i>
                       </div>
                     </div>
                     <div className={styles.contactText}>
@@ -133,15 +133,14 @@ function Contact() {
                 {/* Map */}
                 <div className={styles.mapContainer}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.3614273741844!2d77.28547731508042!3d28.536599982458768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e564c2c5e5%3A0x9c8e89b7c5e5e5e5!2sDLF%20Tower%20A%2C%20Jasola%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14020.026577928906!2d77.289257!3d28.53952!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x84044739face85ec!2sAl%20Maha%20Foods%20International%20Private%20Limited!5e0!3m2!1sen!2sin!4v1619524105245!5m2!1sen!2sin"
                     width="100%"
-                    height="304"
+                    height="300"
                     style={{ border: 0 }}
-                    allowFullScreen=""
+                    allowFullScreen
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
                     title="Al Maha Foods Location"
-                  ></iframe>
+                  />
                 </div>
               </div>
             </div>

@@ -1,0 +1,13 @@
+{
+  "host": "http://localhost:4173",
+  "timestamp": "2025-10-25T03:02:52.431Z",
+  "results": [
+    {
+      "page": "CSR",
+      "url": "http://localhost:4173/corporate-social-responsibility",
+      "hasActivitiesGrid": true,
+      "activityItems": 4,
+      "media": []
+    }
+  ]
+}

@@ -1,11 +1,19 @@
 /* CTA Section Styles */
 .ctaSection {
+  /* full-bleed band (calc-based offsets) */
   padding: 72px 0;
   background-color: var(--color-light-gray);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
+/* Outer container (full-width) */
 .container {
-  padding: 0 36px;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1060px;
 }
 
 /* Grid wrapper: sidebar + content */
@@ -14,9 +22,16 @@
   grid-template-columns: 210px 774px;
   column-gap: 72px;
   align-items: start;
-  max-width: 1056px;
+  max-width: 1060px;
+  margin: 0 auto;
 }
 
+@media (min-width: 1200px) {
+  .wrapper {
+    grid-template-columns: 228px 828px;
+    max-width: 1128px;
+  }
+}
 /* Sidebar */
 .sidebar {
   position: relative;
@@ -87,7 +102,7 @@
   text-align: left;
   display: block;
   height: 48px;
-  width: 480.1px;
+  width: 500px;
   margin: 0;
   margin-bottom: 10px;
   text-size-adjust: 100%;
@@ -129,7 +144,7 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-bottom-style: solid;
-  border-bottom-width: 0.8px;
+  border-bottom-width: 1px;
   border-image-outset: 0;
   border-image-repeat: stretch;
   border-image-slice: 100%;
@@ -137,15 +152,15 @@
   border-image-width: 1;
   border-left-color: rgb(236, 197, 88);
   border-left-style: solid;
-  border-left-width: 0.8px;
+  border-left-width: 1px;
   border-right-color: rgb(236, 197, 88);
   border-right-style: solid;
-  border-right-width: 0.8px;
+  border-right-width: 1px;
   border-top-color: rgb(236, 197, 88);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-top-style: solid;
-  border-top-width: 0.8px;
+  border-top-width: 1px;
   box-sizing: border-box;
   color: rgb(0, 0, 0);
   cursor: pointer;
@@ -179,83 +194,11 @@
   transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86), cubic-bezier(0.785, 0.135, 0.15, 0.86), cubic-bezier(0.785, 0.135, 0.15, 0.86);
   user-select: none;
   vertical-align: middle;
-  white-space-collapse: preserve;
-  width: 152.938px;
+  white-space: nowrap;
+  width: auto;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   -webkit-text-stroke-color: rgb(0, 0, 0);
-  -webkit-text-stroke-width: 0px;
-}
-
-.primaryButton:hover {
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: rgba(0, 0, 0, 0);
-  background-image: none;
-  background-origin: padding-box;
-  background-position-x: 0%;
-  background-position-y: 0%;
-  background-repeat: repeat;
-  background-size: auto;
-  border-bottom-color: rgb(48, 49, 51);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-bottom-style: solid;
-  border-bottom-width: 0.8px;
-  border-image-outset: 0;
-  border-image-repeat: stretch;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 1;
-  border-left-color: rgb(48, 49, 51);
-  border-left-style: solid;
-  border-left-width: 0.8px;
-  border-right-color: rgb(48, 49, 51);
-  border-right-style: solid;
-  border-right-width: 0.8px;
-  border-top-color: rgb(48, 49, 51);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-top-style: solid;
-  border-top-width: 0.8px;
-  box-sizing: border-box;
-  color: rgb(48, 49, 51);
-  cursor: pointer;
-  display: inline-block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  height: 46.8px;
-  letter-spacing: normal;
-  margin-bottom: 1px;
-  margin-top: 1px;
-  outline-color: rgb(48, 49, 51);
-  outline-style: none;
-  outline-width: 0px;
-  padding-bottom: 13px;
-  padding-left: 31px;
-  padding-right: 31px;
-  padding-top: 13px;
-  text-align: center;
-  text-decoration-color: rgb(48, 49, 51);
-  text-decoration-line: none;
-  text-decoration-style: solid;
-  text-decoration-thickness: auto;
-  text-size-adjust: 100%;
-  text-wrap-mode: wrap;
-  transition-behavior: normal, normal, normal;
-  transition-delay: 0s, 0s, 0s;
-  transition-duration: 0.2s, 0.2s, 0.2s;
-  transition-property: color, background-color, border-color;
-  transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86), cubic-bezier(0.785, 0.135, 0.15, 0.86), cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  user-select: none;
-  vertical-align: middle;
-  white-space-collapse: preserve;
-  width: 152.938px;
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
-  -webkit-text-stroke-color: rgb(48, 49, 51);
   -webkit-text-stroke-width: 0px;
 }
 

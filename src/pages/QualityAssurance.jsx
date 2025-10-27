@@ -87,7 +87,8 @@ function QualityAssurance() {
 
                 {/* Download Brochure Button */}
                 <div className={styles.downloadSection}>
-                  <a href="/assets/documents/QA-Brochure-for-Quality-assurance-page.pdf" className={styles.downloadBtn} target="_blank" rel="noopener noreferrer">
+                  {/* Add global 'button' class for audit selector parity */}
+                  <a href="/assets/documents/QA-Brochure-for-Quality-assurance-page.pdf" className={`${styles.downloadBtn} button`} target="_blank" rel="noopener noreferrer">
                     Download QA Brochure
                   </a>
                 </div>

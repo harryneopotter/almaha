@@ -1,0 +1,186 @@
+{
+  "generated": "2025-10-25T01:44:24.223Z",
+  "report": [
+    {
+      "page": "CSR",
+      "url_local": "http://localhost:4173/corporate-social-responsibility",
+      "url_live": "https://www.almahafoods.com/corporate-social-responsibility",
+      "diffs": [
+        {
+          "section": "heading",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "heading",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        }
+      ]
+    },
+    {
+      "page": "Exports",
+      "url_local": "http://localhost:4173/what-we-do/exports",
+      "url_live": "https://www.almahafoods.com/what-we-do/exports",
+      "diffs": [
+        {
+          "section": "heading",
+          "prop": "text",
+          "result": {
+            "status": "diff",
+            "local": "Exports Profile",
+            "live": "Exports Profile"
+          }
+        },
+        {
+          "section": "heading",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "heading",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "text",
+          "result": {
+            "status": "diff",
+            "local": "Al Maha Foods today stands for state-of-the-art International quality product deliverance.",
+            "live": "Al Maha Foods embarked on its journey with a clear vision: to offer premium Basmati Rice to Quality conscious Global consumers of Basmati Rice. Our Ideology com"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        }
+      ]
+    },
+    {
+      "page": "Quality Assurance",
+      "url_local": "http://localhost:4173/what-we-do/quality-assurance",
+      "url_live": "https://www.almahafoods.com/what-we-do/quality-assurance",
+      "diffs": [
+        {
+          "section": "heading",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "heading",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        }
+      ]
+    },
+    {
+      "page": "Culture at Al Maha",
+      "url_local": "http://localhost:4173/culture-at-al-maha",
+      "url_live": "https://www.almahafoods.com/culture-at-al-maha",
+      "diffs": [
+        {
+          "section": "paragraph",
+          "prop": "text",
+          "result": {
+            "status": "diff",
+            "local": "Al Maha Foods fosters a positive and collaborative office culture that values teamwork, respect, and open communication. The company encourages employee growth ",
+            "live": ""
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "fontFamily",
+          "result": {
+            "status": "diff",
+            "local": "Roboto, sans-serif",
+            "live": "Roboto"
+          }
+        },
+        {
+          "section": "paragraph",
+          "prop": "textAlign",
+          "result": {
+            "status": "diff",
+            "local": "start",
+            "live": "left"
+          }
+        }
+      ]
+    }
+  ]
+}
