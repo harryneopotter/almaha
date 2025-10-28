@@ -45,7 +45,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1060px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -85,10 +85,10 @@
 /* Modifier: center the overlay text container horizontally (home page) */
 .centerText .textOverlay {
   /* center and remove the small right-offset */
-  margin: 40px auto 0 auto;
+  margin: 40px 0 0 0;
   right: auto;
   left: auto;
-  text-align: center;
+  text-align: left;
   transform: none; /* don't conflict with slideIn translate */
   max-width: 900px;
   animation: slideInCenter 0.9s ease-out;
@@ -114,6 +114,12 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@media (min-width: 1200px) {
+ .slideContent {
+   max-width: 1128px;
+ }
 }
 
 .slideTitle {

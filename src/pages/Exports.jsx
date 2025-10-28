@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import CTASection from '../components/home/CTASection';
 import StickySidebar from '../components/common/StickySidebar';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 // add amCharts for world map
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4maps from '@amcharts/amcharts4/maps';
@@ -8,6 +9,8 @@ import am4geodata_worldIndiaUltra from '@amcharts/amcharts4-geodata/worldIndiaUl
 import styles from './Exports.module.css';
 
 function Exports() {
+  useDocumentTitle('Exports Profile - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -30,17 +33,23 @@ function Exports() {
     polygonTemplate.strokeWidth = 0.8;
     polygonTemplate.stroke = am4core.color('#ffffff');
     polygonTemplate.fill = am4core.color('#ddd0d0');
-    polygonTemplate.tooltipText = '{name}';
-    const hoverState = polygonTemplate.states.create('hover');
-    hoverState.properties.fill = am4core.color('#fe0000');
+    // Do not set a template tooltip or hover state here - we'll enable tooltip and hover
+    // only on the countries that are listed in `activeCountries` below.
 
     const activeCountries = ['CA', 'US', 'SA', 'YE', 'IQ', 'IN', 'FR'];
     polygonSeries.events.on('ready', () => {
-      activeCountries.forEach((id) => {
-        const polygon = polygonSeries.getPolygonById(id);
+      activeCountries.forEach((countryId) => {
+        const polygon = polygonSeries.getPolygonById(countryId);
         if (polygon) {
+          // Highlight the active country
           polygon.fill = am4core.color('#fe0000');
-          polygon.states.create('hover').properties.fill = am4core.color('#fe0000');
+
+          // Create a hover state only for this polygon so other countries don't react
+          const pHover = polygon.states.create('hover');
+          pHover.properties.fill = am4core.color('#fe0000');
+
+          // Enable tooltip for active polygons only
+          polygon.tooltipText = '{name}';
         }
       });
     });

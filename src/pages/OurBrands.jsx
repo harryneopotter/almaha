@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './OurBrands.module.css';
 
 function OurBrands() {
+  useDocumentTitle('Our Brands - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -78,7 +81,7 @@ function OurBrands() {
               <div className={styles.rightDivider}></div>
               <div className={styles.brandsList}>
                 {brands.map((brand) => (
-                  <div key={brand.id} className={styles.productBlock}>
+                  <div key={brand.id} className={`${styles.productBlock} ${brand.id === 3 ? styles.largeImage : ''}`}>
                     <div className={styles.imgBox}>
                       {brand.externalLink ? (
                         <a href={brand.externalLink} target="_blank" rel="noopener noreferrer">

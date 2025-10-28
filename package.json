@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-  "postbuild": "cp -f public/.htaccess dist/.htaccess || true && mkdir -p dist/wp-content/uploads/2024/11 && cp -f public/wp-content/uploads/2024/11/Privacy-Policy-Al-maha.pdf dist/wp-content/uploads/2024/11/Privacy-Policy-Al-maha.pdf || true",
+  "postbuild": "copy /Y public\\.htaccess dist\\.htaccess >nul 2>&1 || echo. && if not exist dist\\wp-content\\uploads\\2024\\11 mkdir dist\\wp-content\\uploads\\2024\\11 && copy /Y public\\wp-content\\uploads\\2024\\11\\Privacy-Policy-Al-maha.pdf dist\\wp-content\\uploads\\2024\\11\\Privacy-Policy-Al-maha.pdf >nul 2>&1 || echo.",
     "build:zip": "npm run build && (cp -f public/.htaccess dist/.htaccess || true) && cd dist && zip -r ../almaha-dist.zip .",
     "preview": "vite preview",
     "test:visual": "playwright test",

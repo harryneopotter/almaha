@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Article.module.css';
 
 function BusinessArticle() {
+  useDocumentTitle('From Strategy to Success: The Journey of a Visionary CEO | Business Connect - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

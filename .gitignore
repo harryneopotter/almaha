@@ -189,3 +189,12 @@ junit.xml
 
 # Ignore builds_zip directory (build zips)
 builds_zip/
+
+# Ignore all zip files
+*.zip
+
+# Ignore hidden directories
+.devcontainer/
+.github/
+.kilocode/
+.genkit/

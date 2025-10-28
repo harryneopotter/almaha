@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Career.module.css';
 import CultureAtAlMahaSection from './sections/CultureAtAlMahaSection';
 import CTASection from '../components/home/CTASection';
 
 const Career = () => {
     const location = useLocation();
+
+    useDocumentTitle('Workplace & Careers - Al Maha Foods');
 
     useEffect(() => {
         if (location.hash) {

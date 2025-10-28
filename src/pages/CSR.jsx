@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './CSR.module.css';
 
 function CSR() {
+  useDocumentTitle('Corporate Social Responsibility - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

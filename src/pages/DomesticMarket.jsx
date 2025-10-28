@@ -5,6 +5,7 @@ import * as am4maps from '@amcharts/amcharts4/maps';
 import am4geodata_indiaHigh from '@amcharts/amcharts4-geodata/indiaHigh';
 import CTASection from '../components/home/CTASection';
 import ctaStyles from '../styles/components/CTASection.module.css';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './DomesticMarket.module.css';
 import StickySidebar from '../components/common/StickySidebar';
 
@@ -15,6 +16,8 @@ function DomesticMarket() {
     threshold: 0.2,
     triggerOnce: true,
   });
+
+  useDocumentTitle('Domestic Market - Al Maha Foods');
 
   useEffect(() => {
     window.scrollTo(0, 0);

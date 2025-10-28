@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Blog.module.css';
 
 const allArticles = [
@@ -122,6 +123,8 @@ const allArticles = [
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filteredArticles, setFilteredArticles] = useState(allArticles);
+
+  useDocumentTitle('Blog - Al Maha Foods');
 
   useEffect(() => {
     window.scrollTo(0, 0);

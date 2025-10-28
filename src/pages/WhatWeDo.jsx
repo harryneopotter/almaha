@@ -6,9 +6,12 @@ import DomesticMarketSection from './sections/DomesticMarketSection';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const WhatWeDo = () => {
   const location = useLocation();
+
+  useDocumentTitle('What We Do - Al Maha Foods');
 
   useEffect(() => {
     if (location.hash) {

@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Article.module.css';
 
 const NEWS_CONTENT = {
@@ -112,11 +113,13 @@ const NEWS_CONTENT = {
 function NewsArticle() {
   const { slug } = useParams();
 
+  const article = NEWS_CONTENT[slug];
+
+  useDocumentTitle(article ? `${article.title} - Al Maha Foods` : 'Article Not Found - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
-
-  const article = NEWS_CONTENT[slug];
 
   if (!article) {
     return (

@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './QualityAssurance.module.css';
 
 function QualityAssurance() {
+  useDocumentTitle('Quality Assurance - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

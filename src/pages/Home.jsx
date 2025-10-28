@@ -8,9 +8,12 @@ import NewsSection from '../components/home/NewsSection';
 import BusinessSection from '../components/home/BusinessSection';
 import FeaturedArticle from '../components/home/FeaturedArticle';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from '../styles/Home.module.css';
 
 const Home = () => {
+  useDocumentTitle('Al Maha Foods - Excellence in Basmati Rice Products and Services');
+
   return (
     <div className={styles.homePage}>
   <HeroSlider removeOverlay={true} />

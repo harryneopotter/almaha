@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './CultureAtAlMaha.module.css';
 import HeroSlider from '../components/HeroSlider';
 
 function CultureAtAlMaha() {
+  useDocumentTitle('Culture at Al Maha - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

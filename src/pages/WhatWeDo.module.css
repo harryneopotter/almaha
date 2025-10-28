@@ -18,17 +18,20 @@
 }
 
 .heroOverlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+   position: absolute;
+   top: 0; left: 0; right: 0; bottom: 0;
+   background: linear-gradient(to right, rgba(0, 0, 0, 0.01), transparent);
 }
 
 .heroContent {
   position: absolute;
   top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
+  width: 100%;
+  max-width: 1060px;
+  padding: 0 20px;
 }
 
 .heroContent h1 {
@@ -51,4 +54,10 @@
 /* Add spacing between sections */
 .section:not(:first-child) {
   margin-top: 0;
+}
+
+@media (min-width: 1200px) {
+  .heroContent {
+    max-width: 1128px;
+  }
 }

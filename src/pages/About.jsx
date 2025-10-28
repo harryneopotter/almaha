@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import CTASection from '../components/home/CTASection';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './About.module.css';
 
 function About() {
+  useDocumentTitle('About Us - Al Maha Foods');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

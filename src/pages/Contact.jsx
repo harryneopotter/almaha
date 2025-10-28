@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Contact.module.css';
 
 function Contact() {
@@ -10,6 +11,8 @@ function Contact() {
     services: '',
     query: ''
   });
+
+  useDocumentTitle('Contact Us - Al Maha Foods');
 
   useEffect(() => {
     window.scrollTo(0, 0);
