@@ -246,6 +246,30 @@
   text-align: left;
 }
 
+/* Restore bullet markers and styling for CSR lists */
+.csrInitiativesSection .rightColumn .description ul {
+  list-style: disc outside !important;
+  padding-left: 28px !important;
+  margin: 0 0 18px 0;
+}
+
+.csrInitiativesSection .rightColumn .description ul li {
+  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 36px;
+  color: rgb(48, 49, 51);
+}
+
+/* Mobile responsive for lists */
+@media (max-width: 768px) {
+  .csrInitiativesSection .rightColumn .description ul li {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
 /* Video embed styles inside activities */
 .activitiesMedia {
   margin-bottom: 24px;

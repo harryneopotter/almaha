@@ -184,13 +184,16 @@ function Exports() {
             {/* Left Column - Sidebar */}
             <StickySidebar offset={120} className={styles.leftColumn}>
               <div className={styles.leftDivider}></div>
-             </StickySidebar>
+              <h2 className={styles.heading}>Delivering World-class Indian Basmati rice</h2>
+            </StickySidebar>
 
              {/* Right Column - Main Content */}
              <div className={styles.rightColumn}>
                <div className={styles.rightDivider}></div>
                <div className={styles.deliveringContent}>
-                <h2>Delivering World-class Indian Basmati rice</h2>
+                <p>
+                  Al&nbsp;Maha&nbsp;Foods is dedicated to delivering World-class Indian Basmati rice that meets the highest quality standards and is priced correctly. The company has a well-organized system in place that begins with procuring the best quality paddy and continues throughout the milling and processing of rice, packaging, and shipment. Al&nbsp;Maha&nbsp;Foods uses state-of-the-art infrastructure, including a modern laboratory with qualified rice analysts, to ensure the quality of rice at every stage of the process. The company's goal is to prioritize customer welfare by providing the best quality products and services, regardless of profits or business volume, which has earned them a reputation as an emerging leader in the industry.
+                </p>
                 <div className={styles.deliveringGallery}>
                   <div className={styles.galleryItem}>
                     <img src="/assets/images/exports/Export-3.jpeg" alt="Export 3" />

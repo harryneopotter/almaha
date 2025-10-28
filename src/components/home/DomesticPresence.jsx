@@ -39,26 +39,32 @@ const DomesticPresence = () => {
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
 
-    // Configure series
+    // Configure series (default appearance for all polygons)
     const polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.strokeWidth = 1;
     polygonTemplate.stroke = am4core.color('#f9f9f9');
     polygonTemplate.fill = am4core.color('#e0e0e0');
-    polygonTemplate.tooltipText = '{name}';
-
-    // Hover state
-    const hoverState = polygonTemplate.states.create('hover');
-    hoverState.properties.fill = am4core.color('#fe0000');
+    // Do not set a template tooltip or hover state here - we'll enable tooltip and hover
+    // only on the states that are listed in `activeStates` below.
 
     // Active/Highlighted states
     const activeStates = ['IN-PB', 'IN-HR', 'IN-RJ', 'IN-GJ', 'IN-MP', 'IN-MH', 'IN-TG', 'IN-AP', 'IN-DN', 'IN-WB'];
-    
+
+    // When the series is ready, highlight only the active states and
+    // enable tooltip/hover behavior on those polygons specifically.
     polygonSeries.events.on('ready', () => {
       activeStates.forEach((stateId) => {
         const polygon = polygonSeries.getPolygonById(stateId);
         if (polygon) {
+          // Highlight the active state
           polygon.fill = am4core.color('#fe0000');
-          polygon.states.create('hover').properties.fill = am4core.color('#fe0000');
+
+          // Create a hover state only for this polygon so other states don't react
+          const pHover = polygon.states.create('hover');
+          pHover.properties.fill = am4core.color('#fe0000');
+
+          // Enable tooltip for active polygons only
+          polygon.tooltipText = '{name}';
         }
       });
     });

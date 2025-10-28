@@ -117,17 +117,6 @@
 
 /* Right Column - Main Content */
 
-.description p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px;
-  font-weight: 300;
-  color: rgb(48, 49, 51);
-  line-height: 38px;
-  letter-spacing: -0.48px;
-  margin: 0;
-  margin-bottom: 20px;
-}
-
 .rightColumn {
   position: relative;
 }
@@ -137,7 +126,7 @@
   height: 1px;
   background-color: #dddddd;
   border: none;
-  margin: 0 0 20px 0;
+  margin: 0 0 72px 0;
 }
 
 .description h2 {
@@ -158,18 +147,8 @@
   font-weight: 300;
   color: rgb(48, 49, 51);
   line-height: 35px;
+  letter-spacing: -0.48px;
   margin: 0 0 20px 0;
-}
-
-.description p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 300;
-  color: rgb(48, 49, 51);
-  line-height: 35px;
-  letter-spacing: normal;
-  margin: 0;
-  margin-bottom: 20px;
 }
 
 .description h3 {
@@ -180,8 +159,8 @@
   line-height: 36px;
   letter-spacing: -0.48px;
   margin: 0;
-  margin-top: 30px;
-  margin-bottom: 15px;
+  margin-top: 36px;
+  margin-bottom: 20px;
 }
 
 .imageSection {
@@ -202,7 +181,7 @@
 }
 
 .qualityContent {
-  margin-top: 36px;
+  margin-top: 72px;
 }
 
 .qualityContent blockquote {
@@ -223,10 +202,11 @@
 
 .qualityContent p {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 24px;
+  line-height: 35px;
+  letter-spacing: -0.48px;
   margin: 0 0 30px 0;
 }
 
@@ -259,7 +239,7 @@
 }
 
 .deliveringContent {
-  margin-top: 36px;
+  margin-top: 72px;
 }
 
 .deliveringContent h2 {
@@ -267,10 +247,20 @@
   font-size: 24px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 28.8px;
-  letter-spacing: normal;
+  line-height: 36px;
+  letter-spacing: -0.48px;
   margin: 0;
   margin-bottom: 30px;
+}
+
+.deliveringContent p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: rgb(48, 49, 51);
+  line-height: 35px;
+  letter-spacing: -0.48px;
+  margin: 0 0 30px 0;
 }
 
 .deliveringGallery {
@@ -351,7 +341,7 @@
 }
 
 .robustContent {
-  margin-top: 36px;
+  margin-top: 72px;
 }
 
 .robustContent blockquote {
@@ -372,10 +362,11 @@
 
 .robustContent p {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 300;
   color: rgb(48, 49, 51);
-  line-height: 24px;
+  line-height: 35px;
+  letter-spacing: -0.48px;
   margin: 0 0 30px 0;
 }
 

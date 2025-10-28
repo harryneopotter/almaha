@@ -101,6 +101,9 @@ function OurBrands() {
                       {brand.additionalDescription && (
                         <p><span style={{fontWeight: 400}}>{brand.additionalDescription}</span></p>
                       )}
+                      {brand.id === 3 && (
+                        <a href="https://www.perfectchoicebasmati.com/products/basmati-rice/" target="_blank" rel="noopener noreferrer" className={styles.viewMoreBtn}>Read More</a>
+                      )}
                     </div>
                   </div>
                 ))}

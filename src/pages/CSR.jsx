@@ -50,6 +50,12 @@ function CSR() {
                   <li>Creating awareness among farmers.</li>
                   <li>Provision of safe drinking water in most backward regions of the country.</li>
                 </ul>
+                <p>Al Maha Foods executes its CSR projects in collaboration with local NGOs and government bodies. These projects are aimed at:</p>
+                <ul>
+                  <li>Upliftment of local communities.</li>
+                  <li>Use of sustainable practices in operations.</li>
+                  <li>Favourable impact on the environment.</li>
+                </ul>
                 <p>Our commitment to social responsibility extends beyond business operations, focusing on sustainable development and community welfare. Through these initiatives, we aim to create a positive impact on society while maintaining our core values of integrity and excellence.</p>
               </div>
             </div>

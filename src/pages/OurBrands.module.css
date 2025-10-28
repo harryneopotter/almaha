@@ -152,6 +152,7 @@
 .productBlock:hover {
   transform: none;
   box-shadow: none;
+  background: linear-gradient(277.7deg, #ECC558 0%, rgba(236, 197, 88, 0) 111.2%);
 }
 
 .imgBox {
@@ -191,8 +192,7 @@
 }
 
 .imgBox img {
-  width: 146px;
-  height: 198px;
+  
   object-fit: contain;
 }
 
@@ -201,7 +201,7 @@
   color: rgb(0, 0, 0);
   display: block;
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   height: 238px;
   overflow-x: hidden;
@@ -254,7 +254,7 @@
 
 .content p {
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   color: rgb(0, 0, 0);
   line-height: 24px;
@@ -266,23 +266,75 @@
 }
 
 .viewMoreBtn {
-  background: transparent;
-  border: 2px solid #eecc6b;
-  color: #eecc6b;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(236, 197, 88);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-size: auto;
+  border-bottom-color: rgb(236, 197, 88);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(236, 197, 88);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(236, 197, 88);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(236, 197, 88);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
   display: inline-block;
-}
-
-.viewMoreBtn:hover {
-  background: #eecc6b;
-  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  height: 46.8px;
+  letter-spacing: normal;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  outline-color: rgb(0, 0, 0);
+  outline-style: none;
+  outline-width: 0px;
+  padding-bottom: 13px;
+  padding-left: 31px;
+  padding-right: 31px;
+  padding-top: 13px;
+  text-align: left;
+  text-decoration-color: rgb(0, 0, 0);
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  text-size-adjust: 100%;
+  text-wrap-mode: wrap;
+  transition-behavior: normal, normal, normal;
+  transition-delay: 0s, 0s, 0s;
+  transition-duration: 0.2s, 0.2s, 0.2s;
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86), cubic-bezier(0.785, 0.135, 0.15, 0.86), cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 140px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+  -webkit-text-stroke-width: 0px;
 }
 
 
