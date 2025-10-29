@@ -73,7 +73,13 @@ const HeroSlider = ({ centerText = false, removeOverlay = false }) => {
               }}
             >
               <div className={styles.slideOverlay}></div>
-              <div className={styles.slideContent}>
+              <div
+                className={styles.slideContent}
+                style={{
+                  maxWidth: '55%',
+                  margin: 0,
+                }}
+              >
                 <div className={styles.textOverlay}>
                   <h2 className={styles.slideTitle}>{slide.title}</h2>
                   <p className={styles.slideDescription}>{slide.description}</p>
