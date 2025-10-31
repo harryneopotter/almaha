@@ -76,7 +76,7 @@ const HeroSlider = ({ centerText = false, removeOverlay = false }) => {
               <div
                 className={styles.slideContent}
                 style={{
-                  maxWidth: '55%',
+                  maxWidth: '625px',
                   margin: 0,
                 }}
               >

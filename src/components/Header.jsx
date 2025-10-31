@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from '../styles/components/Header.module.css';
 
 const Header = () => {
@@ -104,7 +104,7 @@ const Header = () => {
             <div className={styles.rowMenuInner}>
             {/* Logo */}
             <div className={styles.logoContainer}>
-              <Link to="/" className={styles.navbarBrand}>
+              <NavLink to="/" className={styles.navbarBrand}>
                 <img 
                   src="/assets/images/al-maha-logo.png" 
                   alt="Al Maha Foods" 
@@ -112,16 +112,16 @@ const Header = () => {
                   height="61"
                   className={styles.logo}
                 />
-              </Link>
+              </NavLink>
             </div>
 
             {/* Main Navigation */}
             <nav ref={navRef} onClick={handleNavClick} className={`${styles.mainMenuContainer} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
               <ul className={styles.navbarMain}>
                 <li className={styles.menuItem}>
-                  <Link to="/" className={styles.menuLink}>
+                  <NavLink to="/" className={({ isActive }) => isActive ? `${styles.menuLink} ${styles.active}` : styles.menuLink}>
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 
                 <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('about')} onMouseLeave={handleMouseLeave}>
@@ -132,10 +132,10 @@ const Header = () => {
                     About Us <i className="fa fa-angle-down"></i>
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'about' ? styles.open : ''}`}>
-                    <li><Link to="/about">About Al Maha</Link></li>
-                    <li><Link to="/about#vision-mission">Vision & Mission</Link></li>
-                    <li><Link to="/about#values">Values</Link></li>
-                    <li><Link to="/about#team">Team</Link></li>
+                    <li><NavLink to="/about" className={({ isActive }) => isActive ? styles.active : ''}>About Al Maha</NavLink></li>
+                    <li><NavLink to="/about#vision-mission" className={({ isActive }) => isActive ? styles.active : ''}>Vision & Mission</NavLink></li>
+                    <li><NavLink to="/about#values" className={({ isActive }) => isActive ? styles.active : ''}>Values</NavLink></li>
+                    <li><NavLink to="/about#team" className={({ isActive }) => isActive ? styles.active : ''}>Team</NavLink></li>
                   </ul>
                 </li>
 
@@ -147,16 +147,16 @@ const Header = () => {
                     What We Do <i className="fa fa-angle-down"></i>
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'what-we-do' ? styles.open : ''}`}>
-                    <li><Link to="/what-we-do/exports">Exports Profile</Link></li>
-                    <li><Link to="/what-we-do/quality-assurance">Quality Assurance</Link></li>
-                    <li><Link to="/what-we-do/domestic-market">Domestic Market</Link></li>
+                    <li><NavLink to="/what-we-do/exports" className={({ isActive }) => isActive ? styles.active : ''}>Exports Profile</NavLink></li>
+                    <li><NavLink to="/what-we-do/quality-assurance" className={({ isActive }) => isActive ? styles.active : ''}>Quality Assurance</NavLink></li>
+                    <li><NavLink to="/what-we-do/domestic-market" className={({ isActive }) => isActive ? styles.active : ''}>Domestic Market</NavLink></li>
                   </ul>
                 </li>
 
                 <li className={styles.menuItem}>
-                  <Link to="/our-brands" className={styles.menuLink}>
+                  <NavLink to="/our-brands" className={({ isActive }) => isActive ? `${styles.menuLink} ${styles.active}` : styles.menuLink}>
                     Our Brands
-                  </Link>
+                  </NavLink>
                 </li>
 
                 {/* Blog removed */}
@@ -166,21 +166,21 @@ const Header = () => {
                     Workplace & Careers <i className="fa fa-angle-down"></i>
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'careers' ? styles.open : ''}`}>
-                    <li><Link to="/career#culture-at-al-maha">Culture@almaha</Link></li>
-                    <li><Link to="/career#apply-now">Apply now</Link></li>
+                    <li><NavLink to="/career#culture-at-al-maha" className={({ isActive }) => isActive ? styles.active : ''}>Culture@almaha</NavLink></li>
+                    <li><NavLink to="/career#apply-now" className={({ isActive }) => isActive ? styles.active : ''}>Apply now</NavLink></li>
                   </ul>
                 </li>
 
                 <li className={styles.menuItem}>
-                  <Link to="/corporate-social-responsibility" className={styles.menuLink}>
+                  <NavLink to="/corporate-social-responsibility" className={({ isActive }) => isActive ? `${styles.menuLink} ${styles.active}` : styles.menuLink}>
                     CSR
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li className={styles.menuItem}>
-                  <Link to="/contact-us" className={styles.menuLink}>
+                  <NavLink to="/contact-us" className={({ isActive }) => isActive ? `${styles.menuLink} ${styles.active}` : styles.menuLink}>
                     Contact Us
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </nav>

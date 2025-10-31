@@ -35,7 +35,7 @@ const VisionBlock = () => {
               high quality services resulting in customer satisfaction.
             </p>
             <h6 className={styles.attribution}>
-              <em>— H.R. Salman, Managing Director</em>
+              <em>— HR Salman, Managing Director</em>
             </h6>
           </div>
         </div>

@@ -248,6 +248,63 @@ function CultureAtAlMaha() {
                 <div className={styles.galleryItem}>
                   <img src="/assets/images/careers/12-2.jpg" alt="Life at Al Maha" />
                 </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/life-@almaha-3.png" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0136.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0267.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0521.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0621.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0836.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A9650.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A9768.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/new24.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/new25.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/new28.2.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/Picture-33.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/picture0001-25.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/picture0001-43.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/picture0001-83.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0086.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0106.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0110.jpg" alt="Life at Al Maha" />
+                </div>
+                <div className={styles.galleryItem}>
+                  <img src="/assets/images/careers/228A0122.jpg" alt="Life at Al Maha" />
+                </div>
               </div>
             </div>
           </div>

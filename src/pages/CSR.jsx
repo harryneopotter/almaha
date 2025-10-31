@@ -14,7 +14,7 @@ function CSR() {
     <div className={styles.csrPage}>
       {/* Hero Banner */}
       <section className={styles.heroBanner}>
-        <div 
+        <div
           className={styles.heroBackground}
           style={{
             backgroundImage: 'url("/assets/images/csr/csr-banner.jpg")',
@@ -111,51 +111,87 @@ function CSR() {
                   <div className={styles.galleryRow}>
                     <div className={styles.galleryBlock}>
                       <img src="/assets/images/csr/WhatsApp-Image-2024-01-01-at-2.58.37-PM.jpeg" alt="Library Project" />
-                      <h5>Library Project</h5>
+                      
                     </div>
                     <div className={styles.galleryBlock}>
                       <img src="/assets/images/csr/WhatsApp-Image-2024-01-01-at-2.59.32-PM.jpeg" alt="Library Project" />
-                      <h5>Library Project</h5>
+                      
                     </div>
                   </div>
                   <div className={styles.galleryRow}>
                     <div className={styles.galleryBlock}>
                       <img src="/assets/images/csr/WhatsApp-Image-2024-01-01-at-3.00.02-PM.jpeg" alt="Library Table" />
-                      <h5>Library Table</h5>
+                      
                     </div>
                     <div className={styles.galleryBlock}>
                       <img src="/assets/images/csr/Farmer-Awareness-2.jpg" alt="Farmer awareness" />
-                      <h5>Farmer awareness</h5>
+                      
                     </div>
                   </div>
                   <div className={styles.galleryRow}>
                     <div className={styles.galleryBlock}>
                       <img src="/assets/images/csr/csr-1.jpg" alt="Amrit Mahotsav" />
-                      <h5>Amrit Mahotsav</h5>
+                      
                     </div>
                     <div className={styles.galleryBlock}>
-                      <img src="/assets/images/csr/csr-2.jpg" alt="CSR Initiative" />
-                      <h5>CSR Initiative</h5>
-                    </div>
-                  </div>
-                  <div className={styles.galleryRow}>
-                    <div className={styles.galleryBlock}>
-                      <img src="/assets/images/csr/csr-3.jpg" alt="Community Support" />
-                      <h5>Community Support</h5>
-                    </div>
-                    <div className={styles.galleryBlock}>
-                      <img src="/assets/images/csr/csr-4.jpg" alt="Education Support" />
-                      <h5>Education Support</h5>
+                      <img src="/assets/images/csr/csr10-1.jpg" alt="Farmer Awareness" />
+                      
                     </div>
                   </div>
                   <div className={styles.galleryRow}>
                     <div className={styles.galleryBlock}>
-                      <img src="/assets/images/csr/csr-5.jpg" alt="Health Initiative" />
-                      <h5>Health Initiative</h5>
+                      <img src="/assets/images/csr/csr8.jpg" alt="Farmer Awareness" />
+                      
                     </div>
                     <div className={styles.galleryBlock}>
-                      <img src="/assets/images/csr/csr-6.jpg" alt="Environmental Initiative" />
-                      <h5>Environmental Initiative</h5>
+                      <img src="/assets/images/csr/csr-6.jpg" alt="Farmer Awareness" />
+                      
+                    </div>
+                  </div>
+                  <div className={styles.galleryRow}>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/csr9.jpg" alt="Health & Safety" />
+                      
+                    </div>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/csr7.jpg" alt="Farmer Awareness" />
+                      
+                    </div>
+                  </div>
+                  <div className={styles.galleryRow}>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/csr-5.jpg" alt="Farmer Awareness" />
+                      
+                    </div>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/csr-4.jpg" alt="Education & Training" />
+                      
+                    </div>
+                  </div>
+                  <div className={styles.galleryRow}>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/csr-3.jpg" alt="Cleaning" />
+                      
+                    </div>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/csr-2.jpg" alt="Covid 19 Ration Kit" />
+                      
+                    </div>
+                  </div>
+                  <div className={styles.galleryRow}>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/Safe-Drinking-Water-1.jpg" alt="Safe Drinking Water" />
+                      
+                    </div>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/Health-Sector.jpg" alt="Health Sector" />
+                      
+                    </div>
+                  </div>
+                  <div className={styles.galleryRow}>
+                    <div className={styles.galleryBlock}>
+                      <img src="/assets/images/csr/Child-Education.jpg" alt="Child Education" />
+                      
                     </div>
                   </div>
                 </div>

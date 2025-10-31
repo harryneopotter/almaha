@@ -192,19 +192,55 @@
 }
 
 .qualityContent blockquote {
-  margin: 0 0 30px 0;
-  padding: 0;
+  margin: 0 0 10px 0;
+  padding: 0 0 0 57px;
   border: none;
   background: none;
+  border-left: 1.6px solid rgb(221, 26, 33);
+  position: relative;
+}
+
+.qualityContent h3::before {
+    content: "❝";
+    font-family: 'uncodeicon' !important;
+    font-weight: 900;
+    color: #dd1a21;
+    font-size: 40px ! IMPORTANT;
+    opacity: 1;
+    visibility: visible;
+    line-height: 20px;
+    /* height: 30px ! IMPORTANT; */
+    /* display: block; */
+    position: absolute;
+    left: 0;
+    padding-left: 25px;
+}
+
+.qualityContent h3::after {
+  
+    content: "❝";
+    font-family: 'uncodeicon' !important;
+    font-weight: 900;
+    color: #dd1a21;
+    font-size: 40px ! IMPORTANT;
+    opacity: 1;
+    visibility: visible;
+    line-height: 1px;
+    /* display: block; */
+    position: relative;
+    top: 20px;
+    right: -7px;
 }
 
 .qualityContent blockquote h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 400;
-  color: rgb(48, 49, 51);
+  color: rgb(0, 0, 0);
   margin: 0;
-  font-style: italic;
+  line-height: 35px;
+  text-align: left;
+  font-style: normal;
 }
 
 .qualityContent p {
@@ -352,19 +388,54 @@
 }
 
 .robustContent blockquote {
-  margin: 0 0 30px 0;
-  padding: 0;
+  margin: 0 0 10px 0;
+  padding: 0 0 0 57px;
   border: none;
   background: none;
+  border-left: 1.6px solid rgb(221, 26, 33);
+  position: relative;
+}
+
+.robustContent h3::before {
+   content: "❝";
+    font-family: 'uncodeicon' !important;
+    font-weight: 900;
+    color: #dd1a21;
+    font-size: 40px ! IMPORTANT;
+    opacity: 1;
+    visibility: visible;
+    line-height: 20px;
+    /* height: 30px ! IMPORTANT; */
+    /* display: block; */
+    position: absolute;
+    left: 0;
+    padding-left: 25px;
+}
+
+.robustContent h3::after {
+  content: "❝";
+    font-family: 'uncodeicon' !important;
+    font-weight: 900;
+    color: #dd1a21;
+    font-size: 40px ! IMPORTANT;
+    opacity: 1;
+    visibility: visible;
+    line-height: 1px;
+    /* display: block; */
+    position: relative;
+    top: 20px;
+    right: -7px;
 }
 
 .robustContent blockquote h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  color: rgb(48, 49, 51);
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
   margin: 0;
-  font-style: italic;
+  line-height: 35px;
+  text-align: left;
+  font-style: normal;
 }
 
 .robustContent p {

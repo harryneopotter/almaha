@@ -27,8 +27,13 @@ function Exports() {
     map.background.fill = am4core.color('transparent');
     map.padding(60, 0, 0, 0);
 
+    // Disable zoom controls
+    map.chartContainer.wheelable = false;
+    if (map.zoomControl) map.zoomControl.disabled = true;
+
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
+    polygonSeries.exclude = ['AQ'];
     const polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.strokeWidth = 0.8;
     polygonTemplate.stroke = am4core.color('#ffffff');
@@ -48,8 +53,11 @@ function Exports() {
           const pHover = polygon.states.create('hover');
           pHover.properties.fill = am4core.color('#fe0000');
 
-          // Enable tooltip for active polygons only
+          // Enable and style the tooltip on the main polygon object
           polygon.tooltipText = '{name}';
+          polygon.tooltip.getFillFromObject = false; // Disable inheriting fill from hovered object
+          polygon.tooltip.background.fill = am4core.color('#ffffff');
+          polygon.tooltip.label.fill = am4core.color('#000000');
         }
       });
     });
