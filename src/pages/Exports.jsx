@@ -31,6 +31,13 @@ function Exports() {
     map.chartContainer.wheelable = false;
     if (map.zoomControl) map.zoomControl.disabled = true;
 
+    // Disable drag behavior
+    map.chartContainer.draggable = false;
+    map.chartContainer.resizable = false;
+    map.chartContainer.events.disableType("down");
+    map.chartContainer.events.disableType("up");
+    map.chartContainer.events.disableType("move");
+
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
     polygonSeries.exclude = ['AQ'];
@@ -260,7 +267,7 @@ function Exports() {
                 </p>
 
                 <div className={styles.mapWrapper}>
-                  <div ref={robustChartRef} className={styles.map}></div>
+                  <div ref={robustChartRef} className={styles.map} draggable={false}></div>
                 </div>
               </div>
             </div>

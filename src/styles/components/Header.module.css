@@ -248,7 +248,8 @@
 }
 
 .menuLink:hover,
-.menuLink.active {
+.menuLink.active,
+.hasDropdown:focus-within .menuLink {
   background-color: rgba(235, 196, 85, 0.87);
   background-image: none;
   background-origin: padding-box;
@@ -294,16 +295,22 @@
   -webkit-border-image: none;
 }
 
-.menuLink i {
-  font-size: 14px;
-  margin-left: 5px;
-  transition: transform 0.3s ease;
+/* Dropdown icon styles removed since icons are no longer present */
+
+/* Maintain hover state when dropdown is open */
+.hasDropdown:hover .menuLink,
+.hasDropdown .menuLink.open {
+  background-color: rgba(235, 196, 85, 0.87);
+  border-top-color: rgb(208, 162, 33);
+  border-top-style: solid;
+  border-top-width: 4px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 0px;
 }
 
-.hasDropdown:hover .menuLink i,
-.hasDropdown .menuLink.open i {
-  transform: rotate(180deg);
-}
+/* Dropdown icon rotation styles removed since icons are no longer present */
 
 /* Dropdown Menu */
 .dropMenu {

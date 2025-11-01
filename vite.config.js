@@ -20,7 +20,9 @@ export default defineConfig({
       '@amcharts/amcharts4/core',
       '@amcharts/amcharts4/maps',
       '@amcharts/amcharts4-geodata/worldIndiaUltra',
-      '@amcharts/amcharts4-geodata/indiaHigh'
+      '@amcharts/amcharts4-geodata/indiaHigh',
+      'pdfjs-dist/legacy/build/pdf',
+      'pdfjs-dist/legacy/build/pdf.worker.entry'
     ]
   },
   build: {
@@ -34,7 +36,8 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          maps: ['@amcharts/amcharts4/core', '@amcharts/amcharts4/maps']
+          maps: ['@amcharts/amcharts4/core', '@amcharts/amcharts4/maps'],
+          pdf: ['pdfjs-dist', 'pdfjs-dist/build/pdf.worker.mjs']
         }
       }
     }

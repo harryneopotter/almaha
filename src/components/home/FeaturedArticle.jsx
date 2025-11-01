@@ -40,7 +40,7 @@ const FeaturedArticle = () => {
             </div>
             <div className={styles.buttonWrapper}>
               <Link 
-                to="/from-strategy-to-success-the-journey-of-a-visionary-ceo-business-connect/" 
+                to="/from-strategy-to-success-the-journey-of-a-visionary-ceo-business-connect" 
                 className={styles.readMoreButton}
               >
                 Read More

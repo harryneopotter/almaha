@@ -39,6 +39,13 @@ const DomesticPresence = () => {
     map.chartContainer.wheelable = false;
     if (map.zoomControl) map.zoomControl.disabled = true;
 
+    // Disable drag behavior
+    map.chartContainer.draggable = false;
+    map.chartContainer.resizable = false;
+    map.chartContainer.events.disableType("down");
+    map.chartContainer.events.disableType("up");
+    map.chartContainer.events.disableType("move");
+
     // Create map polygon series
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
@@ -102,7 +109,7 @@ const DomesticPresence = () => {
             </div>
             
             <div className={styles.mapWrapper}>
-              <div ref={chartRef} className={styles.map}></div>
+              <div ref={chartRef} className={styles.map} draggable={false}></div>
             </div>
           </div>
         </div>

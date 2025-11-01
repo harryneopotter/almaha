@@ -2,11 +2,14 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Article.module.css';
+import ArticleLayout from '../components/article/ArticleLayout';
+import PdfViewer from '../components/article/PdfViewer';
 
 const NEWS_CONTENT = {
   'indian-basmati-rice-market-update-august-2025': {
     title: 'Indian Basmati Rice Market Update August 2025',
     date: '15-August-2025',
+    pdfUrl: '/assets/documents/Indian-Basmati-Rice-Market-Update-%E2%80%93-August-2025.pdf',
     body: [
       'Market conditions remained stable in August 2025 with steady demand from GCC and Asia.',
       'Price movements were within expected ranges with quality premiums persisting for top grades.'
@@ -15,6 +18,7 @@ const NEWS_CONTENT = {
   'indian-basmati-rice-market-update-july-2025': {
     title: 'Indian Basmati Rice Market Update July 2025',
     date: '15-July-2025',
+    pdfUrl: '/assets/documents/Indian-Basmati-Rice-Market-Update-%E2%80%93-July-2025.pdf',
     body: [
       'Monsoon impact was moderate with logistics operating normally across major ports.',
       'Export inquiries showed an uptick ahead of festive season demand.'
@@ -23,6 +27,7 @@ const NEWS_CONTENT = {
   'indian-basmati-rice-market-update-june-2025': {
     title: 'Indian Basmati Rice Market Update June 2025',
     date: '15-June-2025',
+    pdfUrl: '/assets/documents/Flyer_June_2025-1.pdf',
     body: [
       'Procurement remained healthy with consistent arrivals supporting stable availability.',
       'Freight rates softened marginally providing relief to FOB pricing.'
@@ -133,6 +138,20 @@ function NewsArticle() {
           </div>
         </section>
       </div>
+    );
+  }
+
+  // If the article has a PDF, render using the shared ArticleLayout + PdfViewer
+  if (article.pdfUrl) {
+    return (
+      <ArticleLayout
+        title={article.title}
+        date={article.date}
+        category="News"
+        author="admin"
+      >
+        <PdfViewer pdfUrl={article.pdfUrl} />
+      </ArticleLayout>
     );
   }
 

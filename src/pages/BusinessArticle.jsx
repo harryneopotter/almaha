@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './Article.module.css';
+import ArticleLayout from '../components/article/ArticleLayout';
+import PdfViewer from '../components/article/PdfViewer';
 
 function BusinessArticle() {
   useDocumentTitle('From Strategy to Success: The Journey of a Visionary CEO | Business Connect - Al Maha Foods');
@@ -10,33 +12,16 @@ function BusinessArticle() {
     window.scrollTo(0, 0);
   }, []);
 
+  // Render the Business Connect PDF using the shared ArticleLayout + PdfViewer
   return (
-    <div className={styles.articlePage}>
-      <section className={styles.mainSection}>
-        <div className={styles.container}>
-          <h1 className={styles.title}>From Strategy to Success: The Journey of a Visionary CEO | Business Connect</h1>
-          <div className={styles.meta}>
-            <span className={styles.date}>2-August-2025</span>
-            <span className={styles.separator}>|</span>
-            <span className={styles.category}>In Business</span>
-            <span className={styles.separator}>|</span>
-            <span className={styles.author}>by admin</span>
-          </div>
-          <div className={styles.body}>
-            <p>
-              This is a placeholder business article page linked from the Home page Business section. Provide the full
-              content here or integrate a CMS source when available.
-            </p>
-            <p>
-              For now, this page ensures navigation integrity and prevents broken links during the WordPress to React migration.
-            </p>
-          </div>
-          <p>
-            <Link to="/">← Back to Home</Link>
-          </p>
-        </div>
-      </section>
-    </div>
+    <ArticleLayout
+      title="From Strategy to Success: The Journey of a Visionary CEO | Business Connect"
+      date="2-August-2025"
+      category="Business"
+      author="admin"
+    >
+      <PdfViewer pdfUrl="/assets/documents/Business-Connect-Al-Maha-Foods-International-Pvt.pdf" />
+    </ArticleLayout>
   );
 }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-  "postbuild": "copy /Y public\\.htaccess dist\\.htaccess >nul 2>&1 || echo. && if not exist dist\\wp-content\\uploads\\2024\\11 mkdir dist\\wp-content\\uploads\\2024\\11 && copy /Y public\\wp-content\\uploads\\2024\\11\\Privacy-Policy-Al-maha.pdf dist\\wp-content\\uploads\\2024\\11\\Privacy-Policy-Al-maha.pdf >nul 2>&1 || echo.",
+    "postbuild": "copy /Y public\\.htaccess dist\\.htaccess >nul 2>&1 || echo. && if not exist dist\\wp-content\\uploads\\2024\\11 mkdir dist\\wp-content\\uploads\\2024\\11 && copy /Y public\\wp-content\\uploads\\2024\\11\\Privacy-Policy-Al-maha.pdf dist\\wp-content\\uploads\\2024\\11\\Privacy-Policy-Al-maha.pdf >nul 2>&1 || echo.",
     "build:zip": "npm run build && (cp -f public/.htaccess dist/.htaccess || true) && cd dist && zip -r ../almaha-dist.zip .",
     "preview": "vite preview",
     "test:visual": "playwright test",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.39",
     "@amcharts/amcharts4-geodata": "^4.1.27",
+    "pdfjs-dist": "2.16.105",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

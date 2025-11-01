@@ -125,11 +125,11 @@ const Header = () => {
                 </li>
                 
                 <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('about')} onMouseLeave={handleMouseLeave}>
-                  <button 
+                  <button
                     className={styles.menuLink}
                     onClick={() => toggleDropdown('about')}
                   >
-                    About Us <i className="fa fa-angle-down"></i>
+                    About Us
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'about' ? styles.open : ''}`}>
                     <li><NavLink to="/about" className={({ isActive }) => isActive ? styles.active : ''}>About Al Maha</NavLink></li>
@@ -140,11 +140,11 @@ const Header = () => {
                 </li>
 
                 <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('what-we-do')} onMouseLeave={handleMouseLeave}>
-                  <button 
+                  <button
                     className={styles.menuLink}
                     onClick={() => toggleDropdown('what-we-do')}
                   >
-                    What We Do <i className="fa fa-angle-down"></i>
+                    What We Do
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'what-we-do' ? styles.open : ''}`}>
                     <li><NavLink to="/what-we-do/exports" className={({ isActive }) => isActive ? styles.active : ''}>Exports Profile</NavLink></li>
@@ -163,7 +163,7 @@ const Header = () => {
 
                 <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('careers')} onMouseLeave={handleMouseLeave}>
                   <button className={styles.menuLink} onClick={() => toggleDropdown('careers')}>
-                    Workplace & Careers <i className="fa fa-angle-down"></i>
+                    Workplace & Careers
                   </button>
                   <ul className={`${styles.dropMenu} ${openDropdown === 'careers' ? styles.open : ''}`}>
                     <li><NavLink to="/career#culture-at-al-maha" className={({ isActive }) => isActive ? styles.active : ''}>Culture@almaha</NavLink></li>

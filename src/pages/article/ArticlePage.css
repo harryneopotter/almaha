@@ -1,0 +1,35 @@
+.article-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.post-title-wrapper {
+  margin-bottom: 30px;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.post-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-info span {
+  color: #999;
+}
+
+.post-info a {
+  color: #333;
+  text-decoration: none;
+}
+
+.post-info a:hover {
+  text-decoration: underline;
+}

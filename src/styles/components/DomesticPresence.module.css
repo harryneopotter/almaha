@@ -97,6 +97,16 @@
   min-height: 400px;
 }
 
+/* Prevent map dragging behavior */
+.map,
+.map * {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .domesticPresence {
