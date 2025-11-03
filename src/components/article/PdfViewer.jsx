@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
 import './PdfViewer.css';
 
 export const PdfViewer = ({ pdfUrl }) => {
@@ -11,22 +12,16 @@ export const PdfViewer = ({ pdfUrl }) => {
   const pageNumRef = useRef(1);
   const zoomLevelRef = useRef(1.0);
 
-  // Initialize PDF.js
-  const initPdfJs = async () => {
-    if (!isInitialized) {
-      const pdfjsWorker = await import('pdfjs-dist/legacy/build/pdf.worker.entry');
-      GlobalWorkerOptions.workerSrc = pdfjsWorker.default;
-      setIsInitialized(true);
-    }
-  };
+  // Set the workerSrc for pdfjs-dist
+  if (!isInitialized) {
+    GlobalWorkerOptions.workerSrc = pdfjsWorker;
+    setIsInitialized(true);
+  }
 
   const loadPDF = async () => {
     try {
-      // Get the full URL for the PDF
-      const fullPdfUrl = `${window.location.origin}${pdfUrl}`;
-      
       // Load the PDF document
-      const loadingTask = getDocument(fullPdfUrl);
+      const loadingTask = getDocument(pdfUrl);
       
       pdfDocRef.current = await loadingTask.promise;
       
@@ -94,12 +89,7 @@ export const PdfViewer = ({ pdfUrl }) => {
 
   useEffect(() => {
     // Initialize PDF.js when component mounts
-    const init = async () => {
-      await initPdfJs();
-      await loadPDF();
-    };
-
-    init().catch(console.error);
+    loadPDF().catch(console.error);
 
     // Handle window resize
     const handleResize = () => renderPage(pageNumRef.current);
@@ -167,4 +157,3 @@ export const PdfViewer = ({ pdfUrl }) => {
 };
 
 export default PdfViewer;
-
