@@ -9,19 +9,8 @@ export default defineConfig({
     open: true
   },
   resolve: {
-    alias: {
-      '@amcharts/amcharts4/core': '@amcharts/amcharts4/core.js',
-      '@amcharts/amcharts4/maps': '@amcharts/amcharts4/maps.js',
-      '@amcharts/amcharts4-geodata': '@amcharts/amcharts4-geodata',
-    }
   },
   optimizeDeps: {
-    include: [
-      '@amcharts/amcharts4/core',
-      '@amcharts/amcharts4/maps',
-      '@amcharts/amcharts4-geodata/worldIndiaUltra',
-      '@amcharts/amcharts4-geodata/indiaHigh',
-    ]
   },
   build: {
     outDir: 'dist',

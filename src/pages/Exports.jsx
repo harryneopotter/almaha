@@ -28,15 +28,9 @@ function Exports() {
     map.padding(60, 0, 0, 0);
 
     // Disable zoom controls
-    map.chartContainer.wheelable = false;
-    if (map.zoomControl) map.zoomControl.disabled = true;
-
-    // Disable drag behavior
-    map.chartContainer.draggable = false;
-    map.chartContainer.resizable = false;
-    map.chartContainer.events.disableType("down");
-    map.chartContainer.events.disableType("up");
-    map.chartContainer.events.disableType("move");
+    map.seriesContainer.draggable = false;
+    map.seriesContainer.resizable = false;
+    map.maxZoomLevel = 1;
 
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
