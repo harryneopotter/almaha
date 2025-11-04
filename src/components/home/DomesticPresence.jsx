@@ -39,12 +39,10 @@ const DomesticPresence = () => {
     map.chartContainer.wheelable = false;
     if (map.zoomControl) map.zoomControl.disabled = true;
 
-    // Disable drag behavior
-    map.chartContainer.draggable = false;
-    map.chartContainer.resizable = false;
-    map.chartContainer.events.disableType("down");
-    map.chartContainer.events.disableType("up");
-    map.chartContainer.events.disableType("move");
+    // Disable drag/pan and zoom interactions
+    map.seriesContainer.draggable = false;
+    map.seriesContainer.resizable = false;
+    map.maxZoomLevel = 1;
 
     // Create map polygon series
     const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
@@ -119,4 +117,3 @@ const DomesticPresence = () => {
 };
 
 export default DomesticPresence;
-

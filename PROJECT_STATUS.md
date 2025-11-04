@@ -13,6 +13,8 @@ Date: 2025-10-30
   - Culture/Careers page: added fragment anchors (`#apply-now`, `#life-at-almaha`) to match live fragments.
   - Canonicalization: `/career` now redirects to `/culture-at-al-maha` both client-side (React Router Navigate) and server-side via `public/.htaccess` (`Redirect 301 /career /culture-at-al-maha`).
   - Privacy Policy PDF placed at `public/wp-content/uploads/2024/11/Privacy-Policy-Al-maha.pdf` and confirmed in `dist/` after build.
+  - **Build & PDF Rendering**: Resolved critical build failures related to `pdfjs-dist` and fixed runtime errors in the PDF viewer component.
+  - The production build (`npm run build`) is now stable and all PDF articles render correctly.
   - Ran production build and created `dist/` and a packaged `dist.zip` (63 MB). SHA-256: `e6e252bc8fe52f835076ead065a1bb6b660469554a2142fd027b4a622b74c6b3`.
   - Extracted header/footer links from saved HTML snapshots and wrote `LIVE_ROUTES.md` (29 unique hrefs across snapshots).
 
@@ -24,6 +26,8 @@ Date: 2025-10-30
 - `src/pages/CultureAtAlMaha.jsx` — added `id` anchors (`apply-now`, `life-at-almaha`).
 - `src/App.jsx` — client-side redirect: `/career` -> `/culture-at-al-maha`.
 - `public/.htaccess` — added `Redirect 301 /career /culture-at-al-maha` (server-level canonicalization for cPanel/Apache).
+- `vite.config.js` — Cleaned up legacy configurations causing build failures.
+- `src/components/article/PdfViewer.jsx` — Refactored to fix build errors and resolve runtime PDF rendering issues.
 - `public/wp-content/uploads/2024/11/Privacy-Policy-Al-maha.pdf` — placeholder/real PDF included.
 - `scripts/extract_routes.py` — script to generate `LIVE_ROUTES.md` from local snapshots.
 - `LIVE_ROUTES.md` — extracted header/footer hrefs.
@@ -48,6 +52,7 @@ Date: 2025-10-30
 
 ### Remaining work / recommended next tasks (prioritized)
 
+1) ✅ **COMPLETED**: Production build and PDF rendering issues resolved.
 1) ✅ **COMPLETED**: Header gap spacing issue - fixed with consistent 15px gap
 2) ✅ **COMPLETED**: Culture gallery enhancement - added all 25 images for 100% visual parity
 3) ✅ **COMPLETED**: CSR gallery completion - added all 17 images for full visual parity
@@ -101,6 +106,33 @@ npm run test:visual
 I can run the Playwright visual comparisons now, produce the visual diff report, and start fixing the highest-diff pages iteratively until they match. Alternatively, I can convert `LIVE_ROUTES.md` into a full `.htaccess` redirect list and commit it for deployment. Which would you like me to do next?
 
 ---
+
+## Recent Updates (2025-10-31)
+
+### Map Interaction and Content Update
+
+1.  **Fixed Map Dragging Behavior**:
+    -   Resolved an issue where dragging on the homepage maps would hijack page scrolling.
+    -   Updated the `amCharts` configuration in `InternationalPresence.jsx` and `DomesticPresence.jsx` to disable map dragging and zooming by setting `seriesContainer.draggable = false` and `maxZoomLevel = 1`.
+
+2.  **Added New Article Pages**:
+    -   Created three new article pages for the monthly market updates (September, October, November).
+    -   Leveraged the existing `NewsArticle.jsx` component by adding new data entries, avoiding file duplication.
+    -   Updated the "News" section on the homepage (`NewsSection.jsx`) to feature these new articles, replacing the previous ones.
+
+---
+
+## Recent Updates (2025-10-31)
+
+### Build and PDF Rendering Fix
+
+1.  **Resolved Production Build Failures**:
+    -   Diagnosed and fixed a series of build errors related to `pdfjs-dist` and its web worker.
+    -   Cleaned up `vite.config.js` by removing legacy and conflicting configurations that were causing module resolution failures.
+
+2.  **Fixed PDF Viewer Component**:
+    -   Refactored `src/components/article/PdfViewer.jsx` to correctly import and initialize the PDF worker using Vite's `?url` feature.
+    -   Resolved a runtime error ("Error loading PDF") by correcting the URL handling within the component, ensuring PDFs now render correctly on all article pages.
 
 ## Recent Updates (2025-10-30)
 

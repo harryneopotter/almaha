@@ -6,6 +6,21 @@ import ArticleLayout from '../components/article/ArticleLayout';
 import PdfViewer from '../components/article/PdfViewer';
 
 const NEWS_CONTENT = {
+  'flyer-november-2025': {
+    title: 'Indian Basmati Rice Market Update November 2025',
+    date: '15-November-2025',
+    pdfUrl: '/assets/documents/Flyer_November.pdf',
+  },
+  'flyer-october-2025': {
+    title: 'Indian Basmati Rice Market Update October 2025',
+    date: '15-October-2025',
+    pdfUrl: '/assets/documents/Flyer_October.pdf',
+  },
+  'flyer-september-2025': {
+    title: 'Indian Basmati Rice Market Update September 2025',
+    date: '15-September-2025',
+    pdfUrl: '/assets/documents/Flyer_September.pdf',
+  },
   'indian-basmati-rice-market-update-august-2025': {
     title: 'Indian Basmati Rice Market Update August 2025',
     date: '15-August-2025',
@@ -179,5 +194,3 @@ function NewsArticle() {
 }
 
 export default NewsArticle;
-
-

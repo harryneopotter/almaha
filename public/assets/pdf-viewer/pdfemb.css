@@ -1,0 +1,117 @@
+.pdfemb-viewer {
+    max-width: none;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pdfemb-pagescontainer {
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.pdfemb-inner-div {
+    position: absolute;
+    top: 0;
+}
+
+.pdfemb-page1 {
+    border-top: 0;
+}
+
+.pdfemb-page {
+    border-top: 1px solid black;
+}
+
+.pdfemb-the-canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+.grab-to-pan-grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.grab-to-pan-grab :not(input):not(textarea):not(button):not(select):not(:link) {
+    cursor: inherit;
+}
+
+.pdfemb-toolbar {
+    background-color: rgba(140, 140, 140, 0.25);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.pdfemb-toolbar-fixed {
+    position: fixed;
+}
+
+.pdfemb-toolbar-hover {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.pdfemb-toolbar-hover:hover,
+.pdfemb-toolbar-hover.pdfemb-toolbar-show {
+    opacity: 1;
+}
+
+.pdfemb-toolbar-bottom {
+    bottom: 0;
+}
+
+.pdfemb-toolbar button {
+    background-color: transparent;
+    border: none;
+    font-size: 0;
+    width: 24px;
+    height: 24px;
+    margin: 0 4px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.pdfemb-toolbar button:hover {
+    opacity: 1;
+}
+
+.pdfemb-toolbar button:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.pdfemb-prev {
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTUuNDEgMTYuNTlMMTAuODMgMTJsNC41OC00LjU5TDE0IDZsLTYgNiA2IDYgMS40MS0xLjQxeiIvPjwvc3ZnPg==') no-repeat center;
+}
+
+.pdfemb-next {
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNOC41OSAxNi41OUwxMy4xNyAxMiA4LjU5IDcuNDEgMTAgNmw2IDYtNiA2LTEuNDEtMS40MXoiLz48L3N2Zz4=') no-repeat center;
+}
+
+.pdfemb-page-area {
+    color: #fff;
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.pdfemb-zoomout {
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTkgMTNoLTZ2NmgtMnYtNkg1di0yaDZWNWgydjZoNnYyeiIvPjwvc3ZnPg==') no-repeat center;
+}
+
+.pdfemb-zoomin {
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTkgMTNINXYtMmgxNHYyeiIvPjwvc3ZnPg==') no-repeat center;
+}
+
+.pdfemb-zoom {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 8px;
+}

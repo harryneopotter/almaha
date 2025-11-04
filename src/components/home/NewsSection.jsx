@@ -4,21 +4,21 @@ import styles from '../../styles/components/NewsSection.module.css';
 const newsItems = [
   {
     id: 1,
-    title: 'Indian Basmati Rice Market Update August 2025',
-    date: '15-August-2025',
-    link: '/news/indian-basmati-rice-market-update-august-2025'
+    title: 'Indian Basmati Rice Market Update November 2025',
+    date: '15-November-2025',
+    link: '/news/flyer-november-2025'
   },
   {
     id: 2,
-    title: 'Indian Basmati Rice Market Update July 2025',
-    date: '15-July-2025',
-    link: '/news/indian-basmati-rice-market-update-july-2025'
+    title: 'Indian Basmati Rice Market Update October 2025',
+    date: '15-October-2025',
+    link: '/news/flyer-october-2025'
   },
   {
     id: 3,
-    title: 'Indian Basmati Rice Market Update June 2025',
-    date: '15-June-2025',
-    link: '/news/indian-basmati-rice-market-update-june-2025'
+    title: 'Indian Basmati Rice Market Update September 2025',
+    date: '15-September-2025',
+    link: '/news/flyer-september-2025'
   }
 ];
 
@@ -57,4 +57,3 @@ const NewsSection = () => {
 };
 
 export default NewsSection;
-

@@ -1,0 +1,4 @@
+# Treat these files as binary and do not attempt to change their line endings.
+*.js binary
+*.pdf binary
+*.png binary
