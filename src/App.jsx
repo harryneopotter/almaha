@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -9,11 +10,12 @@ import Career from './pages/Career';
 import CSR from './pages/CSR';
 import CultureAtAlMaha from './pages/CultureAtAlMaha';
 import Contact from './pages/Contact';
-import NewsArticle from './pages/NewsArticle';
-import BusinessArticle from './pages/BusinessArticle';
 import Exports from './pages/Exports';
 import QualityAssurance from './pages/QualityAssurance';
 import DomesticMarket from './pages/DomesticMarket';
+
+const NewsArticle = lazy(() => import('./pages/NewsArticle'));
+const BusinessArticle = lazy(() => import('./pages/BusinessArticle'));
 
 function App() {
   return (
@@ -44,9 +46,22 @@ function App() {
           <Route path="contact" element={<Navigate to="/contact-us" replace />} />
           <Route path="Contact" element={<Navigate to="/contact-us" replace />} />
           {/* News Articles */}
-          <Route path="news/:slug" element={<NewsArticle />} />
+          <Route
+            path="news/:slug"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <NewsArticle />
+              </Suspense>
+            }
+          />
           {/* Business Article */}
-          <Route path="from-strategy-to-success-the-journey-of-a-visionary-ceo-business-connect" element={<BusinessArticle />} />
+          <Route 
+            path="from-strategy-to-success-the-journey-of-a-visionary-ceo-business-connect" 
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <BusinessArticle />
+              </Suspense>
+            } />
         </Route>
       </Routes>
     </BrowserRouter>
