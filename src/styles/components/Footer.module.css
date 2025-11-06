@@ -113,10 +113,9 @@
 }
 
 .footerMenu li::before {
-  /* Restore the original chevron-style bullet using Font Awesome 5 */
   content: "\f101";
-    font-family: 'uncodeicon';
-  font-weight: 900; /* use solid style */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
   font-style: normal;
   font-size: 18px;
   color: rgb(27, 29, 31);
