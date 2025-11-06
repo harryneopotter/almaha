@@ -104,11 +104,11 @@ function About() {
                     <p>Among top 10 QA service providers for Basmati Rice and Alike products in India</p>
                   </div>
                   <div className={styles.statItem}>
-                    <img src="/assets/images/about/ship-icon.png" alt="Ship" />
+                    <img src="/assets/images/about/Group-369.jpg" alt="Ship" />
                     <p>To be Among the Top 50 Exporters of Rice to GCC and Asia</p>
                   </div>
                   <div className={styles.statItem}>
-                    <img src="/assets/images/about/revenu-icon.png" alt="Revenue" />
+                    <img src="/assets/images/about/Group-370.png" alt="Revenue" />
                     <p>To multiply our revenue consistently</p>
                   </div>
                 </div>

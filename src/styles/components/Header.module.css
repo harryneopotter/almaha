@@ -509,7 +509,8 @@
   align-items: center;
   margin: 0 3rem; /* Adjust spacing as needed */
   cursor: pointer;
-  position: relative; /* For potential future tooltip styling */
+  position: relative; 
+  min-width: 71px;/* For potential future tooltip styling */
 }
 
 /* The thumbnail image itself */

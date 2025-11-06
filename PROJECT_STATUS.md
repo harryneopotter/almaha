@@ -184,4 +184,62 @@ I can run the Playwright visual comparisons now, produce the visual diff report,
 - **Deployment**: Ready for immediate upload
 
 ---
+
+## Recent Updates (2025-11-06)
+
+### Lightbox Functionality Implementation
+
+1. **Created Reusable Lightbox Component**:
+   - Developed `src/components/common/Lightbox.jsx` and `Lightbox.module.css`
+   - Features:
+     - Full-screen image viewing with dark overlay
+     - Previous/Next navigation buttons
+     - Keyboard support (Arrow keys for navigation, Escape to close)
+     - Smooth animations and transitions
+     - Click outside to close
+     - Mobile-responsive design
+
+2. **Exports Page Gallery Lightbox** (`src/pages/Exports.jsx`):
+   - Added lightbox to Quality section (2 images: basmtrice.jpg, sellrice.jpg)
+   - Added lightbox to Delivering section (3 images: Export-3.jpeg, Export-1.jpeg, Export-2.jpeg)
+   - Updated `Exports.module.css` with gallery overlay styles
+   - Hover effect: dark overlay on images indicating clickability
+
+3. **Culture Page Gallery Lightbox** (`src/pages/CultureAtAlMaha.jsx`):
+   - Added lightbox to Life@almaha section (25 images)
+   - Refactored gallery to use array mapping for cleaner code
+   - Updated `CultureAtAlMaha.module.css` with gallery overlay styles
+   - Consistent hover effects across all gallery items
+
+### Career CTA Section - Planned Implementation
+
+**Objective**: Replace the generic CTA section on Culture page with a career-specific CTA and application modal.
+
+**Components to Create**:
+
+1. **CareerCTA Component** (`src/components/career/CareerCTA.jsx`):
+   - Left column: "Work with Us" heading with yellow divider
+   - Right column: "Submit Resume" button (golden yellow: #ECC558)
+   - Matches the two-column layout pattern used throughout the site
+
+2. **ApplicationModal Component** (`src/components/career/ApplicationModal.jsx`):
+   - Full-screen modal overlay with close button
+   - Application form with fields:
+     - Row 1: Full Name, Email
+     - Row 2: Phone, City
+     - Row 3: Total Experience, Highest Qualification, Applied For
+     - File uploads: Resume (Max: 2MB), Photograph (Max: 2MB)
+     - Message textarea
+     - Red "Apply" submit button (#DD1A21)
+   - Form validation and file upload handling
+   - Responsive grid layout
+
+3. **Integration**:
+   - Update `CultureAtAlMaha.jsx` to use `CareerCTA` instead of generic `CTASection`
+   - State management for modal open/close
+   - Form submission handling (placeholder for future backend integration)
+
+**Status**: Planning complete, ready for implementation.
+
+---
 Generated from the conversion session state and visual audit (see `context/AUDIT_REPORT.md`).

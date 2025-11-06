@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CTASection from '../components/home/CTASection';
+import CareerCTA from '../components/career/CareerCTA';
 import Lightbox from '../components/common/Lightbox';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './CultureAtAlMaha.module.css';
@@ -273,8 +273,8 @@ function CultureAtAlMaha() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <CTASection />
+      {/* Career CTA Section */}
+      <CareerCTA />
 
       {/* Lightbox */}
       {lightboxOpen && (
