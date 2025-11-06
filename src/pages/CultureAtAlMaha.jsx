@@ -1,11 +1,52 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CTASection from '../components/home/CTASection';
+import Lightbox from '../components/common/Lightbox';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './CultureAtAlMaha.module.css';
 import HeroSlider from '../components/HeroSlider';
 
 function CultureAtAlMaha() {
   useDocumentTitle('Culture at Al Maha - Al Maha Foods');
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const lifeGalleryImages = [
+    { src: '/assets/images/careers/2-4.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/1-1-2.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/3-2.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/4-2.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/5-2.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/6-2.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/life-@almaha-3.png', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0136.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0267.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0521.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0621.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0836.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A9650.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A9768.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/new24.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/new25.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/new28.2.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/Picture-33.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/picture0001-25.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/picture0001-43.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/picture0001-83.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0086.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0106.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0110.jpg', alt: 'Life at Al Maha' },
+    { src: '/assets/images/careers/228A0122.jpg', alt: 'Life at Al Maha' }
+  ];
+
+  const openLightbox = (index) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -216,83 +257,16 @@ function CultureAtAlMaha() {
             <div className={styles.rightColumn}>
               <div className={styles.rightDivider}></div>
               <div className={styles.lifeGallery}>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/2-4.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/1-1-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/3-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/4-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/5-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/6-2.jpg" alt="Life at Al Maha" />
-                </div>
-              
-              
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/life-@almaha-3.png" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0136.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0267.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0521.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0621.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0836.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A9650.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A9768.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/new24.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/new25.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/new28.2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/Picture-33.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/picture0001-25.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/picture0001-43.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/picture0001-83.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0086.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0106.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0110.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/228A0122.jpg" alt="Life at Al Maha" />
-                </div>
+                {lifeGalleryImages.map((image, index) => (
+                  <div 
+                    key={index} 
+                    className={styles.galleryItem} 
+                    onClick={() => openLightbox(index)}
+                  >
+                    <img src={image.src} alt={image.alt} />
+                    <div className={styles.galleryOverlay}></div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -301,6 +275,15 @@ function CultureAtAlMaha() {
 
       {/* CTA Section */}
       <CTASection />
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <Lightbox
+          images={lifeGalleryImages}
+          currentIndex={currentImageIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   );
 }

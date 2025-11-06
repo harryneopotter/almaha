@@ -261,18 +261,44 @@
 }
 
 .galleryItem {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .galleryItem img {
   width: 100%;
   height: auto;
+  display: block;
   transition: transform 0.3s ease;
+}
+
+.galleryOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galleryOverlay i {
+  color: #ffffff;
+  font-size: 32px;
 }
 
 .galleryItem:hover img {
   transform: scale(1.05);
+}
+
+.galleryItem:hover .galleryOverlay {
+  opacity: 1;
 }
 
 /* Delivering Section */
@@ -314,18 +340,25 @@
 }
 
 .deliveringGallery .galleryItem {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .deliveringGallery .galleryItem img {
   width: 100%;
   height: auto;
+  display: block;
   transition: transform 0.3s ease;
 }
 
 .deliveringGallery .galleryItem:hover img {
   transform: scale(1.05);
+}
+
+.deliveringGallery .galleryItem:hover .galleryOverlay {
+  opacity: 1;
 }
 
 /* Responsive Design */

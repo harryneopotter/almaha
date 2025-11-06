@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CTASection from '../components/home/CTASection';
 import StickySidebar from '../components/common/StickySidebar';
+import Lightbox from '../components/common/Lightbox';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 // add amCharts for world map
 import * as am4core from '@amcharts/amcharts4/core';
@@ -10,6 +11,32 @@ import styles from './Exports.module.css';
 
 function Exports() {
   useDocumentTitle('Exports Profile - Al Maha Foods');
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentGallery, setCurrentGallery] = useState([]);
+
+  const qualityGalleryImages = [
+    { src: '/assets/images/exports/basmtrice.jpg', alt: 'Basmati Rice' },
+    { src: '/assets/images/exports/sellrice.jpg', alt: 'Sella Rice' }
+  ];
+
+  const deliveringGalleryImages = [
+    { src: '/assets/images/exports/Export-3.jpeg', alt: 'Export 3' },
+    { src: '/assets/images/exports/Export-1.jpeg', alt: 'Export 1' },
+    { src: '/assets/images/exports/Export-2.jpeg', alt: 'Export 2' }
+  ];
+
+  const openLightbox = (gallery, index) => {
+    setCurrentGallery(gallery);
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    window.history.replaceState(null, '', window.location.pathname);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -182,11 +209,13 @@ function Exports() {
                 </p>
 
                 <div className={styles.qualityGallery}>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(qualityGalleryImages, 0)}>
                     <img src="/assets/images/exports/basmtrice.jpg" alt="Basmati Rice" />
+                    <div className={styles.galleryOverlay}></div>
                   </div>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(qualityGalleryImages, 1)}>
                     <img src="/assets/images/exports/sellrice.jpg" alt="Sella Rice" />
+                    <div className={styles.galleryOverlay}></div>
                   </div>
                 </div>
               </div>
@@ -213,14 +242,17 @@ function Exports() {
                   Al&nbsp;Maha&nbsp;Foods is dedicated to delivering World-class Indian Basmati rice that meets the highest quality standards and is priced correctly. The company has a well-organized system in place that begins with procuring the best quality paddy and continues throughout the milling and processing of rice, packaging, and shipment. Al&nbsp;Maha&nbsp;Foods uses state-of-the-art infrastructure, including a modern laboratory with qualified rice analysts, to ensure the quality of rice at every stage of the process. The company's goal is to prioritize customer welfare by providing the best quality products and services, regardless of profits or business volume, which has earned them a reputation as an emerging leader in the industry.
                 </p>
                 <div className={styles.deliveringGallery}>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(deliveringGalleryImages, 0)}>
                     <img src="/assets/images/exports/Export-3.jpeg" alt="Export 3" />
+                    <div className={styles.galleryOverlay}></div>
                   </div>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(deliveringGalleryImages, 1)}>
                     <img src="/assets/images/exports/Export-1.jpeg" alt="Export 1" />
+                    <div className={styles.galleryOverlay}></div>
                   </div>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(deliveringGalleryImages, 2)}>
                     <img src="/assets/images/exports/Export-2.jpeg" alt="Export 2" />
+                    <div className={styles.galleryOverlay}></div>
                   </div>
                 </div>
               </div>
@@ -271,6 +303,15 @@ function Exports() {
 
       {/* CTA Section */}
       <CTASection />
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <Lightbox
+          images={currentGallery}
+          currentIndex={currentImageIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   );
 }
