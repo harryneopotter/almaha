@@ -12,10 +12,10 @@
 
 .content {
   display: grid;
-  grid-template-columns: 516px 516px;
+  grid-template-columns: 516px 546px;
   column-gap: 36px;
   align-items: start;
-  max-width: 1068px;
+  max-width: 1098px;
   opacity: 1;
   transform: translateY(0);
   transition: all 0.8s ease;
@@ -66,8 +66,8 @@
   text-align: center;
   display: block;
   height: 57.6px;
-  width: 516px;
-  margin: 27px 0 27px 0;
+  width: 546px;
+  margin: 27px 0 0 0;
   text-size-adjust: 100%;
   unicode-bidi: isolate;
   -webkit-font-smoothing: antialiased;
@@ -77,9 +77,9 @@
 .description {
   color: rgb(0, 0, 0);
   line-height: 35px;
-  margin: 36px 0 0 0;
+  margin: 0px 0 0 0;
   text-align: justify;
-  width: 516px;
+  width: 546px;
   height: 350px;
   text-size-adjust: 100%;
   unicode-bidi: isolate;
@@ -96,7 +96,7 @@
   margin: 0;
   text-align: justify;
   display: block;
-  width: 516px;
+  width: 546px;
   height: 350px;
   text-size-adjust: 100%;
   unicode-bidi: isolate;

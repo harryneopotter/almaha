@@ -1,7 +1,7 @@
 /* Footer Styles */
 .footer {
   background-color: transparent;
-  color: var(--color-text-dark);
+  color: rgb(27, 29, 31);
 }
 
 .footerMain {
@@ -114,12 +114,12 @@
 
 .footerMenu li::before {
   /* Restore the original chevron-style bullet using Font Awesome 5 */
-  content: "\f105"; /* fa-angle-right */
-  font-family: "Font Awesome 5 Free";
+  content: "\f101";
+    font-family: 'uncodeicon';
   font-weight: 900; /* use solid style */
   font-style: normal;
   font-size: 18px;
-  color: rgb(48, 49, 51);
+  color: rgb(27, 29, 31);
   position: absolute;
   left: 0;
   top: 6px;
@@ -177,7 +177,7 @@
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 15px;
-  color: var(--color-text-dark);
+  color: rgb(27, 29, 31);
   font-size: 15px;
   line-height: 1.6;
 }
@@ -185,13 +185,13 @@
 .contactInfo i {
   flex-shrink: 0;
   width: 20px;
-  color: rgb(48, 49, 51);
+  color: rgb(27, 29, 31);
   font-size: 20px;
   margin-top: 3px;
 }
 
 .contactInfo a {
-  color: var(--color-text-dark);
+  color: rgb(27, 29, 31);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -208,7 +208,7 @@
 }
 
 .socialIcons a {
-  color: rgb(48, 49, 51);
+  color: rgb(27, 29, 31);
   cursor: pointer;
   display: inline;
   font-size: 20px;
@@ -260,7 +260,7 @@
 .designBy,
 .copyright {
   font-size: 14px;
-  color: #666666;
+  color: rgb(27, 29, 31);
 }
 
 .designBy a {
@@ -271,7 +271,7 @@
 }
 
 .designBy a:hover {
-  color: var(--color-text-dark);
+  color: rgb(27, 29, 31);
 }
 
 /* Scroll to Top Button */

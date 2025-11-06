@@ -189,6 +189,10 @@ function CultureAtAlMaha() {
                 <img src="/assets/images/careers/Score-Card-27x15-Inches-1-1.png" alt="Al Maha Score Card" />
               </div>
               
+              <div className={styles.scoreCard}>                
+              <img src="/assets/images/careers/GPTW-poster.jpg" alt="Al Maha Score Card 2" />
+              </div>
+
               <div className={styles.guinnessCertificate}>
                 <h2>Guinness Certificate</h2>
                 <img src="/assets/images/careers/1jpg.jpg" alt="Guinness Certificate" />
@@ -230,24 +234,8 @@ function CultureAtAlMaha() {
                 <div className={styles.galleryItem}>
                   <img src="/assets/images/careers/6-2.jpg" alt="Life at Al Maha" />
                 </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/7-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/8-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/9-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/10-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/11-2.jpg" alt="Life at Al Maha" />
-                </div>
-                <div className={styles.galleryItem}>
-                  <img src="/assets/images/careers/12-2.jpg" alt="Life at Al Maha" />
-                </div>
+              
+              
                 <div className={styles.galleryItem}>
                   <img src="/assets/images/careers/life-@almaha-3.png" alt="Life at Al Maha" />
                 </div>

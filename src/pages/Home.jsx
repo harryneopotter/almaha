@@ -36,11 +36,7 @@ const Home = () => {
         <FeaturedArticle />
       </div>
       <CTASection />
-      {/* 2. Use the imported PDF path in your link. 
-         This is an example. Apply this to your Footer or relevant component. */}
-      <footer style={{ textAlign: 'center', padding: '20px' }}>
-        <a href={PrivacyPolicyPdf} target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-      </footer>
+      
     </div>
   );
 };

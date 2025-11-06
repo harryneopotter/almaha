@@ -219,8 +219,8 @@
 
 .valueItem h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   color: rgb(48, 49, 51);
   margin: 0;
   line-height: 1.4;
@@ -260,8 +260,8 @@
 
 .workValueItem h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   color: rgb(48, 49, 51);
   margin: 0;
   line-height: 1.4;
@@ -278,7 +278,7 @@
 
 .scoreCard, .guinnessCertificate {
   margin-top: 40px;
-  text-align: center;
+  text-align: left;
 }
 
 .scoreCard h2, .guinnessCertificate h2 {
@@ -292,7 +292,7 @@
   margin-block-start: 27px;
   margin-block-end: 0px;
   margin-top: 27px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   text-align: left;
 }
 
