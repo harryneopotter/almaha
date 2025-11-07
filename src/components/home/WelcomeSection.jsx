@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import Lightbox from '../common/Lightbox';
 import styles from '../../styles/components/WelcomeSection.module.css';
 
 const galleryImages = [
@@ -19,6 +21,18 @@ const WelcomeSection = () => {
     threshold: 0.2,
     triggerOnce: true,
   });
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   return (
     <section className={styles.welcomeSection} ref={ref}>
@@ -87,9 +101,9 @@ const WelcomeSection = () => {
                 watchOverflow={true}
                 className={styles.swiper}
               >
-                {galleryImages.map((image) => (
+                {galleryImages.map((image, index) => (
                   <SwiperSlide key={image.id}>
-                    <div className={styles.imageWrapper}>
+                    <div className={styles.imageWrapper} onClick={() => openLightbox(index)} style={{ cursor: 'pointer' }}>
                       <img src={image.src} alt={image.alt} />
                     </div>
                   </SwiperSlide>
@@ -99,6 +113,15 @@ const WelcomeSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <Lightbox
+          images={galleryImages}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </section>
   );
 };

@@ -1,10 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CTASection from '../components/home/CTASection';
+import Lightbox from '../components/common/Lightbox';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import styles from './QualityAssurance.module.css';
 
 function QualityAssurance() {
   useDocumentTitle('Quality Assurance - Al Maha Foods');
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const galleryImages = [
+    { src: '/assets/images/quality/QA-Page.jpeg', alt: 'Quality Assurance' },
+    { src: '/assets/images/quality/QA-Page-2.jpeg', alt: 'Quality Assurance 2' },
+    { src: '/assets/images/quality/QA-Page-scaled.jpg', alt: 'Quality Assurance Scaled' },
+  ];
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -77,13 +96,13 @@ function QualityAssurance() {
 
                 {/* Gallery */}
                 <div className={styles.gallery}>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(0)} style={{ cursor: 'pointer' }}>
                     <img src="/assets/images/quality/QA-Page.jpeg" alt="Quality Assurance" />
                   </div>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(1)} style={{ cursor: 'pointer' }}>
                     <img src="/assets/images/quality/QA-Page-2.jpeg" alt="Quality Assurance 2" />
                   </div>
-                  <div className={styles.galleryItem}>
+                  <div className={styles.galleryItem} onClick={() => openLightbox(2)} style={{ cursor: 'pointer' }}>
                     <img src="/assets/images/quality/QA-Page-scaled.jpg" alt="Quality Assurance Scaled" />
                   </div>
                 </div>
@@ -104,6 +123,15 @@ function QualityAssurance() {
 
       {/* CTA Section */}
       <CTASection />
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <Lightbox
+          images={galleryImages}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   );
 }

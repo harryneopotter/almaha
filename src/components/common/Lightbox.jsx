@@ -45,16 +45,16 @@ function Lightbox({ images, currentIndex: initialIndex, onClose }) {
     <div className={styles.lightbox} onClick={handleBackdropClick}>
       <div className={styles.lightboxContent}>
         <button className={styles.closeButton} onClick={onClose} aria-label="Close">
-          <i className="fa fa-times"></i>
+          ×
         </button>
 
         {images.length > 1 && (
           <>
             <button className={styles.navButton} onClick={handlePrev} aria-label="Previous">
-              <i className="fa fa-chevron-left"></i>
+              ‹
             </button>
             <button className={`${styles.navButton} ${styles.navButtonRight}`} onClick={handleNext} aria-label="Next">
-              <i className="fa fa-chevron-right"></i>
+              ›
             </button>
           </>
         )}
