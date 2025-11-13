@@ -91,10 +91,10 @@ const HeroSlider = ({ centerText = false, removeOverlay = false }) => {
 
         {/* Navigation Buttons */}
         <button className={`${styles.swiperButtonPrev} ${styles.swiperButton}`} aria-label="Previous slide">
-          <i className="fa fa-angle-left"></i>
+          <i className="fas fa-angle-left"></i>
         </button>
         <button className={`${styles.swiperButtonNext} ${styles.swiperButton}`} aria-label="Next slide">
-          <i className="fa fa-angle-right"></i>
+          <i className="fas fa-angle-right"></i>
         </button>
       </Swiper>
     </div>
