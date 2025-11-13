@@ -22,3 +22,6 @@
 - **Spacing**: 72px vertical gaps between main content blocks; match live site exactly
 - **No inline styles**: Use CSS Modules exclusively; no global CSS leaks
 - **No legacy code**: No jQuery, all interactivity in React
+
+
+Do NOT make any change that affects Desktop CSS layout. Desktop Layout should stay as it is.

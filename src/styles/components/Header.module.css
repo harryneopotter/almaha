@@ -66,7 +66,7 @@
 @media (max-width: 1024px) {
   .logoContainer {
     margin-left: 0;
-    padding-left: 0;
+    padding-left: 16px; /* Adjusted to 16px from edge as per request */ /* match panel side padding for visual alignment */
   }
 
   .mobileMenuButton {
@@ -102,6 +102,9 @@
   position: relative;
   padding: 0;
 }
+
+/* Explicit export to ensure CSS Modules maps `styles.active` */
+.active {}
 
 .lines {
   position: relative;
@@ -394,8 +397,65 @@
   padding-left: 25px;
 }
 
+/* Active submenu items mirror hover effect */
+.dropMenu a.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255);
+  padding-left: 25px;
+}
+
 /* Mobile Styles */
 @media (max-width: 1024px) {
+  /* Keep hover/active pill styles consistent on mobile */
+  .hasDropdown:hover .menuLink,
+  .hasDropdown .menuLink.open,
+  .menuLink:hover,
+  .menuLink.active {
+    background-color: rgba(235, 196, 85, 0.87);
+    border-top-color: rgb(208, 162, 33);
+    border-top-style: solid;
+    border-top-width: 4px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+    color: #2b2b2b;
+  }
+
+  /* Close (X) button shown inside the off-canvas menu */
+  .mobileCloseButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1001;
+    outline: none;
+  }
+
+  .mobileCloseButton::before,
+  .mobileCloseButton::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: 17px;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+    transform-origin: center;
+  }
+
+  .mobileCloseButton::before {
+    transform: rotate(45deg);
+  }
+
+  .mobileCloseButton::after {
+    transform: rotate(-45deg);
+  }
+
   .mobileMenuButton {
     display: flex;
     align-items: center;
@@ -421,8 +481,8 @@
     z-index: 999;
   }
 
-  .mainMenuContainer.mobileMenuOpen {
-    right: 0;
+  .mobileMenuOpen {
+    right: 0 !important;
   }
 
   .navbarMain {
@@ -435,26 +495,43 @@
   .menuItem {
     width: 100%;
     border-bottom: 1px solid var(--color-light-gray);
+    display: block; /* allow dropdowns to push item height */
+    height: auto;   /* remove fixed height from desktop */
+    align-items: initial; /* reset flex alignment */
   }
 
   .menuLink {
     width: 100%;
     padding: 15px 0;
+    padding-right: 40px; /* room for mobile toggle chevron */
     color: var(--color-text-dark) !important;
     font-size: 16px;
+    display: block;
+    background: transparent;
+    text-align: center; /* ensure button labels center on mobile */
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .dropMenu {
-    position: static;
-    box-shadow: none;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    box-shadow: none !important;
     background-color: var(--color-light-gray);
     margin: 0;
     padding: 0;
-    transform: none;
+    transform: none !important;
     border-radius: 0;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+  }
+
+  /* Explicitly center dropdown toggle buttons for consistency */
+  .hasDropdown .menuLink {
+    text-align: center !important;
   }
 
   .dropMenu.open {
@@ -465,11 +542,79 @@
   .dropMenu a {
     padding: 10px 15px;
     font-size: 14px;
+    line-height: 1.4;
+    height: auto;
+  }
+
+  /* Ensure dropdown list items fill width and auto-height on mobile */
+  .dropMenu li {
+    width: 100% !important;
+    height: auto !important;
+    line-height: 1.4 !important;
   }
 
   .dropMenu a:hover {
     padding-left: 20px;
   }
+
+  /* Active submenu items mirror hover effect on mobile */
+  .dropMenu a.active {
+    padding-left: 20px;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgb(255, 255, 255);
+  }
+
+  /* Mobile-only dropdown chevron toggle */
+  .dropdownToggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 16px; /* for hover highlight */
+  }
+
+  .dropdownToggle::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .dropdownToggleOpen::before {
+    transform: rotate(135deg); /* point up when open */
+  }
+
+  /* Hover/active visual for chevron to match non-submenu feedback */
+  .dropdownToggle:hover,
+  .dropdownToggle:focus-visible {
+    background-color: rgba(235, 196, 85, 0.18);
+    outline: none;
+  }
+}
+
+/* Highlight parent label when hovering or activating a submenu item */
+.hasDropdown:has(.dropMenu li:hover) .menuLink,
+.hasDropdown:has(.dropMenu a.active) .menuLink {
+  background-color: rgba(235, 196, 85, 0.87);
+  border-top-color: rgb(208, 162, 33);
+  border-top-style: solid;
+  border-top-width: 4px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+  color: #2b2b2b;
 }
 
 @media (max-width: 768px) {

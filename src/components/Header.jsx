@@ -17,8 +17,13 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const toggleMobileMenu = (e) => {
+    // Prevent the document-level outside-click handler from immediately closing the menu
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setIsMobileMenuOpen((prev) => !prev);
   };
 
   const toggleDropdown = (menuName) => {
@@ -54,6 +59,10 @@ const Header = () => {
     const handleOutside = (e) => {
       const target = e.target;
       if (!navRef.current) return;
+      // Ignore clicks on the hamburger button itself so it can toggle without being closed by outside handler
+      if (target.closest && (target.closest(`.${styles.mobileMenuButton}`) || target.closest(`.${styles.lines}`))) {
+        return;
+      }
       if (!navRef.current.contains(target)) {
         if (openDropdown) setOpenDropdown(null);
         if (isMobileMenuOpen) setIsMobileMenuOpen(false);
@@ -74,6 +83,19 @@ const Header = () => {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [openDropdown, isMobileMenuOpen]);
+
+  // Toggle body class for overlay when mobile menu opens
+  useEffect(() => {
+    const body = document.body;
+    if (isMobileMenuOpen) {
+      body.classList.add('open-overlay-menu');
+    } else {
+      body.classList.remove('open-overlay-menu');
+    }
+    return () => {
+      body.classList.remove('open-overlay-menu');
+    };
+  }, [isMobileMenuOpen]);
 
   // Close mobile menu when a nav link is clicked (use event delegation on the nav)
   const handleNavClick = (e) => {
@@ -132,6 +154,19 @@ const Header = () => {
 
               {/* Main Navigation */}
               <nav ref={navRef} onClick={handleNavClick} className={`${styles.mainMenuContainer} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+                {/* Mobile Close Button (top-right) */}
+                {isMobileMenuOpen && (
+                  <button
+                    className={styles.mobileCloseButton}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setIsMobileMenuOpen(false);
+                      setOpenDropdown(null);
+                    }}
+                    aria-label="Close menu"
+                  />
+                )}
                 <ul className={styles.navbarMain}>
                   <li className={styles.menuItem}>
                     <NavLink to="/" className={({ isActive }) => isActive ? `${styles.menuLink} ${styles.active}` : styles.menuLink}>
@@ -140,12 +175,28 @@ const Header = () => {
                   </li>
                   
                   <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('about')} onMouseLeave={handleMouseLeave}>
-                    <button
-                      className={styles.menuLink}
-                      onClick={() => toggleDropdown('about')}
+                    <NavLink
+                      to="/about"
+                      className={({ isActive }) => {
+                        let cls = styles.menuLink;
+                        if (isActive) cls += ` ${styles.active}`;
+                        if (openDropdown === 'about') cls += ` ${styles.open}`;
+                        return cls;
+                      }}
                     >
                       About Us
-                    </button>
+                    </NavLink>
+                    {/* Mobile-only toggle to open submenu */}
+                    <button
+                      className={`${styles.dropdownToggle} ${openDropdown === 'about' ? styles.dropdownToggleOpen : ''}`}
+                      aria-label="Toggle About submenu"
+                      aria-expanded={openDropdown === 'about'}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleDropdown('about');
+                      }}
+                    />
                     <ul className={`${styles.dropMenu} ${openDropdown === 'about' ? styles.open : ''}`}>
                       <li><NavLink to="/about" className={({ isActive }) => isActive ? styles.active : ''}>About Al Maha</NavLink></li>
                       <li><NavLink to="/about#vision-mission" className={({ isActive }) => isActive ? styles.active : ''}>Vision & Mission</NavLink></li>
@@ -155,12 +206,28 @@ const Header = () => {
                   </li>
 
                   <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('what-we-do')} onMouseLeave={handleMouseLeave}>
-                    <button
-                      className={styles.menuLink}
-                      onClick={() => toggleDropdown('what-we-do')}
+                    <NavLink
+                      to="/what-we-do"
+                      className={({ isActive }) => {
+                        let cls = styles.menuLink;
+                        if (isActive) cls += ` ${styles.active}`;
+                        if (openDropdown === 'what-we-do') cls += ` ${styles.open}`;
+                        return cls;
+                      }}
                     >
                       What We Do
-                    </button>
+                    </NavLink>
+                    {/* Mobile-only toggle to open submenu */}
+                    <button
+                      className={`${styles.dropdownToggle} ${openDropdown === 'what-we-do' ? styles.dropdownToggleOpen : ''}`}
+                      aria-label="Toggle What We Do submenu"
+                      aria-expanded={openDropdown === 'what-we-do'}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleDropdown('what-we-do');
+                      }}
+                    />
                     <ul className={`${styles.dropMenu} ${openDropdown === 'what-we-do' ? styles.open : ''}`}>
                       <li><NavLink to="/what-we-do/exports" className={({ isActive }) => isActive ? styles.active : ''}>Exports Profile</NavLink></li>
                       <li><NavLink to="/what-we-do/quality-assurance" className={({ isActive }) => isActive ? styles.active : ''}>Quality Assurance</NavLink></li>
@@ -177,9 +244,28 @@ const Header = () => {
                   {/* Blog removed */}
 
                   <li className={`${styles.menuItem} ${styles.hasDropdown}`} onMouseEnter={() => handleMouseEnter('careers')} onMouseLeave={handleMouseLeave}>
-                    <button className={styles.menuLink} onClick={() => toggleDropdown('careers')}>
+                    <NavLink
+                      to="/culture-at-al-maha"
+                      className={({ isActive }) => {
+                        let cls = styles.menuLink;
+                        if (isActive) cls += ` ${styles.active}`;
+                        if (openDropdown === 'careers') cls += ` ${styles.open}`;
+                        return cls;
+                      }}
+                    >
                       Workplace & Careers
-                    </button>
+                    </NavLink>
+                    {/* Mobile-only toggle to open submenu */}
+                    <button
+                      className={`${styles.dropdownToggle} ${openDropdown === 'careers' ? styles.dropdownToggleOpen : ''}`}
+                      aria-label="Toggle Careers submenu"
+                      aria-expanded={openDropdown === 'careers'}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleDropdown('careers');
+                      }}
+                    />
                     <ul className={`${styles.dropMenu} ${openDropdown === 'careers' ? styles.open : ''}`}>
                       <li><NavLink to="/career#culture-at-al-maha" className={({ isActive }) => isActive ? styles.active : ''}>Culture@almaha</NavLink></li>
                       <li><NavLink to="/career#apply-now" className={({ isActive }) => isActive ? styles.active : ''}>Apply now</NavLink></li>
@@ -213,6 +299,16 @@ const Header = () => {
         </div>
       </div>
       </header>
+
+      {/* Mobile overlay (click to close). Only renders when menu is open */}
+      {isMobileMenuOpen && (
+        <div
+          className="overlay overlay-menu"
+          role="presentation"
+          aria-hidden="true"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
       {/* === NEW: Lightbox Markup === */}
       {isLightboxOpen && (

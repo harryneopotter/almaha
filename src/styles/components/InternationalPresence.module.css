@@ -129,16 +129,49 @@
 
 @media (max-width: 768px) {
   .internationalPresence {
-    padding: 48px 0;
+    padding: 36px 0;
+  }
+  .container {
+    padding: 0; /* remove 36px container padding on mobile */
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hide left column divider on mobile */
+  .textColumn .divider {
+    display: none;
+  }
+
+  /* Show heading above content on mobile - use order to move it first */
+  .textColumn {
+    order: -1;
+    width: 100%;
+    position: static;
+    visibility: visible;
+    display: block;
   }
 
   .heading {
     font-size: 1.75rem;
-    margin-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block !important;
+  }
+
+  .mapColumn {
+    order: 0;
+    width: 100%;
   }
 
   .divider {
     width: 50px;
+    margin: 0 auto 20px;
   }
 
   .description p {
@@ -152,7 +185,7 @@
 
 @media (max-width: 375px) {
   .internationalPresence {
-    padding: 40px 0;
+    padding: 30px 0;
   }
 
   .heading {
@@ -166,6 +199,29 @@
   .map {
     height: 300px;
     min-height: 250px;
+  }
+}
+
+/* Mobile overrides: left-align text and hide separators */
+@media (max-width: 768px) {
+  .heading {
+    text-align: left !important;
+  }
+  .divider {
+    display: none;
+    margin: 0;
+  }
+  .description p {
+    text-align: left;
+  }
+}
+
+@media (max-width: 375px) {
+  .heading {
+    text-align: left !important;
+  }
+  .description p {
+    text-align: left;
   }
 }
 

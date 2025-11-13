@@ -14,8 +14,6 @@
 
 .content-wrapper {
   width: 100%; /* Allow full-width sections like hero slider edge-to-edge */
-  margin: 0; /* Remove auto margins that centered the wrapper */
-  padding: 0; /* No horizontal padding so children control their own */
 }
 
 /* Removed side-padding media query so individual sections handle their own internal spacing */
@@ -25,4 +23,3 @@
     padding-top: 0;
   }
 }
-

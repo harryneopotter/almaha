@@ -236,7 +236,7 @@
 @media (max-width: 768px) {
   .columnCopyright {
     margin-top: 18px;
-    text-align: center;
+    text-align: left;
     white-space: normal;
     font-size: 14px;
   }
@@ -322,6 +322,24 @@
 }
 
 @media (max-width: 768px) {
+  /* Remove wrapper side padding so viewport→content gap is controlled by container */
+  .footerWrapper {
+    padding: 0;
+  }
+
+  /* Set mobile container padding to 16px so columns start at 16px from edge */
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Remove large desktop left paddings from columns on mobile */
+  .footerColumn:nth-child(2),
+  .footerColumn:nth-child(3),
+  .footerColumn:nth-child(4) {
+    padding-left: 0;
+  }
+
   .footerGrid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -329,31 +347,40 @@
 
   .footerLogo {
     max-width: 200px;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .footerColumn {
-    text-align: center;
+    text-align: left;
+  }
+
+  .widgetTitle {
+    text-align: left;
+    width: auto;
   }
 
   .footerMenu,
   .contactInfo {
     text-align: left;
+    display: inline-block;
+    width: auto;
   }
 
   .contactInfo li {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
   }
 
   .socialIcons {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .footerBottomContent {
     flex-direction: column;
-    text-align: center;
+    text-align: left;
+    align-items: flex-start;
   }
 
   .footerMain {
@@ -369,6 +396,12 @@
 }
 
 @media (max-width: 375px) {
+  /* Reduce container padding slightly for very small screens */
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
   .footerMain {
     padding: 40px 0;
   }

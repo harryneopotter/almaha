@@ -51,10 +51,10 @@ function Lightbox({ images, currentIndex: initialIndex, onClose }) {
         {images.length > 1 && (
           <>
             <button className={styles.navButton} onClick={handlePrev} aria-label="Previous">
-              ‹
+              <i className="fas fa-chevron-left"></i>
             </button>
             <button className={`${styles.navButton} ${styles.navButtonRight}`} onClick={handleNext} aria-label="Next">
-              ›
+              <i className="fas fa-chevron-right"></i>
             </button>
           </>
         )}

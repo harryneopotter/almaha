@@ -174,7 +174,7 @@ const ScrollToTop = () => {
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      <i className="fa fa-angle-up"></i>
+      <i className="fas fa-angle-up"></i>
     </button>
   );
 };

@@ -15,16 +15,20 @@ const InternationalPresence = lazy(() => import('../components/home/Internationa
 const DomesticPresence = lazy(() => import('../components/home/DomesticPresence'));
 
 const Home = () => {
-  useDocumentTitle('Al Maha Foods - Excellence in Basmati Rice Products and Services');
+  useDocumentTitle('Al Maha Foods - Excellence in Basmati Rice Products and Services'); // 2. Set the document title
 
   return (
     <div className={styles.homePage}>
-  <HeroSlider removeOverlay={true} />
+      <HeroSlider removeOverlay={true} />
       {/* Center all core content sections like inner pages */}
       <div className={styles.contentWrapper}>
         <WelcomeSection />
         <CertificationCard />
-        <VisionBlock />
+      </div>
+      {/* VisionBlock is full-bleed, outside contentWrapper, positioned after WelcomeSection/CertificationCard */}
+      <VisionBlock />
+      {/* Continue with rest of content sections */}
+      <div className={styles.contentWrapper}>
         <Suspense fallback={<div>Loading Map...</div>}>
           <InternationalPresence />
         </Suspense>
@@ -34,9 +38,9 @@ const Home = () => {
         <NewsSection />
         <BusinessSection />
         <FeaturedArticle />
+        {/* CTASection has gray background but content is contained */}
+        <CTASection />
       </div>
-      <CTASection />
-      
     </div>
   );
 };

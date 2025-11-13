@@ -289,3 +289,37 @@ a.button {
   background: var(--color-dark-2);
 }
 
+/* ========================================
+   Mobile Menu Overlay
+   - Mirrors live site's overlay behavior
+   - Does not affect desktop layout
+   ======================================== */
+.overlay.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 18, 19, 0.5); /* dark translucent backdrop */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+  pointer-events: none; /* disabled until opened */
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+@media (max-width: 1024px) {
+  body.open-overlay-menu .overlay.overlay-menu {
+    opacity: 1;
+    visibility: visible;
+    z-index: 998; /* below header/nav (z-index: 2000/999), above page content */
+    pointer-events: auto; /* enable click to close */
+    transition: opacity 0.3s ease, visibility 0s;
+  }
+
+  body.open-overlay-menu {
+    overflow: hidden; /* lock background scroll on mobile when menu is open */
+    touch-action: none;
+  }
+}
+
